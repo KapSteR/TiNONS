@@ -18,7 +18,7 @@ names = cellstr(names);
 
 trainingSetSize = 3;
 
-dataPath = 'DATA\NewSorted\';
+dataPath = 'DATA\DataFiles\';
 
 outputPath = 'DATA\';
 outputName = 'TrainingData';
