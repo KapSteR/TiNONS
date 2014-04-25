@@ -46,5 +46,5 @@ end
 
 %% Save output and stop timer
 
-save([outputPath outputName],'DATA');
+save([outputPath outputName],'DATA','Fs','names');
 toc
