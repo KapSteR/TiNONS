@@ -146,3 +146,9 @@ proguard/
 *.iws
 .idea/
 .DS_Store
+
+
+###### MATLAB #####
+
+# MATLAB autosave files
+*.asv 
