@@ -1,9 +1,14 @@
-clear; clc
+%% Process data
 
+%% Init workspace
+clear; clc; tic;
+% Load data from samples
 load('DATA\TrainingData.mat');
 
+numSpeakers = numel(names);
 
-for nameCount = 1:numel(names)
+%% Concatenate samples for the same speakers
+for nameCount = 1:numSpeakers
     
     samplesTemp = double.empty;
     
@@ -18,54 +23,40 @@ for nameCount = 1:numel(names)
     name = char(names(nameCount));
     eval(['samples' name ' = samplesTemp;']);
     
+    % Make audioplayer object for all speakers
     eval(['player' name ' = audioplayer(samples' name ', Fs)']);
     
 end
 
 
-%%
+%% Feature extraction
+
+for nameCount = 1:numSpeakers
+    
+    name = char(names(nameCount));
+    eval(['samplesTemp = samples' name ';']);
+        
+    frameLength = 256;
+    frameInterval = 100;
+    
+    frames = floor((numel(samplesTemp)-frameLength)/frameInterval);
+    
+    nc = 12; % no. of cepstral coeffs (apart from 0'th coef)
+    
+    p = floor(3*log(Fs)) ;
+    
+    voicebox_mfcc_dmfcc = melcepst(samplesTemp, Fs, 'M0dD',nc, p, frameLength, frameInterval);
+    
+    eval(['features' name ' = voicebox_mfcc_dmfcc;']);
+    
+end
 
 
-samplesTemp = samplesJacob;
 
-
-frameLength = 256;
-frameInterval = 100;
-
-frames = floor((numel(samplesTemp)-frameLength)/frameInterval);
-
-window = hamming(frameLength);
-
-nc = 12; % no. of cepstral coeffs (apart from 0'th coef)
-
-p = floor(3*log(Fs)) ;
- 
-voicebox_mfcc_dmfcc = melcepst(samplesTemp, Fs, 'M0dD',nc, p, frameLength, frameInterval);
-
-% for frameCount = 0:frames-1
-%     
-%     % Extract one frame
-%     samples = samplesTemp((frameCount*frameInterval)+1:(frameCount*frameInterval)+frameLength);
-%     
-%     % Remove mean and window
-%     samples = samples-mean(samples);
-%     samples = samples.*window;
-%     
-%     y = samples;
-%     
-%     y = sqrt(length(y)) * y / norm(y); % WHITENING OF SOUND INPUT
-%     y = y + eps;    % To avoid numerical probs
-%     nc = 12; % no. of cepstral coeffs (apart from 0'th coef)
-%     n = 660; % length of frame
-%     inc = 220; % increment = hop size (in number of samples)
-%     p = floor(3*log(Fs)) ;
-%     voicebox_mfcc_dmfcc = melcepst(y, Fs, 'M0d',nc, p, n, inc);
-%     
-% end
+%% Create model
 
 
 
 
-
-
-
+%% End
+toc
