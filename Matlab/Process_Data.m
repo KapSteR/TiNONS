@@ -9,7 +9,7 @@ numSpeakers = numel(names);
 
 %% Concatenate samples for the same speakers
 for nameCount = 1:numSpeakers
-    
+   
     samplesTemp = double.empty;
     
     for digitCount = 1:10 % 0:9 +1
@@ -51,12 +51,47 @@ for nameCount = 1:numSpeakers
     
 end
 
-
+%% Fisher's linear discriminant
 
 %% Create model
+
+featureSpace = [
+    featuresJacob;
+%     featuresMose;
+%     featuresSimon;
+    featuresCamilla
+    ];
+
+nClasses = 8; %numel(names);
+
+GMM = fitgmdist(featureSpace,nClasses)
+
+idx = cluster(GMM,featureSpace);
+
+cluster1 = (idx == 1);
+cluster2 = (idx == 2);
+cluster3 = (idx == 3);
+cluster4 = (idx == 4);
+clusterML = [cluster1 cluster2 cluster3 cluster4];
+
+%% Present result
+
+plot(idx,'.')
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 %% End
+
+
 toc
