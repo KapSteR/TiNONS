@@ -60,6 +60,40 @@ featureSpace = [
     ];
 
 
+%% Linear things
+
+x = featureSpace';
+x1 = featuresJacob';
+x2 = featuresCamilla';
+
+m_1 = mean(x1,2); M_1 = diag(m_1)*ones(size(x1));
+m_2 = mean(x2,2); M_2 = diag(m_2)*ones(size(x2));
+
+S_W = (x1-M_1)*(x1-M_1)'+(x2-M_2)*(x2-M_2)'
+
+w = inv(S_W)*(m_1-m_2);
+
+
+x0 = 1;
+x_ = [ones(size(x,1)) x];
+
+% w_ = [w0 w9];
+
+y = w'*x_;
+
+
+r = y / norm(w);
+
+plot(r)
+
+
+
+
+
+
+
+
+
 %% Fisher's linear discriminant
 
 
