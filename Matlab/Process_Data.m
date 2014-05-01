@@ -51,10 +51,7 @@ for nameCount = 1:numSpeakers
     
 end
 
-%% Fisher's linear discriminant
-
-%% Create model
-
+%% Collect featureSpace
 featureSpace = [
     featuresJacob;
 %     featuresMose;
@@ -62,7 +59,26 @@ featureSpace = [
     featuresCamilla
     ];
 
-nClasses = 8; %numel(names);
+
+%% Fisher's linear discriminant
+
+
+
+
+
+
+
+
+
+
+%% Dimentionality reduction
+
+
+
+%% Probabilistic methods
+%% Gaussian Mixture Models
+
+nClasses = 2; %numel(names);
 
 GMM = fitgmdist(featureSpace,nClasses)
 
@@ -73,6 +89,7 @@ cluster2 = (idx == 2);
 cluster3 = (idx == 3);
 cluster4 = (idx == 4);
 clusterML = [cluster1 cluster2 cluster3 cluster4];
+
 
 %% Present result
 
