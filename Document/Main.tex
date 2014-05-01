@@ -1,6 +1,4 @@
-\documentclass[oneside, 12pt]{memoir}
-
-\input{modules/Preamble}
+\input{preample}
 
 %FixMe pakken viser små kommentarer, hvor der skal rettes
 %--------------------------------------------------
@@ -12,31 +10,35 @@
 
 
 \begin{document}
+\title{TINON Project: Speaker recognition}
 
-\begin{titlingpage}
-	\subfile{Frontpage}
-\end{titlingpage}
+\author{Kasper Nielsen}%Forfatter 1
+\author{Alexander Rasborg Knudsen}%Forfatter 2
+\affiliation{Department of Engineering, Aarhus Universitet} 
+\date{\today} %Dato.
 
-\newpage
-\subfile{VersionHistory}
+\begin{abstract}
+\bigskip
+assefilter, detektor, dataanalysesystem. 
+Gassen til analyse suges ind i maskinen gennem et kapillarrr (snifferen), som kan bnes og lukkes med en mekanisk ventil (inlet valve). 
+For at mindske risikoen for, at ioner fragmenterer, bliver neutraliseret eller spredt p hinanden, skal kollisionerne imelle\cite{RefWorks:23}
+\end{abstract}
 
-\listoffixmes
+\maketitle
+\noindent
 
-\newpage
-\tableofcontents*
-%\newpage
-%\listoffigures*
+\input{Introduction}
 
-%\listoffixmes
+\input{DataCollection}
 
-\newpage
+\input{FeatureExtraction}
 
-\subfile{ProblemDefinition}
+\input{LinearClassification}
 
 
 \bibliographystyle{ieeetr}
-\renewcommand{\bibname}{2 Reference Document}
-\addcontentsline{toc}{chapter}{2 Reference Document}
+%\renewcommand{\bibname}{2 Reference Document}
+%\addcontentsline{toc}{chapter}{2 Reference Document}
 \bibliography{10731@post.au.dk-RefList}
 
 

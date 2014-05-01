@@ -1,0 +1,54 @@
+\documentclass[danish,a4paper,twocolumn,amsmath,amssymb]{revtex4-1}
+\usepackage{babel}		%Giver mulighed for dansk orddeling. Slet kun hvis du VED hvad du laver, eller skal skrive noget på engelsk.
+\usepackage[latin1]{inputenc}	%Tillader danske tegn
+\usepackage[T1]{fontenc}	%Tillader danske tegn
+\usepackage{graphicx}		%Tillader indsættelse af billeder
+\usepackage{dcolumn}		%Bruges til at lave matematiske tabelsøjler... se datatabel
+\usepackage{booktabs}		%linjer i tabeller...
+\usepackage{mathtools}		%Ekstra matematik... bare lad den være, du får muligvis brug for den.
+\usepackage{multirow}
+\usepackage{threeparttable} 			% Jeg kan ikke huske hvad den gør, men den skal bruges til for at tabelnoterne virker
+\usepackage[tableposition=top]{caption} % Noget med at lave caption så det står godt
+\usepackage[version=3]{mhchem}  %\ce{H2O + e^{-} -> H2O^{+} + 2e^-}
+%siunitx-pakken er ny ift. den originale template, så der henvises i tekstan til en anden pakke, beklager.
+\usepackage{siunitx}	%Bruges \SI{<tal>}{<enhed>}, \si{<enhed>} eller \num{<tal>}.
+\sisetup{output-decimal-marker={,},separate-uncertainty=true}%Sørger for komma som decimalmarkør. Virker også ved decimaltal, hvis man bruger \num{<tal>}.
+\usepackage{url}		 %bruges til at formattere url'er... kan sagtens udelades.
+%Det følgende laver to makroer, \tref{} og \fref, der kan bruges ligesom \ref til at referere til hhv. tabeller og figurer. 
+%De indsætter selv ordet Tabel/Figur, og sørger for at der ikke sker et linjebrud mellem dette og nummeret.
+\newcommand{\tref}[1]{\tablename~\ref{#1}}
+\newcommand{\fref}[1]{\figurename~\ref{#1}}
+%Tilsvarende for ligninger. Indsætter "ligning (#)".
+\newcommand{\lref}[1]{ligning~\eqref{#1}}
+	% \eqref laver en reference med parenteser omkring (til brug ved ligninger.)
+
+%Disse makroer indsætter ordene "PicoScope" og "EasyPlot" i teksten (med store bogstaver. Husk at sætte "{}" bagefter for at få et mellemrum.
+%Jeg har lavet dem fordi jeg blev træt af at sidde og trykke shift hele tiden, og for at få det til at stå ens. Brug dem, eller lad være.
+\newcommand{\picos}[0]{\textsc{PicoScope}} %hedder \picos for ikke at komme i kambolage med pico fra SIunits.
+\newcommand{\epw}[0]{\textsc{EasyPlot}}    %epw er navnet på programfilen for easyplot, men det har ingen betydning for makroen. Jeg valgte det fordi det var noget jeg kunne huske, og det kan sagtens ændres.
+\newcommand{\matl}[0]{\textsc{Matlab}} %Skriver Matlab med small caps.
+
+%hyperref-pakken kan bruges til at redigere pdf-metadata. Det kan være et nice touch, men er generelt ikke påkrævet. Laver automatisk referencer i teksten til farvede hyperlinks i.
+\usepackage{hyperref}
+\hypersetup
+{   pdfsubject={Rapport},
+	pdfauthor={Alexander Rasborg Knudsen}
+    pdftitle={Masse},
+    pdfstartview=FitH,
+    colorlinks=true}
+    
+%Følgende gør, at subscripts bliver ikke-kursiv. Anvendes X_|<subscript>|. Erstattes evt. med X_{\mathrm{<subscript>}}.
+\makeatletter
+\begingroup
+\catcode`\_=\active
+\protected\gdef_{\@ifnextchar|\subtextup\sb}
+\endgroup
+\def\subtextup|#1|{\sb{\textup{#1}}}
+\AtBeginDocument{\catcode`\_=12 \mathcode`\_=32768 }
+\makeatother
+
+\usepackage[danish=quotes]{csquotes} %Danske citationstegn. \enquote{}
+
+%Lad disse to linjer være. De sørger for at bunden af siden bliver pæn, og fjerner indryk ved afsnit.
+\raggedbottom
+\parindent = 0pt
