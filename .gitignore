@@ -151,7 +151,7 @@ proguard/
 ###### MATLAB #####
 
 # MATLAB autosave files
-*.asv 
+#*.asv
 
 # Windows lort
 *.db
