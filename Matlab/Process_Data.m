@@ -69,7 +69,7 @@ x2 = featuresCamilla';
 N1 = length(x1);
 N2 = length(x2);
 
-t(:,1) = [ones(N1,1) ; zeros(N2,1)];
+t(:,1) = [ones(N1,1) ; zeros(N2,1) ; ];
 t(:,2) = [zeros(N1,1) ; ones(N2,1)];
 
 % m_1 = mean(x1,2); M_1 = diag(m_1)*ones(size(x1));
