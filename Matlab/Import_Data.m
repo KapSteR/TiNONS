@@ -38,7 +38,7 @@ for nameCount = 1:numel(names)
                 num2str(sampleCount) '.wav'];           
             
             [x, Fs] = audioread([samplePath '\' sampleName]);
-            DATA(nameCount, digitCount+1, sampleCount,:) = x;
+            DATA(nameCount, digitCount+1, sampleCount,:) = x(0.01*Fs:end);
             
         end        
     end    

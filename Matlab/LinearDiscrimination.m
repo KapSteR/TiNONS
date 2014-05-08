@@ -12,7 +12,9 @@ load('DATA\TestSet.mat');
 
 %% Train weigths
 
-W = inv(x_train'*x_train)*x_train'*t;
+innerProd = x_train'*x_train;
+
+W = inv(innerProd+eye(size(innerProd,1))*0.8)*x_train'*t;
 
 
 
@@ -31,7 +33,12 @@ plot(class, '+r')
 alpha(0.1)
 hold off
 
+%% Confusion matrix
 
+[C,order] = confusionmat(class, classTest);
+
+C
+names(order)
 
 %% Fisher's linear discriminant
 

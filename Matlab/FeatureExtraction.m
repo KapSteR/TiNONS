@@ -7,6 +7,8 @@ load('DATA\TrainingData.mat');
 
 numSpeakers = numel(names);
 
+melCepOptions = 'M0EdD';
+
 %% Concatenate samples for the same speakers
 for nameCount = 1:numSpeakers
    
@@ -45,7 +47,7 @@ for nameCount = 1:numSpeakers
     
     p = floor(3*log(Fs)) ;
     
-    voicebox_mfcc_dmfcc = melcepst(samplesTemp, Fs, 'M0dD',nc, p, frameLength, frameInterval);
+    voicebox_mfcc_dmfcc = melcepst(samplesTemp, Fs, melCepOptions, nc, p, frameLength, frameInterval);
     
     eval(['features' name ' = voicebox_mfcc_dmfcc;']);
     
@@ -80,7 +82,7 @@ save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4')
 toc
 
 %% Prepare for test data
-clear; tic;
+tic
 % Load data from samples
 load('DATA\TestData.mat');
 
@@ -124,7 +126,7 @@ for nameCount = 1:numSpeakers
     
     p = floor(3*log(Fs)) ;
     
-    voicebox_mfcc_dmfcc = melcepst(samplesTemp, Fs, 'M0dD',nc, p, frameLength, frameInterval);
+    voicebox_mfcc_dmfcc = melcepst(samplesTemp, Fs, melCepOptions, nc, p, frameLength, frameInterval);
     
     eval(['test' name ' = voicebox_mfcc_dmfcc;']);
     
