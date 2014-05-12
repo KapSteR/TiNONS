@@ -26,6 +26,8 @@ grid on;
 xlabel('Number of features');
 ylabel('Procentage information');
 
+
+
 v1= v(:, 1:3); % Using 3 features
 Z = x_train*v1;
 I = length(Z);
@@ -58,3 +60,14 @@ hold on
 for i = 1:4
     scatter(Z(target_train==i,1),Z(target_train==i,2),cell2mat(ploCol(i)))
 end
+
+%%
+
+x_train = x_train*v;
+x_test = x_test*v;
+
+% Save Training data
+save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
+
+% Save Training data
+save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
