@@ -7,7 +7,7 @@ load('DATA\TrainingData.mat');
 
 numSpeakers = numel(names);
 
-melCepOptions = 'M0EdD';
+melCepOptions = 'MdD';
 
 %% Concatenate samples for the same speakers
 for nameCount = 1:numSpeakers
@@ -75,9 +75,10 @@ t(:,3) = [zeros(N1+N2,1) ; ones(N3,1); zeros(N4,1)];
 t(:,4) = [zeros(N1+N2+N3,1) ; ones(N4,1)];
 
 x_train = [featureSpace ones(N1+N2+N3+N4,1)];
+N = size(x_train,1);
 
 % Save Training data
-save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4')
+save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
 
 toc
 
@@ -155,8 +156,10 @@ t_test(:,4) = [zeros(Nt1+Nt2+Nt3,1) ; ones(Nt4,1)];
 
 x_test = [testSpace ones(Nt1+Nt2+Nt3+Nt4,1)];
 
+Nt = size(x_test,1);
+
 % Save Training data
-save('DATA\TestSet.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4')
+save('DATA\TestSet.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
 
 toc
 
