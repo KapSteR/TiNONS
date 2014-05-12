@@ -7,7 +7,7 @@ load('DATA\TrainingData.mat');
 
 numSpeakers = numel(names);
 
-melCepOptions = 'M0d';
+melCepOptions = 'M0dD';
 
 %% Concatenate samples for the same speakers
 for nameCount = 1:numSpeakers

@@ -36,30 +36,30 @@ ploCol = {'r.','g.','b.','m.','k.','rx','gx','kx','mx','bx'};
 [value, index] = max(t');
 target_train = index;
 
-%%
-mu = mean(Z(:,1:3));
-
-figure
-hold on
-% for i = 1:65
-%     %scatter3(Z(i,1)-mu(1,1),Z(i,2)-mu(1,2),Z(i,3)-mu(1,3),cell2mat(ploCol(target_train(i)+1)))
-%     scatter3(Z(i,1),Z(i,2),Z(i,3),cell2mat(ploCol(target_train(i)+1)))
-%     %scatter(Z(i,1)-mu(1,1),Z(i,2)-mu(1,2),cell2mat(ploCol(target_train(i)+1)))
-%     %scatter3(Z(i,1),Z(i,2),Z(i,3),cell2mat(ploCol(3)))
-%     hold on;
+% %%
+% mu = mean(Z(:,1:3));
+% 
+% figure
+% hold on
+% % for i = 1:65
+% %     %scatter3(Z(i,1)-mu(1,1),Z(i,2)-mu(1,2),Z(i,3)-mu(1,3),cell2mat(ploCol(target_train(i)+1)))
+% %     scatter3(Z(i,1),Z(i,2),Z(i,3),cell2mat(ploCol(target_train(i)+1)))
+% %     %scatter(Z(i,1)-mu(1,1),Z(i,2)-mu(1,2),cell2mat(ploCol(target_train(i)+1)))
+% %     %scatter3(Z(i,1),Z(i,2),Z(i,3),cell2mat(ploCol(3)))
+% %     hold on;
+% % end
+% for i = 1:4
+%     scatter3(Z(target_train==i,1),Z(target_train==i,2),Z(target_train==i,3),cell2mat(ploCol(i)))
 % end
-for i = 1:4
-    scatter3(Z(target_train==i,1),Z(target_train==i,2),Z(target_train==i,3),cell2mat(ploCol(i)))
-end
-
-%%
-v2 = v(:,1:2);
-Z = x_train*v2;
-figure
-hold on 
-for i = 1:4
-    scatter(Z(target_train==i,1),Z(target_train==i,2),cell2mat(ploCol(i)))
-end
+% 
+% %%
+% v2 = v(:,1:2);
+% Z = x_train*v2;
+% figure
+% hold on 
+% for i = 1:4
+%     scatter(Z(target_train==i,1),Z(target_train==i,2),cell2mat(ploCol(i)))
+% end
 
 %%
 
@@ -71,3 +71,8 @@ save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4',
 
 % Save Training data
 save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
+
+
+
+
+

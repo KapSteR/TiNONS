@@ -12,7 +12,7 @@ load('DATA\TestSetPCA.mat');
 %% Truncate feautures
 
 numFeatStart = 1;
-numFeat = 37;
+numFeat = 30;
 
 x_train = x_train(:,numFeatStart:numFeat);
 x_test = x_test(:,numFeatStart:numFeat);
