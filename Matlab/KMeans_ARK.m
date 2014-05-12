@@ -13,4 +13,4 @@ load('DATA\TestSet.mat');
 
 k = 4;
 data = x_train;
-IDX = kmeans(data,k);
+[C] = kmeans(zeros(k,size(data,2)),data);
