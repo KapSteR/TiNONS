@@ -4,10 +4,18 @@ clear; clc; tic;
 
 
 % import training set
-load('DATA\TrainingSet.mat');
+load('DATA\TrainingSetPCA.mat');
 
 % import test set
-load('DATA\TestSet.mat');
+load('DATA\TestSetPCA.mat');
+
+%% Truncate feautures
+
+numFeatStart = 1;
+numFeat = 37;
+
+x_train = x_train(:,numFeatStart:numFeat);
+x_test = x_test(:,numFeatStart:numFeat);
 
 
 %% Train weigths
@@ -31,6 +39,20 @@ plot(classTest, 'o')
 hold on
 plot(class, '+r')
 alpha(0.1)
+hold off
+
+
+%% Plot moving average
+
+numAvFrames = 1000; % 100 frames per second 
+
+h = 1/numAvFrames*ones(numAvFrames,1);
+
+classMA = conv(class,h);
+
+figure(1)
+hold on
+plot(classMA,'k')
 hold off
 
 %% Confusion matrix

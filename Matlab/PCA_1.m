@@ -10,6 +10,8 @@ load('DATA\TestSet.mat');
 
 %%
 
+
+
 xtx = x_train'*x_train;
 
 
