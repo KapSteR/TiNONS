@@ -11,6 +11,10 @@ load('DATA\TestSet.mat');
 
 %%
 
-k = 4;
+k = 10;
 data = x_train;
+
 [C] = kmeans(zeros(k,size(data,2)),data);
+
+[CENTRES, OPTIONS, POST, ERRLOG] = kmeans(data,k);
+
