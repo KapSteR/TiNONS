@@ -30,10 +30,26 @@ load('DATA\TestSetPCA.mat');
 x_test = x_test(:,1:end-1);
 
 nTframes = size(x_test,1);
+frameStep = 100;
 
 probVec = [pdf(GMM1, x_test) pdf(GMM2, x_test) pdf(GMM3, x_test)];
 
-[value, class] = max(probVec');
+class = zeros(1, nTframes);
+
+for i = 1:frameStep:nTframes-100
+   
+    probVecTemp = [ pdf(GMM1, x_test(i:i+frameStep,:)) pdf(GMM2, x_test(i:i+frameStep,:)) pdf(GMM3, x_test(i:i+frameStep,:))];
+    
+    classWeigth = sum(log10(probVecTemp));
+    
+    [value, classTemp] = max(classWeigth);
+    
+    class(i:i+frameStep-1) = repmat(classTemp,1,frameStep);
+   
+end
+
+class(i:end) = repmat(classTemp,1,nTframes-i+1);
+
 [value, classTarget] = max(t_test');
 
 figure(1)

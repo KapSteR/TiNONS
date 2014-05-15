@@ -128,10 +128,10 @@ for nameCount = 1:numSpeakers
     eval(['samples' name ' = samplesTemp;']);
     
     % Make audioplayer object for all speakers
-    eval(['player' name ' = audioplayer(samples' name ', Fs)']);
-    figure(1)
-    plot(linspace(0,numel(samplesTemp)/Fs,numel(samplesTemp)),samplesTemp)
-    pause
+%     eval(['player' name ' = audioplayer(samples' name ', Fs)']);
+%     figure(1)
+%     plot(linspace(0,numel(samplesTemp)/Fs,numel(samplesTemp)),samplesTemp)
+%     pause
 end
 
 
