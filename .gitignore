@@ -1,4 +1,4 @@
-﻿# Compiled Object files
+# Compiled Object files
 *.slo
 *.lo
 *.o
@@ -152,6 +152,13 @@ proguard/
 
 # MATLAB autosave files
 *.asv
+
+# Large datasets
+**/DATA/*.mat
+
+
+
+
 
 # Windows lort
 *.db

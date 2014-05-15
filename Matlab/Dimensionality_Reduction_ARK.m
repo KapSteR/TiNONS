@@ -1,7 +1,6 @@
 %% Dimensionality Reduction - ARK
 % Initialize workspace
 clear; clc; tic;
-close all;
 
 
 % import training set
@@ -67,11 +66,12 @@ x_train = x_train*v;
 x_test = x_test*v;
 
 % Save Training data
-save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
+% save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
+save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N')
 
 % Save Training data
-save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
-
+% save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
+save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt')
 
 
 

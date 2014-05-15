@@ -115,29 +115,29 @@ plot(class)
 
 
 
-% %% Dimentionality reduction
-% 
-% 
-% 
-% %% Probabilistic methods
-% %% Gaussian Mixture Models
-% 
-% nClasses = 2; %numel(names);
-% 
-% GMM = fitgmdist(featureSpace,nClasses)
-% 
-% idx = cluster(GMM,featureSpace);
-% 
-% cluster1 = (idx == 1);
-% cluster2 = (idx == 2);
-% cluster3 = (idx == 3);
-% cluster4 = (idx == 4);
-% clusterML = [cluster1 cluster2 cluster3 cluster4];
-% 
-% 
-% %% Present result
-% 
-% plot(idx,'.')
+%% Dimentionality reduction
+
+
+
+%% Probabilistic methods
+%% Gaussian Mixture Models
+
+nClasses = 4; %numel(names);
+
+GMM = fitgmdist(x_train,nClasses)
+
+idx = cluster(GMM,x_test);
+
+cluster1 = (idx == 1);
+cluster2 = (idx == 2);
+cluster3 = (idx == 3);
+cluster4 = (idx == 4);
+clusterML = [cluster1 cluster2 cluster3 cluster4];
+
+
+%% Present result
+
+plot(idx,'.')
 
 
 

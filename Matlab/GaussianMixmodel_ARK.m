@@ -11,9 +11,9 @@ load('DATA\TestSet.mat');
 
 %%
 
-dim = 37; % dimensions
+dim = size(x_train,2); % dimensions
 ncentres = 4; % number of mixtures - try using e.g. 3, 5 and 7..
-covartype = 'full';%'spherical'; % covariance-matrix type.. 'spherical', 'diag' or 'full'
+covartype = 'diag';%'spherical'; % covariance-matrix type.. 'spherical', 'diag' or 'full'
 mix = gmm(dim, ncentres, covartype);
 
 

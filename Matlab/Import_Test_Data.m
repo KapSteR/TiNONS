@@ -8,7 +8,7 @@ tic
 %% Initialize
 
 names = [
-    'Camilla';
+%     'Camilla';
     'Jacob  ';
     'Mose   ';
     'Simon  '
@@ -16,7 +16,8 @@ names = [
 
 names = cellstr(names);
 
-trainingSetEnd = 5;
+trainingSetStart = 16;
+trainingSetEnd = trainingSetStart+5;
 
 dataPath = 'DATA\DataFiles\';
 
@@ -32,7 +33,7 @@ for nameCount = 1:numel(names)
         
         samplePath = [dataPath nameString '\' num2str(digitCount)];       
         
-        for sampleCount = 4:trainingSetEnd
+        for sampleCount = trainingSetStart:trainingSetEnd
             
             sampleName = [nameString '_' num2str(digitCount) '_' ...
                 num2str(sampleCount) '.wav'];           

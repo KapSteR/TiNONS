@@ -8,7 +8,7 @@ tic
 %% Initialize
 
 names = [
-    'Camilla';
+%     'Camilla';
     'Jacob  ';
     'Mose   ';
     'Simon  '
@@ -16,7 +16,7 @@ names = [
 
 names = cellstr(names);
 
-trainingSetSize = 3;
+trainingSetSize = 15;
 
 dataPath = 'DATA\DataFiles\';
 
