@@ -19,6 +19,9 @@ names = cellstr(names);
 trainingSetStart = 16;
 trainingSetEnd = trainingSetStart+5;
 
+startDigits = 0;
+numDigits = 1;
+
 dataPath = 'DATA\DataFiles\';
 
 outputPath = 'DATA\';
@@ -29,7 +32,7 @@ for nameCount = 1:numel(names)
     
     nameString = char(names(nameCount));
     
-    for digitCount = 0:9
+    for digitCount = startDigits:startDigits+numDigits-1
         
         samplePath = [dataPath nameString '\' num2str(digitCount)];       
         
