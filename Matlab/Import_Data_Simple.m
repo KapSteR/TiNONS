@@ -16,6 +16,7 @@ names = [
 
 names = cellstr(names);
 
+trainingSetStart = 11;
 trainingSetSize = 15;
 startDigits = 0;
 numDigits = 1;
@@ -34,7 +35,7 @@ for nameCount = 1:numel(names)
         
         samplePath = [dataPath nameString '\' num2str(digitCount)];       
         
-        for sampleCount = 1:trainingSetSize
+        for sampleCount = trainingSetStart:trainingSetStart+trainingSetSize
             
             sampleName = [nameString '_' num2str(digitCount) '_' ...
                 num2str(sampleCount) '.wav'];           

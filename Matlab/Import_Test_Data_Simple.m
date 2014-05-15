@@ -16,7 +16,7 @@ names = [
 
 names = cellstr(names);
 
-trainingSetStart = 16;
+trainingSetStart = 28;
 trainingSetEnd = trainingSetStart+5;
 
 startDigits = 0;

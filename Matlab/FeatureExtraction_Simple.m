@@ -128,8 +128,9 @@ for nameCount = 1:numSpeakers
     eval(['samples' name ' = samplesTemp;']);
     
     % Make audioplayer object for all speakers
-%     eval(['player' name ' = audioplayer(samples' name ', Fs)']);
-    
+    eval(['player' name ' = audioplayer(samples' name ', Fs)']);
+    plot(samplesTemp)
+    pause
 end
 
 

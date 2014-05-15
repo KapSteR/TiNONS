@@ -20,10 +20,10 @@ sigma = (1/N)*(X - repmat(mu, N, 1))'*(X - repmat(mu, N, 1));      % calculate t
 [v,d,~] = svd(sigma);  % find eigenvectors and eigenvalues
 d = diag(d); % keep only non-zero entries..
 res = d/sum(d)   ;
-plot(cumsum(res))
-grid on;
-xlabel('Number of features');
-ylabel('Procentage information');
+% plot(cumsum(res))
+% grid on;
+% xlabel('Number of features');
+% ylabel('Procentage information');
 
 
 
@@ -73,6 +73,4 @@ save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N')
 % save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
 save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt')
 
-
-
-
+toc
