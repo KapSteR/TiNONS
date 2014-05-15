@@ -3,7 +3,7 @@
 
 clear; clc
 
-load('DATA\TrainingSet.mat');
+load('DATA\TrainingSetPCA.mat');
 x_train = x_train(:,1:end-1);
 
 numSpeakers = numel(names);
@@ -26,7 +26,7 @@ toc
 %% Load test data and classify
 tic
 
-load('DATA\TestSet.mat');
+load('DATA\TestSetPCA.mat');
 x_test = x_test(:,1:end-1);
 
 nTframes = size(x_test,1);
@@ -43,6 +43,13 @@ hold on
 plot(class, '+r')
 alpha(0.1)
 hold off
+
+%% Confusion matrix
+
+[C,order] = confusionmat(class, classTarget);
+
+C
+names(order)
 
 subplot(212)
 semilogy(probVec)

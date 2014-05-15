@@ -44,7 +44,7 @@ hold off
 
 % Plot moving average
 
-numAvFrames = 500; % 480 frames per second
+numAvFrames = 50; % 480 frames per second
 h = 1/numAvFrames*ones(numAvFrames,1);
 
 classMA = conv(class,h);

@@ -42,12 +42,12 @@ for nameCount = 1:numel(names)
             
             [x, Fs] = audioread([samplePath '\' sampleName]);
             
-            x = x(0.01*Fs:end);             % Remove first 10 ms
+            x = x(0.4*Fs:end-0.4*Fs);       % Remove first and last 400 ms
             x = x - mean(x);                % Remove mean
             x = sqrt(length(x))*x/norm(x);  % Whitening of sound
             x = x+eps;                      % Avoid numerical problems
             
-            DATA(nameCount, digitCount+1, sampleCount,:) = x;
+            DATA(nameCount, digitCount+1, sampleCount-trainingSetStart+1,:) = x;
             
         end        
     end    
