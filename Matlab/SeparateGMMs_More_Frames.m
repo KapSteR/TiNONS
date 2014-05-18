@@ -15,6 +15,28 @@ covType = 'full';
 
 
 %% Make Mixture Models for all speakers
+
+% tic
+% 
+% GMM1 = gmdistribution();
+% 
+% 
+% parfor gmCount = 1:3
+%     
+%     if (gmCount == 1)
+%         GMM1 = fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
+%                
+%     elseif (gmCount == 2)
+%         GMM2 = fitgmdist(x_train(N1+1:N1+N2,:),nCoponents,'Start',start,'CovType',covType);
+%         
+%     elseif(gmCount ==3)     
+%         GMM3 = fitgmdist(x_train(N1+N2+1:N1+N2+N3,:),nCoponents,'Start',start,'CovType',covType);
+%     
+%     end
+% end
+% toc
+
+
 tic
 GMM1 = fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
 toc; tic
