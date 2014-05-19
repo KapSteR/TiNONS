@@ -1,1 +1,17 @@
 \chapter{Linear classification}
+In linear classification the decision surfaces are linear functions of the input vector \textbf{b}. 
+The decision surfaces are defined by D-1 dimensional hyperplane in the D dimensional input space.
+the target of the classification is labelled in the target variable \textbf{t}, using the target values to represent class labels. 
+In the case of two-class problems, a single target variable can be represented by $t\in \lbrace 0,1\rbrace$ where $t = 1$ represents class $C_1$ and $t = 0$ represents class $C_2$.
+If the is more than 2 classes $(K>2)$, then \textbf{t} is a vector of length K.
+For Class $C_j$ the element $t_j$ takes value 1 and all other elements $t_k$ of \textbf{t} are zero.
+In this project there are 3 different speakers, $K = 3$ then the target vector for class 3 be $\textbf{t} = (0, 0, 1)^T$.
+The value of $t_k$ can be interpret as the probability of the given class being class $C_k$.
+
+
+
+Linear discriminant function
+\begin{equation}
+y(\textbf{x}) = \textbf{w}^T \textbf{x}+w_0
+\label{eq:lineDis}
+\end{equation}
