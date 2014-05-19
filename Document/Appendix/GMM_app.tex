@@ -1,2 +1,77 @@
 \chapter{Gaussian Mixture Models}
+\section{Theory}
+
+Gaussian Mixture Models (GMM) is a way of finding and describing sub-populations in clusters of data points. 
+It is done by fitting a specified number of Gaussian distributions to a population of data points.
+Each distribution is a component of the model. 
+The individual data points are then arranged into clusters based on which model component is most likely given the observed data point.
+
+In this context the data points are features in a multidimensional feature space. Hence the distributions used for the GMM is multivariate Gaussians.
+
+The clustering on basis of likelihood makes GMMs more robust than e.g. K-means, where data points are clustered similarly, but simply on the basis of Euclidean distance to the center of a model. 
+This is because treating the components like Gaussians with means and variances instead spheres with uniform probability, gives a more nuanced picture of the strength of a data point’s relationship to a model component. 
+It also gives rise to the notion of soft relations to clusters or data points related to more than one cluster.
+
+When fitting the GMM the goal is to maximize the overall likelihood of the model for the entire population.
+Firstly it is necessary to determine the number of distribution components the data should be fitted to. 
+The number of distributions needed in a GMM greatly depends on the nature and origin(s)
+of data.
+This, however, does not mean that if a mixture model fits data well with a specific amount of distributions, then this is the actual number of sub-populations, or sources if you will.
+Multiple sub-populations could be grouped together, or likewise sub-populations could be split, due to under/over-fitting.
+For this reason experimentation is necessary to establish the optimal number of distributions needed to model data.
+
+% What we did for this project
+
+
+
+\subsection{The EM Algorithm}
+The distributions of the mixture model are fitted to data by iteratively employing Expectation Maximization (EM).
+This is done by either selecting an arbitrary guess of the means and variances of the model as a starting point or initializing the means with a few iterations of K-means, and setting the covariance matrices to the identity matrix. 
+The latter is often used because even though GMM generally is more precise than K-means, it is also much more computationally heavy.
+Therefore by initializing with K-means, a relatively light algorithm, the EM will converge on a good model faster.
+
+A visual example of this convergence can be shown by applying GMM to dataset of eruption time vs. waiting time of the Old Faithful geyser in Yellowstone National Park, WY, USA.
+The data has been normalized for simplicity. 
+\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{GMM1}
+\caption{Old Faithful data. GMM stared at an abitrary point}
+\label{fig:GMM1}
+\end{figure}
+
+In Figure \ref{fig:GMM1} above the EM has just started from an arbitrary starting point.
+Data shows two apparent clusters, so the model is generated with two components.
+The data points are colored by association with the model components.
+Note the fading in colors showing strength of relation to model component.
+At this point the GMM does not fit data very well.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{GMM2}
+\caption{Old Faithful data. GMM after one iteration of EM}
+\label{fig:GMM2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{GMM3}
+\caption{Old Faithful data. GMM after five iterations of EM}
+\label{fig:GMM3}
+\end{figure}
+
+After five iterations the EM has honed in on the centers of the two clusters (Figure \ref{fig:GMM3}).
+Note that K-means could have reached roughly this point in as many iterations, but at much less computational cost.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{GMM4}
+\caption{Old Faithful data. GMM after 20 iterations of EM}
+\label{fig:GMM4}
+\end{figure}
+
+As seen in Figure \ref{fig:GMM4} above the model has converged on a well-fitting model after 20 iterations.
+This means that further iterations would be superfluous, as they would yield only negligible increases in overall likelihood of the GMM. 
+
 

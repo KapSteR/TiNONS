@@ -157,7 +157,8 @@ proguard/
 **/DATA/*.mat
 
 
-
+# File specifying the home(default) include/input location.
+*/*/home.tex
 
 
 # Windows lort
