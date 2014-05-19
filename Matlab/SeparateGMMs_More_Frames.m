@@ -18,21 +18,26 @@ covType = 'full';
 
 % tic
 % 
-% GMM1 = gmdistribution();
-% 
+% GMM = cell(1,3);
 % 
 % parfor gmCount = 1:3
+%  
+%         GMM{i}= fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
 %     
-%     if (gmCount == 1)
-%         GMM1 = fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
-%                
-%     elseif (gmCount == 2)
-%         GMM2 = fitgmdist(x_train(N1+1:N1+N2,:),nCoponents,'Start',start,'CovType',covType);
-%         
-%     elseif(gmCount ==3)     
-%         GMM3 = fitgmdist(x_train(N1+N2+1:N1+N2+N3,:),nCoponents,'Start',start,'CovType',covType);
 %     
-%     end
+% %     if (gmCount == 1)
+% %         GMM{1}= fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
+% %                
+% %     elseif (gmCount == 2)
+% %         GMM{2} = fitgmdist(x_train(N1+1:N1+N2,:),nCoponents,'Start',start,'CovType',covType);
+% %         
+% %     elseif(gmCount ==3)     
+% %         GMM{3} = fitgmdist(x_train(N1+N2+1:N1+N2+N3,:),nCoponents,'Start',start,'CovType',covType);
+% %     
+% %     end
+%     
+%     
+%     
 % end
 % toc
 
