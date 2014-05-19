@@ -72,6 +72,30 @@ Note that K-means could have reached roughly this point in as many iterations, b
 \end{figure}
 
 As seen in Figure \ref{fig:GMM4} above the model has converged on a well-fitting model after 20 iterations.
-This means that further iterations would be superfluous, as they would yield only negligible increases in overall likelihood of the GMM. 
+This means that further iterations would be superfluous, as they would yield only negligible increases in overall likelihood of the GMM. \\
+
+The specific procedure for estimating GMM parameters using EM is as follows: % refREFERFEREFEREFEREFEREFEREF
+
+\subsection*{Initialization:}
+
+Choose initial estimates for model parameters $ w_{j}^{(0)}, \mu_{j}^{(0)}, \Sigma_{j}^{(0)} for j = 1, ... , k $.
+
+\begin{itemize}
+
+\item
+$ k $ is the number of components.
+
+\item
+$ w_{j}^{(0)} $ is initial weight of the \textit{j}th component.
+
+\item
+$ \mu_{j}^{(0)} $ is initial mean of the \textit{j}th component.
+
+\item
+$ \Sigma_{j}^{(0)} $ is initial covariance matrix of the \textit{j}th component.
+
+\end{itemize}
+
+
 
 
