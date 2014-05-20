@@ -28,7 +28,7 @@ For this reason experimentation is necessary to establish the optimal number of 
 
 \section{Method}
 The way GMM was applied in this project was, in simple, to generate a single GMM for each speaker using the training data.
-Then the test set was classified by summing the log-likelihoods for each GMM for a number of sequential frames and then selecting the speaker with the highest sum od log-likelihoods.
+Then the test set was classified by summing the log-likelihoods for each GMM for a number of sequential frames and then selecting the speaker with the highest sum of log-likelihoods.
 This approach adds a measure of supervision to an otherwise unsupervised technique.
 Further, because classification is done using a set of sequential frames, a temporal element is added.
 
@@ -53,18 +53,98 @@ Initialization: \textit{Random}
 
 \subsection{Classification}
 Classification is done on the test data is done on super frames of 100 sequential frames.
-
-
-
-
-
+The log-likelihood for each frame is summed over the entire super frame for each model.
+\fxnote{Math that proves me right}
+The model with the largest sum is chosen as winner.
 
 
 
 \subsection{Results}
+Using GMM has been tried with different data complexities.
+Most notably, with speakers uttering the same single digit ("\textit{ZERO}"), two different digits ("\textit{ZERO}" and "\textit{ONE}"), and ten different digits ("\textit{ZERO}", "\textit{ONE}" through "\textit{NINE}").
+
+\subsubsection{Single digit:}
+
+\begin{figure}[H]
+\centering
+\includegraphics{GMM_10digit_8cent_3speak}
+\caption{Results of using GMM with 3 speakers, 8 centers per model and 1 digit spoken}
+\label{fig:GMM_fig_1}
+\end{figure}
+
+\begin{table}[H]                                                   
+\centering                                                          
+\begin{tabular}{|l|c|c|c|c|}                                        
+\hline                                                              
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\
+\hline                                                              
+Estimate Jacob & 3400.0 & 0.0 & 0.0 & 100.0 \\                      
+\hline                                                              
+Estimate Mose & 54.0 & 2946.0 & 0.0 & 98.2 \\                       
+\hline                                                              
+Estimate Simon & 0.0 & 508.0 & 3454.0 & 87.2 \\                     
+\hline                                                              
+Sensitivity [\%] & 98.4 & 85.3 & 100.0 & 94.6 \\                    
+\hline                                                              
+\end{tabular}                                                       
+\caption{Confusion matrix - 1 digit}                                
+\label{table:GMM_conf_1}                                            
+\end{table} 
 
 
+\subsubsection{Two digits:}
+\begin{figure}[H]
+\centering
+\includegraphics{GMM_10digit_8cent_3speak}
+\caption{Results of using GMM with 3 speakers, 8 centers per model and 2 digits spoken}
+\label{fig:GMM_fig_2}
+\end{figure}
 
+\begin{table}[H]                                              
+\centering                                                     
+\begin{tabular}{|l|c|c|c|c|}                                   
+\hline                                                         
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\
+\hline                                                         
+Estimate Jacob & 6300.0 & 0.0 & 0.0 & 100.0 \\                 
+\hline                                                         
+Estimate Mose & 10.0 & 5790.0 & 100.0 & 98.1 \\                
+\hline                                                         
+Estimate Simon & 600.0 & 1120.0 & 6810.0 & 79.8 \\             
+\hline                                                         
+Sensitivity [\%] & 91.2 & 83.8 & 98.6 & 91.2 \\                
+\hline                                                         
+\end{tabular}                                                  
+\caption{Confusion matrix - 2 digits}                          
+\label{table:GMM_conf_2}                                       
+\end{table} 
+\subsubsection{Ten digits:}
+
+\begin{figure}[H]
+\centering
+\includegraphics{GMM_10digit_8cent_3speak}
+\caption{Results of using GMM with 3 speakers, 8 centers per model and 10 digits spoken}
+\label{fig:GMM_fig_10}
+\end{figure}
+
+\begin{table}[H]                          
+\centering                                                     
+\begin{tabular}{|l|c|c|c|c|}                                   
+\hline                                                         
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\
+\hline                                                         
+Estimate Jacob & 33000.0 & 1300.0 & 600.0 & 94.6 \\            
+\hline                                                         
+Estimate Mose & 1159.0 & 29341.0 & 3900.0 & 85.3 \\            
+\hline                                                         
+Estimate Simon & 400.0 & 3918.0 & 30059.0 & 87.4 \\            
+\hline                                                         
+Sensitivity [\%] & 95.5 & 84.9 & 87.0 & 89.1 \\                
+\hline                                                         
+\end{tabular}                                                  
+\caption{Confusion matrix - 10 digits}                         
+\label{table:GMM_conf_10}                                      
+\end{table}
 
 
 
