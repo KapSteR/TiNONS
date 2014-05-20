@@ -20,130 +20,31 @@ This, however, does not mean that if a mixture model fits data well with a speci
 Multiple sub-populations could be grouped together, or likewise sub-populations could be split, due to under/over-fitting.
 For this reason experimentation is necessary to establish the optimal number of distributions needed to model data.
 
-% What we did for this project
+\fxnote{ What we did for this project (Måske under metode)}
+
+% Afsnit om EM-algoritmen til GMM
+\input{EM_alg_app}
+
+\section{Method}
+The way GMM was applied in this project was, in simple, to generate a single GMM for each speaker using the training data.
+Then the test set was classified by summing the log-likelihoods for each GMM for a number of sequential frames and then selecting the speaker with the highest sum od log-likelihoods.
+This approach adds a measure of supervision to an otherwise unsupervised technique.
+Further, because classification is done using a set of sequential frames, a temporal element is added.
 
 
 
-\subsection{The EM Algorithm}
-The distributions of the mixture model are fitted to data by iteratively employing Expectation Maximization (EM).
-This is done by either selecting an arbitrary guess of the means and variances of the model as a starting point or initializing the means with a few iterations of K-means, and setting the covariance matrices to the identity matrix. 
-The latter is often used because even though GMM generally is more precise than K-means, it is also much more computationally heavy.
-Therefore by initializing with K-means, a relatively light algorithm, the EM will converge on a good model faster.
-
-A visual example of this convergence can be shown by applying GMM to dataset of eruption time vs. waiting time of the Old Faithful geyser in Yellowstone National Park, WY, USA.
-The data has been normalized for simplicity. 
-\\
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{GMM1}
-\caption{Old Faithful data. GMM stared at an abitrary point}
-\label{fig:GMM1}
-\end{figure}
-
-In Figure \ref{fig:GMM1} above the EM has just started from an arbitrary starting point.
-Data shows two apparent clusters, so the model is generated with two components.
-The data points are colored by association with the model components.
-Note the fading in colors showing strength of relation to model component.
-At this point the GMM does not fit data very well.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{GMM2}
-\caption{Old Faithful data. GMM after one iteration of EM}
-\label{fig:GMM2}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{GMM3}
-\caption{Old Faithful data. GMM after five iterations of EM}
-\label{fig:GMM3}
-\end{figure}
-
-After five iterations the EM has honed in on the centers of the two clusters (Figure \ref{fig:GMM3}).
-Note that K-means could have reached roughly this point in as many iterations, but at much less computational cost.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{GMM4}
-\caption{Old Faithful data. GMM after 20 iterations of EM}
-\label{fig:GMM4}
-\end{figure}
-
-As seen in Figure \ref{fig:GMM4} above the model has converged on a well-fitting model after 20 iterations.
-This means that further iterations would be superfluous, as they would yield only negligible increases in overall likelihood of the GMM. \\
-
-The specific procedure for estimating GMM parameters using EM is as follows: % refREFERFEREFEREFEREFEREFEREF
-
-\subsection*{Initialization:}
-
-Choose initial estimates for model parameters $ \mathbf{\pi}_{k}, \mathbf{\mu}_{k}, \mathbf{\Sigma}_{k} $.
-
-\begin{itemize}
-
-\item
-$ k $ is the component number out of K.
-
-\item
-$ w_{k} $ is the weight of the \textit{k}th component.
-
-\item
-$ \mu_{k}$ is the mean of the \textit{k}th component.
-
-\item
-$ \Sigma_{k} $ is the covariance matrix of the \textit{k}th component.
-
-\end{itemize}
 
 
-Compute the initial log-likelihood og the model
 
-\begin{equation} \label{eq:loglikeGMM}
-\ln p\left(X | \mu, \Sigma, \pi\right) = 
-\sum_{n=1}^{N} \ln \sum_{k=1}^{N} \pi_{k}\mathcal{N}(x_{n}|\mu_{k},\Sigma_{k})
-\end{equation}
+\section{Results}
 
-\subsection*{E-step:}
-Calculate the probability of each point in each component in order to assing responsibility
 
-\begin{equation}
-\gamma_{nk} = 
-\frac
-{\pi_{k}\mathcal{N}(x_{n}|\mu_{k},\Sigma_{k})}
-{\sum_{j=1}^{K} \pi_{n}\mathcal{N}(x_{n}|\mu_{j},\Sigma_{j})}
-\end{equation}
 
-\subsection*{M-step:}
-Estimate new guesses for $ \mathbf{\pi}_{k}, \mathbf{\mu}_{k}, \mathbf{\Sigma}_{k} $.
 
-\begin{equation}
-\mu_{k}^{new} = 
-\frac{1}{N_{k}}
-\sum_{n=1}^{N} 
-\gamma_{nk}
-\mathbf{x}_{k}
-\end{equation}
 
-\begin{equation}
-\mu_{k}^{new} = 
-\frac{1}{N_{k}}
-\sum_{n=1}^{N} 
-\gamma_{nk}
-(\mathbf{x}_{k} - \mu_{k}^{new})
-(\mathbf{x}_{k} - \mu_{k}^{new})^{T}
-\end{equation}
 
-\begin{equation}
-\pi_{k}^{new} =
-\frac
-{N_{k}}
-{N}
-\end{equation}
 
-\subsection*{Convergence check:}
 
-Recalculate log likelihood using Equation \ref{eq:loglikeGMM}.
-If the log likelihood has not changed more than some predetermined threshold stop iteration.
-Otherwise continue from E-step.
+
+
 
