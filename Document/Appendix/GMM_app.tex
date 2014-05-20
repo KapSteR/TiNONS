@@ -23,6 +23,7 @@ For this reason experimentation is necessary to establish the optimal number of 
 \fxnote{ What we did for this project (Måske under metode)}
 
 % Afsnit om EM-algoritmen til GMM
+\fxnote{Ref}
 \input{EM_alg_app}
 
 \section{Method}
@@ -31,12 +32,45 @@ Then the test set was classified by summing the log-likelihoods for each GMM for
 This approach adds a measure of supervision to an otherwise unsupervised technique.
 Further, because classification is done using a set of sequential frames, a temporal element is added.
 
+\subsection{Training}
+A GMM was trained for every speaker.
+The feature data (both training and test data) has been subjected to PCA, in order to project the data onto a basis that aligned the variance along the dimensions without removing any dimensions. 
+\fxnote{Prøv at fjerne et nogle dimensioner}
+Then, for each speaker, a GMM is fitted to the respective speakers' training data, using MATLAB's Statistics Toolbox and the following parameters:
+
+\begin{itemize}
+
+\item
+Number of components: \textit{8}
+
+\item
+Covariance matrix: \textit{Full}
+
+\item
+Initialization: \textit{Random}
+
+\end{itemize}
+
+\subsection{Classification}
+Classification is done on the test data is done on super frames of 100 sequential frames.
 
 
 
 
 
-\section{Results}
+
+
+
+\subsection{Results}
+
+
+
+
+
+
+
+
+
 
 
 

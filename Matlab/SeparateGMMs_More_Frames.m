@@ -4,7 +4,7 @@
 clear; clc
 
 load('DATA\TrainingSetPCA.mat');
-x_train = x_train(:,1:end-1);
+x_train = x_train(:,1:end-1); % Remove bias column of 1's 
 
 numSpeakers = numel(names);
 
