@@ -20,7 +20,7 @@ testSetStart = 28;
 testSetEnd = testSetStart+5;
 
 startDigits = 0;
-numDigits = 10;
+numDigits = 1;
 
 dataPath = 'DATA\DataFiles\';
 
