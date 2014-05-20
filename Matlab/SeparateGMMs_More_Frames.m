@@ -92,6 +92,7 @@ hold off
 
 subplot(212)
 semilogy(probVec)
+<<<<<<< HEAD
 
 % aspect = [5 1 1];
 
@@ -108,6 +109,7 @@ title('Target')
 xlabel('Frames - 10 ms/frame')
 ylabel('Class target')
 % set(gca,'plotboxaspectratio',aspect)
+
 
 
 % %% Make LaTeX
