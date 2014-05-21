@@ -1,4 +1,4 @@
-%% K-means clustering
+%% Separate Gaussian Mixture Models
 % Input data and setup GMM
 
 clear; clc
@@ -9,38 +9,47 @@ x_train = x_train(:,1:end-1); % Remove bias column of 1's
 
 numSpeakers = numel(names);
 
-nCenters = 8;
-
-
-%% Make global K-means
-
-[C] = kmeans(x_train,nCenters*numSpeakers);
+nCoponents = 8;
+start = 'randSample';
+covType = 'full';
 
 
 
-%% Make specific K-means
+%% Make Mixture Models for all speakers
 
-[C1] = kmeans(x_train(1:N1,:),nCenters);
+% tic
+% 
+% GMM = cell(1,3);
+% 
+% parfor gmCount = 1:3
+%  
+%         GMM{i}= fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
+%     
+%     
+% %     if (gmCount == 1)
+% %         GMM{1}= fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
+% %                
+% %     elseif (gmCount == 2)
+% %         GMM{2} = fitgmdist(x_train(N1+1:N1+N2,:),nCoponents,'Start',start,'CovType',covType);
+% %         
+% %     elseif(gmCount ==3)     
+% %         GMM{3} = fitgmdist(x_train(N1+N2+1:N1+N2+N3,:),nCoponents,'Start',start,'CovType',covType);
+% %     
+% %     end
+%     
+%     
+%     
+% end
+% toc
+
+
+
+GMM1 = fitgmdist(x_train(1:N1,:),nCoponents,'Start',start,'CovType',covType);
 toc
-[C2] = kmeans(x_train(N1+1:N1+N2,:),nCenters);
+GMM2 = fitgmdist(x_train(N1+1:N1+N2,:),nCoponents,'Start',start,'CovType',covType);
 toc
-[C3] = kmeans(x_train(N1+N2+1:N1+N2+N3,:),nCenters);
+GMM3 = fitgmdist(x_train(N1+N2+1:N1+N2+N3,:),nCoponents,'Start',start,'CovType',covType);
 toc
-
-%% Cluster
-
-cluster
-
-
-
-
-
-
-
-
-
-
-
 
 %% Load test data and classify
 tic
@@ -50,8 +59,6 @@ x_test = x_test(:,1:end-1);
 
 nTframes = size(x_test,1);
 frameStep = 100;
-
-errVec = 
 
 probVec = [pdf(GMM1, x_test) pdf(GMM2, x_test) pdf(GMM3, x_test)];
 
