@@ -16,3 +16,34 @@ y(\textbf{x}) = \textbf{w}^T \textbf{x}+w_0
 \end{equation}
 Where $w_0$ is the bias and \textbf{w} is the weight vector.
 The decision boundary corresponds to $y(\textbf{x})=constant$, and hence $\textbf{w}^T \textbf{x}+w_0 = constant$ therefore the decision boundary is a linear function.
+\\
+The process to apply the linear classifier to the dataset, is described below. 
+The result of the linear classifier is evaluated by applying a confusion matrix and calculating the accuracy. 
+The linear classifier is applied to the training dataset, containing $N =??$ feature vectors $(\textbf{x_n})$ and the target vectors $(\textbf{t_n})$.
+The vectors are on the form:
+\begin{equation}
+\textbf{\tilde{X}}=\left[\textbf{x}_1^T 1\\ \textbf{x}_2^T 1\\ ...\\ \textbf{x}_n^T 1\\  \right], \textbf{T}=\left[\textbf{t}_1^T\\ \textbf{t}_2^T\\ ...\\ \textbf{t}_n^T\\ \right]
+\label{eq:linearVectors}  
+\end{equation} 
+
+To determine the weight matrix $\textbf{\sim{W}}$:
+\begin{equation}
+\textbf{\tilde{W}} = \textbf{\tilde{X}}^\dagger \textbf{T} \approx  (\textbf{\tilde{X}}^T\textbf{\tilde{X}}+\textbf{I})^{-1} \textbf{\tilde{X}}^T\textbf{T}
+\label{eq:weightVector}  
+\end{equation}
+
+The are a problem with the entity $\textbf{\tilde{X}}^T\textbf{\sim{X}}$ having small eigenvalues, the solution is to add the identity matrix in the calculations of the pseudo inverse matrix $\textbf{\tilde{X}}^\dagger$.
+This is done as a regularization, which can be seen as a penalty for large values in $\textbf{\sim{W}}$.\\
+
+When $\textbf{\tilde{W}}$ is calculated from the training set, it is tested on the test dataset containing $N = ??$ feature vectors and their corresponding targets. 
+The result of this equation
+\begin{equation}
+\textbf{y}(\textbf{x}) = \textbf{\sim{W}}^{T} \tilde{x}, \tilde{x} = \left[\textbf{x}\\ 1 \right] 
+\label{eq:Yclassifier}
+\end{equation}
+shows the most likely class for each of the given feature vectors. 
+The resulting vector is placed in a vector $\textbf{t}_{est}$, which contains the classification and ranges over the three classes ${1,2,3}$. show t estimate \fixme
+
+To evaluate the linear classifier, the confusion matrix is an ideal way of doing so.
+
+
