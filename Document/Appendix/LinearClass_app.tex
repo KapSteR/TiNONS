@@ -27,7 +27,17 @@ The result of the linear classifier is evaluated by applying a confusion matrix 
 The linear classifier is applied to the training dataset, containing $N =??$ feature vectors $(\mathbf{x}_n)$ and the target vectors $(\mathbf{t}_n)$.
 The vectors are on the form:
 \begin{equation}
-\mathbf{\tilde{X}}=\left[\mathbf{x}_1^T 1\\ \mathbf{x}_2^T 1\\ ...\\ \mathbf{x}_n^T 1\\  \right], \mathbf{T}=\left[\mathbf{t}_1^T\\ \mathbf{t}_2^T\\ ...\\ \mathbf{t}_n^T\\ \right]
+\mathbf{\tilde{X}}=\left[ \begin{array}{c}\mathbf{x}_1^T 1\\
+\mathbf{x}_2^T 1\\
+...\\ 
+\mathbf{x}_n^T 1 \end{array} \right],
+\;
+\mathbf{T}=\left[ \begin{array}{c}
+\mathbf{t}_1^T\\ 
+\mathbf{t}_2^T\\ 
+...\\
+\mathbf{t}_n^T
+\end{array} \right]
 \label{eq:linearVectors}  
 \end{equation} 
 
@@ -43,7 +53,11 @@ This is done as a regularization, which can be seen as a penalty for large value
 When $\tilde{\mathbf{W}}$ is calculated from the training set, it is tested on the test dataset containing $N = ??$ feature vectors and their corresponding targets. 
 The result of this equation
 \begin{equation}
-\mathbf{y}(\mathbf{x}) = \tilde{\mathbf{W}}^{T} \tilde{x}, \tilde{x} = \left[\mathbf{x}\\ 1 \right] 
+\mathbf{y}(\mathbf{x}) = \tilde{\mathbf{W}}^{T} \tilde{x},
+\;
+\tilde{x} = \left[\begin{array}{c}
+\mathbf{x}\\ 1
+\end{array} \right] 
 \label{eq:Yclassifier}
 \end{equation}
 shows the most likely class for each of the given feature vectors. 
