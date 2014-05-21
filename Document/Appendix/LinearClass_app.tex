@@ -32,13 +32,13 @@ To determine the weight matrix $\textbf{\sim{W}}$:
 \label{eq:weightVector}  
 \end{equation}
 
-The are a problem with the entity $\textbf{\tilde{X}}^T\textbf{\sim{X}}$ having small eigenvalues, the solution is to add the identity matrix in the calculations of the pseudo inverse matrix $\textbf{\tilde{X}}^\dagger$.
-This is done as a regularization, which can be seen as a penalty for large values in $\textbf{\sim{W}}$.\\
+The are a problem with the entity $\textbf{\tilde{X}}^T\textbf{\tilde{X}}$ having small eigenvalues, the solution is to add the identity matrix in the calculations of the pseudo inverse matrix $\textbf{\tilde{X}}^\dagger$.
+This is done as a regularization, which can be seen as a penalty for large values in $\textbf{\tilde{W}}$.\\
 
 When $\textbf{\tilde{W}}$ is calculated from the training set, it is tested on the test dataset containing $N = ??$ feature vectors and their corresponding targets. 
 The result of this equation
 \begin{equation}
-\textbf{y}(\textbf{x}) = \textbf{\sim{W}}^{T} \tilde{x}, \tilde{x} = \left[\textbf{x}\\ 1 \right] 
+\textbf{y}(\textbf{x}) = \textbf{\tilde{W}}^{T} \tilde{x}, \tilde{x} = \left[\textbf{x}\\ 1 \right] 
 \label{eq:Yclassifier}
 \end{equation}
 shows the most likely class for each of the given feature vectors. 
