@@ -12,7 +12,7 @@ load('DATA\TestSetPCA.mat');
 %% Truncate feautures
 
 numFeatStart = 1;
-numFeat = 30;
+numFeat = 40;
 
 x_train = x_train(:,numFeatStart:numFeat);
 x_test = x_test(:,numFeatStart:numFeat);
@@ -31,50 +31,100 @@ y = W'*x_test';
 
 r = y / norm(W);
 
+nTframes = size(x_test,1);
+frameStep = 100;
+
 [value, class] = max(y);
-[value, classTest] = max(t_test');
+[value, classTarget] = max(t_test');
 
-figure(1)
-plot(classTest, 'o')
-hold on
-plot(class, '+r')
-alpha(0.1)
-hold off
+% figure(1)
+% plot(classTarget, 'o')
+% hold on
+% plot(class, '+r')
+% alpha(0.1)
+% hold off
 
 
-% Plot moving average
-
-numAvFrames = 50; % 480 frames per second
-h = 1/numAvFrames*ones(numAvFrames,1);
-
-classMA = conv(class,h);
-
-figure(1)
-hold on
-plot(classMA,'k')
-hold off
-
-%% Confusion matrix
-
-[C,order] = confusionmat(class, classTest);
-
-C
-names(order)
-
-%% Fisher's linear discriminant
+%% Show results
 
 
 
-% m_1 = mean(x1,2); M_1 = diag(m_1)*ones(size(x1));
-% m_2 = mean(x2,2); M_2 = diag(m_2)*ones(size(x2));
+h = figure(2)
+subplot(211)
+plot(class,'+b')
+title('Classification')
+xlabel('Frames - 10 ms/frame')
+ylabel('Class estimate')
+% set(gca,'plotboxaspectratio',aspect)
+subplot(212)
+h = plot(classTarget, 'or')
+title('Target')
+xlabel('Frames - 10 ms/frame')
+ylabel('Class target')
+% set(gca,'plotboxaspectratio',aspect)
 
+% Confusion matrix
+clc
+confMatrix = OurConfMat(classTarget,class);
 
+confMatrix
 
-% S_W = (x1-M_1)*(x1-M_1)'+(x2-M_2)*(x2-M_2)';
+disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
+names
 
-% w = inv(S_W)*(m_1-m_2);
+% %% Make LaTeX
+% set(gcf, 'PaperPositionMode', 'manual');
+% set(gcf, 'PaperUnits', 'centimeters');
+% set(gcf, 'PaperPosition', [2 1 18 10]);
+% 
+% 
+% figurePath = '..\Document\Appendix\Figures';
+% 
+% this = pwd
+% cd(figurePath)
+% print -f2 -r600 -depsc Linear_10digit_8cent_3speak
+% cd(this)
+% 
+% 
+% disp('')
+% conMatLatex.tableCloumnHeaders = {
+%     ['Speaker ', char(names(1))]
+%     ['Speaker ', char(names(2))]
+%     ['Speaker ', char(names(3))]
+%     'Precision [\%]'
+%     };
+% 
+% conMatLatex.tableRowLabels = {
+%     ['Estimate ', char(names(1))]
+%     ['Estimate ', char(names(2))]
+%     ['Estimate ', char(names(3))]
+%     'Sensitivity [\%]'
+%     };
+% 
+% conMatLatex.tableData = confMatrix;
+% conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
+% conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
+% 
+% conMatLatex.tableDataRowFormat = {'%.1f'};
+% 
+% % Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
+% conMatLatex.tableColumnAlignment = 'c';
+% 
+% % Switch table borders on/off:
+% conMatLatex.tableBorders = 1; 
+% 
+% % LaTex table caption:
+% conMatLatex.tableCaption = 'Confusion matrix - 10 digits';
+% 
+% % LaTex table label:
+% conMatLatex.tableLabel = 'Lin_conf_10';
+% 
+% % Switch to generate a complete LaTex document or just a table:
+% conMatLatex.makeCompleteLatexDocument = 0;
+% 
+% % Now call the function to generate LaTex code:
+% latex = latexTable(conMatLatex);
 
-%% End
 
 
 toc

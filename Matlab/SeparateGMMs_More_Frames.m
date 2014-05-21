@@ -92,7 +92,7 @@ hold off
 
 subplot(212)
 semilogy(probVec)
-<<<<<<< HEAD
+
 
 % aspect = [5 1 1];
 
