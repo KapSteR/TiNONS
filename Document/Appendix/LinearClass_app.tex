@@ -1,48 +1,48 @@
 \chapter{Linear classification}
-In linear classification the decision surfaces are linear functions of the input vector \textbf{b}. 
+In linear classification the decision surfaces are linear functions of the input vector $\mathbf{b}$. 
 The decision surfaces are defined by D-1 dimensional hyperplane in the D dimensional input space.
-the target of the classification is labelled in the target variable \textbf{t}, using the target values to represent class labels. 
+the target of the classification is labelled in the target variable $\mathbf{t}$, using the target values to represent class labels. 
 In the case of two-class problems, a single target variable can be represented by $t\in \lbrace 0,1\rbrace$ where $t = 1$ represents class $C_1$ and $t = 0$ represents class $C_2$.
-If the is more than 2 classes $(K>2)$, then \textbf{t} is a vector of length K.
-For Class $C_j$ the element $t_j$ takes value 1 and all other elements $t_k$ of \textbf{t} are zero.
-In this project there are 3 different speakers, $K = 3$ then the target vector for class 3 be $\textbf{t} = (0, 0, 1)^T$.
+If the is more than 2 classes $(K>2)$, then $\mathbf{t}$ is a vector of length K.
+For Class $C_j$ the element $t_j$ takes value 1 and all other elements $t_k$ of $\mathbf{t}$ are zero.
+In this project there are 3 different speakers, $K = 3$ then the target vector for class 3 be $\mathbf{t} = (0, 0, 1)^T$.
 The value of $t_k$ can be interpret as the probability of the given class being class $C_k$.
-To assign each vector \textbf{x} with a specific class, a number of different approaches can used to classify.
-One way is using a discriminant function, with a linear predictor $y(\textbf{x},\textbf{w})$ given by the parameter \textbf{w} and the input vector set $\textbf{x}=(x_1,...,x_D)^T$, which is linear. 
+To assign each vector $\mathbf{x}$ with a specific class, a number of different approaches can used to classify.
+One way is using a discriminant function, with a linear predictor $y(\mathbf{x},\mathbf{w})$ given by the parameter $\mathbf{w}$ and the input vector set $\mathbf{x}=(x_1,...,x_D)^T$, which is linear. 
 The linear discriminant function in its simplest form
 \begin{equation}
-y(\textbf{x}) = \textbf{w}^T \textbf{x}+w_0
+y(\mathbf{x}) = \mathbf{w}^T \mathbf{x}+w_0
 \label{eq:lineDis}
 \end{equation}
-Where $w_0$ is the bias and \textbf{w} is the weight vector.
-The decision boundary corresponds to $y(\textbf{x})=constant$, and hence $\textbf{w}^T \textbf{x}+w_0 = constant$ therefore the decision boundary is a linear function.
+Where $w_0$ is the bias and $\mathbf{w}$ is the weight vector.
+The decision boundary corresponds to $y(\mathbf{x})=constant$, and hence $\mathbf{w}^T \mathbf{x}+w_0 = constant$ therefore the decision boundary is a linear function.
 \\
 The process to apply the linear classifier to the dataset, is described below. 
 The result of the linear classifier is evaluated by applying a confusion matrix and calculating the accuracy. 
-The linear classifier is applied to the training dataset, containing $N =??$ feature vectors $(\textbf{x}_n)$ and the target vectors $(\textbf{t}_n)$.
+The linear classifier is applied to the training dataset, containing $N =??$ feature vectors $(\mathbf{x}_n)$ and the target vectors $(\mathbf{t}_n)$.
 The vectors are on the form:
 \begin{equation}
-\textbf{\tilde{X}}=\left[\textbf{x}_1^T 1\\ \textbf{x}_2^T 1\\ ...\\ \textbf{x}_n^T 1\\  \right], \textbf{T}=\left[\textbf{t}_1^T\\ \textbf{t}_2^T\\ ...\\ \textbf{t}_n^T\\ \right]
+\mathbf{\tilde{X}}=\left[\mathbf{x}_1^T 1\\ \mathbf{x}_2^T 1\\ ...\\ \mathbf{x}_n^T 1\\  \right], \mathbf{T}=\left[\mathbf{t}_1^T\\ \mathbf{t}_2^T\\ ...\\ \mathbf{t}_n^T\\ \right]
 \label{eq:linearVectors}  
 \end{equation} 
 
-To determine the weight matrix $\textbf{\sim{W}}$:
+To determine the weight matrix $\tilde{\mathbf{W}}$:
 \begin{equation}
-\textbf{\tilde{W}} = \textbf{\tilde{X}}^\dagger \textbf{T} \approx  (\textbf{\tilde{X}}^T\textbf{\tilde{X}}+\textbf{I})^{-1} \textbf{\tilde{X}}^T\textbf{T}
+\tilde{\mathbf{W}} = \tilde{\mathbf{X}}^\dagger \mathbf{T} \approx  (\tilde{\mathbf{X}}^T \tilde{\mathbf{X}}+\mathbf{I})^{-1} \tilde{\mathbf{X}}^T\mathbf{T}
 \label{eq:weightVector}  
 \end{equation}
 
-The are a problem with the entity $\textbf{\tilde{X}}^T\textbf{\tilde{X}}$ having small eigenvalues, the solution is to add the identity matrix in the calculations of the pseudo inverse matrix $\textbf{\tilde{X}}^\dagger$.
-This is done as a regularization, which can be seen as a penalty for large values in $\textbf{\tilde{W}}$.\\
+The are a problem with the entity $\tilde{\mathbf{X}}^T \tilde{\mathbf{X}}$ having small eigenvalues, the solution is to add the identity matrix in the calculations of the pseudo inverse matrix $\tilde{\mathbf{X}}^\dagger$.
+This is done as a regularization, which can be seen as a penalty for large values in $\tilde{\mathbf{W}}$.\\
 
-When $\textbf{\tilde{W}}$ is calculated from the training set, it is tested on the test dataset containing $N = ??$ feature vectors and their corresponding targets. 
+When $\tilde{\mathbf{W}}$ is calculated from the training set, it is tested on the test dataset containing $N = ??$ feature vectors and their corresponding targets. 
 The result of this equation
 \begin{equation}
-\textbf{y}(\textbf{x}) = \textbf{\tilde{W}}^{T} \tilde{x}, \tilde{x} = \left[\textbf{x}\\ 1 \right] 
+\mathbf{y}(\mathbf{x}) = \tilde{\mathbf{W}}^{T} \tilde{x}, \tilde{x} = \left[\mathbf{x}\\ 1 \right] 
 \label{eq:Yclassifier}
 \end{equation}
 shows the most likely class for each of the given feature vectors. 
-The resulting vector is placed in a vector $\textbf{t}_{est}$, which contains the classification and ranges over the three classes ${1,2,3}$. show t estimate \fixme
+The resulting vector is placed in a vector $\mathbf{t}_{est}$, which contains the classification and ranges over the three classes ${1,2,3}$. show t estimate %\fixme
 
 To evaluate the linear classifier, the confusion matrix is an ideal way of doing so.
 
