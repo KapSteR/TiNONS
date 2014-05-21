@@ -60,13 +60,13 @@ Choose initial estimates for model parameters $ \mathbf{\pi}_{k}, \mathbf{\mu}_{
 $ k $ is the component number out of K.
 
 \item
-$ w_{k} $ is the weight of the \textit{k}th component.
+$ \pi_{k} $  is the weight of the \textit{k}th component.
 
 \item
-$ \mu_{k}$ is the mean of the \textit{k}th component.
+$ \mathbf{\mu}_{k}$ is the mean of the \textit{k}th component.
 
 \item
-$ \Sigma_{k} $ is the covariance matrix of the \textit{k}th component.
+$ \mathbf{\Sigma}_{k} $ is the covariance matrix of the \textit{k}th component.
 
 \end{itemize}
 
@@ -74,8 +74,8 @@ $ \Sigma_{k} $ is the covariance matrix of the \textit{k}th component.
 Compute the initial log-likelihood og the model
 
 \begin{equation} \label{eq:loglikeGMM}
-\ln p\left(X | \mu, \Sigma, \pi\right) = 
-\sum_{n=1}^{N} \ln \sum_{k=1}^{N} \pi_{k}\mathcal{N}(x_{n}|\mu_{k},\Sigma_{k})
+\ln p\left(X | \mathbf{\mu}, \mathbf{\Sigma}, \pi\right) = 
+\sum_{n=1}^{N} \ln \sum_{k=1}^{N} \pi_{k}\mathcal{N}(\mathbf{x}_{n}|\mathbf{\mu}_{k},\mathbf{\Sigma}_{k})
 \end{equation}
 
 \subsection*{E-step:}
@@ -84,15 +84,15 @@ Calculate the probability of each point in each component in order to assing res
 \begin{equation}
 \gamma_{nk} = 
 \frac
-{\pi_{k}\mathcal{N}(x_{n}|\mu_{k},\Sigma_{k})}
-{\sum_{j=1}^{K} \pi_{n}\mathcal{N}(x_{n}|\mu_{j},\Sigma_{j})}
+{\pi_{k}\mathcal{N}(\mathbf{x}_{n}|\mathbf{\mu}_{k},\mathbf{\Sigma}_{k})}
+{\sum_{j=1}^{K} \pi_{n}\mathcal{N}(\mathbf{x}_{n}|\mu_{j},\mathbf{\Sigma}_{j})}
 \end{equation}
 
 \subsection*{M-step:}
 Estimate new guesses for $ \mathbf{\pi}_{k}, \mathbf{\mu}_{k}, \mathbf{\Sigma}_{k} $.
 
 \begin{equation}
-\mu_{k}^{new} = 
+\mathbf{\mu}_{k}^{new} = 
 \frac{1}{N_{k}}
 \sum_{n=1}^{N} 
 \gamma_{nk}
@@ -104,8 +104,8 @@ Estimate new guesses for $ \mathbf{\pi}_{k}, \mathbf{\mu}_{k}, \mathbf{\Sigma}_{
 \frac{1}{N_{k}}
 \sum_{n=1}^{N} 
 \gamma_{nk}
-(\mathbf{x}_{k} - \mu_{k}^{new})
-(\mathbf{x}_{k} - \mu_{k}^{new})^{T}
+(\mathbf{x}_{k} - \mathbf{\mu}_{k}^{new})
+(\mathbf{x}_{k} - \mathbf{\mu}_{k}^{new})^{T}
 \end{equation}
 
 \begin{equation}
