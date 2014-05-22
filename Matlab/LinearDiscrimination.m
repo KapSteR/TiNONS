@@ -72,58 +72,58 @@ confMatrix
 disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
 names
 
-% %% Make LaTeX
-% set(gcf, 'PaperPositionMode', 'manual');
-% set(gcf, 'PaperUnits', 'centimeters');
-% set(gcf, 'PaperPosition', [2 1 18 10]);
-% 
-% 
-% figurePath = '..\Document\Appendix\Figures';
-% 
-% this = pwd
-% cd(figurePath)
-% print -f2 -r600 -depsc Linear_10digit_8cent_3speak
-% cd(this)
-% 
-% 
-% disp('')
-% conMatLatex.tableCloumnHeaders = {
-%     ['Speaker ', char(names(1))]
-%     ['Speaker ', char(names(2))]
-%     ['Speaker ', char(names(3))]
-%     'Precision [\%]'
-%     };
-% 
-% conMatLatex.tableRowLabels = {
-%     ['Estimate ', char(names(1))]
-%     ['Estimate ', char(names(2))]
-%     ['Estimate ', char(names(3))]
-%     'Sensitivity [\%]'
-%     };
-% 
-% conMatLatex.tableData = confMatrix;
-% conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
-% conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
-% 
-% conMatLatex.tableDataRowFormat = {'%.1f'};
-% 
-% % Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
-% conMatLatex.tableColumnAlignment = 'c';
-% 
-% % Switch table borders on/off:
-% conMatLatex.tableBorders = 1; 
-% 
-% % LaTex table caption:
-% conMatLatex.tableCaption = 'Confusion matrix - 10 digits';
-% 
-% % LaTex table label:
-% conMatLatex.tableLabel = 'Lin_conf_10';
-% 
-% % Switch to generate a complete LaTex document or just a table:
-% conMatLatex.makeCompleteLatexDocument = 0;
-% 
-% % Now call the function to generate LaTex code:
-% latex = latexTable(conMatLatex);
+%% Make LaTeX
+set(gcf, 'PaperPositionMode', 'manual');
+set(gcf, 'PaperUnits', 'centimeters');
+set(gcf, 'PaperPosition', [2 1 18 10]);
+
+
+figurePath = '..\Document\Appendix\Figures';
+
+this = pwd
+cd(figurePath)
+print -f2 -r600 -depsc Linear_10digit_8cent_3speak
+cd(this)
+
+
+disp('')
+conMatLatex.tableCloumnHeaders = {
+    ['Speaker ', char(names(1))]
+    ['Speaker ', char(names(2))]
+    ['Speaker ', char(names(3))]
+    'Precision [\%]'
+    };
+
+conMatLatex.tableRowLabels = {
+    ['Estimate ', char(names(1))]
+    ['Estimate ', char(names(2))]
+    ['Estimate ', char(names(3))]
+    'Sensitivity [\%]'
+    };
+
+conMatLatex.tableData = confMatrix;
+conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
+conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
+
+conMatLatex.tableDataRowFormat = {'%.1f'};
+
+% Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
+conMatLatex.tableColumnAlignment = 'c';
+
+% Switch table borders on/off:
+conMatLatex.tableBorders = 1; 
+
+% LaTex table caption:
+conMatLatex.tableCaption = 'Confusion matrix - 10 digits';
+
+% LaTex table label:
+conMatLatex.tableLabel = 'Lin_conf_10';
+
+% Switch to generate a complete LaTex document or just a table:
+conMatLatex.makeCompleteLatexDocument = 0;
+
+% Now call the function to generate LaTex code:
+latex = latexTable(conMatLatex);
 
 
 
