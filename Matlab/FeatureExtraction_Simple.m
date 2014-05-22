@@ -12,7 +12,7 @@ frameLength = 256;
 frameInterval = 100;
 
 startDigits = 0;
-numDigits = 10;%HUSK AT GGENTAGE FOR TEST DATA ! ! !  
+numDigits = 1;%HUSK AT GGENTAGE FOR TEST DATA ! ! !  
 
 %% Concatenate samples for the same speakers
 for nameCount = 1:numSpeakers
@@ -94,7 +94,10 @@ N = size(x_train,1);
 
 % Save Training data
 % save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
-save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N')
+N_(1)=N1;
+N_(2)=N2;
+N_(3)=N3;
+save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N', 'N_')
 toc
 
 %% Prepare for test data
@@ -105,7 +108,7 @@ load('DATA\TestData.mat');
 
 numSpeakers = numel(names);
 startDigits = 0;
-numDigits = 10; %HUSK AT GGENTAGE FOR TRAIN DATA ! ! !
+numDigits = 1; %HUSK AT GGENTAGE FOR TRAIN DATA ! ! !
 
 melCepOptions = 'M0dD'; %HUSK AT GGENTAGE FOR TRAIN DATA ! ! !
 frameLength = 256;
@@ -193,10 +196,13 @@ t_test(:,3) = [zeros(Nt1+Nt2,1) ; ones(Nt3,1)];
 x_test = [testSpace ones(Nt1+Nt2+Nt3,1)];
 
 Nt = size(x_test,1);
+Nt_(1)=Nt1;
+Nt_(2)=Nt2;
+Nt_(3)=Nt3;
 
 % Save Training data
 % save('DATA\TestSet.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
-save('DATA\TestSet.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt')
+save('DATA\TestSet.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt', 'Nt_')
 toc
 
 
