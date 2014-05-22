@@ -11,24 +11,25 @@ load('DATA\TestSet.mat');
 %%
 clc;
 % Number of dimensions for 90% of variance:
-X = x_train;
 
+X = x_train;
 N = size(X,1);
 mu = mean(X);
 
-sigma = (1/N)*(X - repmat(mu, N, 1))'*(X - repmat(mu, N, 1));      % calculate the covariance matrix estimate
-[v,d,~] = svd(sigma);  % find eigenvectors and eigenvalues
-d = diag(d); % keep only non-zero entries..
+sigma = (1/N)*(X - repmat(mu, N, 1))'*(X - repmat(mu, N, 1)); 
+                                   % Calculate the covariance matrix estimate
+[v,d,~] = svd(sigma);              % Find eigenvectors and eigenvalues
+d = diag(d);                       % Keep only non-zero entries.
+
+
 res = d/sum(d)   ;
 % plot(cumsum(res))
 % grid on;
 % xlabel('Number of features');
 % ylabel('Procentage information');
 
-
-
 v1= v(:, 1:3); % Using 3 features
-Z = x_train*v1;
+Z = x_train*v1; 
 I = length(Z);
 ploCol = {'r.','g.','b.','m.','k.','rx','gx','kx','mx','bx'};
 
