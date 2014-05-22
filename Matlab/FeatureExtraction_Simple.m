@@ -93,11 +93,11 @@ x_train = [featureSpace ones(N1+N2+N3,1)];
 N = size(x_train,1);
 
 % Save Training data
-% save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
+% save('DATA\TrainingSet10.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
 N_(1)=N1;
 N_(2)=N2;
 N_(3)=N3;
-save('DATA\TrainingSet.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N', 'N_')
+save('DATA\TrainingSet2.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N', 'N_')
 toc
 
 %% Prepare for test data
@@ -201,8 +201,8 @@ Nt_(2)=Nt2;
 Nt_(3)=Nt3;
 
 % Save Training data
-% save('DATA\TestSet.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
-save('DATA\TestSet.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt', 'Nt_')
+% save('DATA\TestSet10.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
+save('DATA\TestSet2.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt', 'Nt_')
 toc
 
 

@@ -6,10 +6,10 @@ clear; clc;
 tic
 disp('Input Data')
 
-load('DATA\TrainingSetPCA.mat');
+load('DATA\TrainingSet1PCA.mat');
 x_train = x_train(:,1:end-1); % Remove bias column of 1'sing_target.mat')
 
-load('DATA\TestSetPCA.mat');
+load('DATA\TestSet1PCA.mat');
 x_test = x_test(:,1:end-1);
 
 target = t;
@@ -17,62 +17,67 @@ target = t;
 test_target = t_test;
 toc
 
-%% One of K-coding
-% target = zeros(10,length(training_target));
-% for i = 0:9
-%     idx = find(training_target == i);
-%     target(i+1,idx) = 1;
-% end
-% target = target';
-% 
-% 
-% test_t = zeros(10,length(test_target));
-% for i = 0:9
-%     idx = find(test_target == i);
-%     test_t(i+1,idx) = 1;
-% end
-% 
-% test_t = test_t';
-
-
-%%
-disp('Set up network parameters')
+%% Setup of run
+disp('Set up run parameters')
 % Set up network parameters.
-nin = size(x_train,2);                % Number of inputs.
-nhidden = 100;			% Number of hidden units.
+
 nout = 3;               % Number of outputs.
-outputfunc = 'softmax'; % output function
-alpha = 0.5;			% Coefficient of weight-decay prior.
+nin = size(x_train,2);	% Number of inputs.
 
-% create network (object)
-% net = mlp(nin, nhidden, nout, outputfunc, alpha);
-
-% Set up vector of options for the optimiser.
-options = zeros(1,18);
-options(1) = 0;			% This provides display of error values.
-options(14) = 1000;		% Number of training cycles.
+% First try
+nHidVec = [ 10 20 50 100 200 300 500 ];
+N = numel(nHidVec);
+M = 8;
+E = zeros(N,M,2);
+Malpha  = linspace(0.01,1,M);
+nTry = 8;
 
 toc
 
-nHidden = [ 1 2 5 10 20 50 100 200 500 ]
+for nHid = 1:N
+    for alphaCount = 1:M
+        
+        errorVec = zeros(8,1);
+       
+        for tryCount = 1:nTry
+            
+            nhidden = nHidVec(nHid);	% Number of hidden units.
+            alpha = Malpha(alphaCount);	% Coefficient of weight-decay prior.
+            outputfunc = 'softmax';     % output function
+                     
+            % Set up vector of options for the optimiser.
+            options = zeros(1,18);
+            options(1) = 0;			% This provides display of error values.
+            options(14) = 1000;		% Number of training cycles.
+            
+            % create network (object)
+            net = mlp(nin, nhidden, nout, outputfunc, alpha);
+            
+            % Train using scaled conjugate gradients.
+            [net, options] = netopt(net, options, x_train, target, 'scg');
+            
+            % Intermidiate rror
+            errorVec(tryCount,1) = mlperr(net,x_test,test_target);
+            
+            toc
+            disp(['Hidden units: ' num2str(nhidden)]);
+            disp(['Alpha:        ' num2str(alpha)]);
+            disp(['Try:          ' num2str(tryCount)]);
+            disp([' ']);
+                    
+        
+        end
+        
+        % Error statistics
+        E(nHid,alphaCount,1) = mean(errorVec);
+        E(nHid,alphaCount,2) = var(errorVec);
 
+    end
+end
 
-
-
-
-% for nHid = nHidden
-    
-    net = mlp(nin, nhidden, nout, outputfunc, alpha);
-    
-    % Train using scaled conjugate gradients.
-    disp('Train using scaled conjugate gradients');
-    [net, options] = netopt(net, options, x_train, target, 'scg');
-    toc
-    
-% end
-
-% Error
-E = mlperr(net,x_test,test_target)
+%%
+figure(1)
+surf(Nhidden, Malpha, E(:,:,1))
 
 %%
 y_est = mlpfwd(net, x_test);

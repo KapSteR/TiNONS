@@ -4,10 +4,10 @@ clear; clc; tic;
 
 
 % import training set
-load('DATA\TrainingSet.mat');
+load('DATA\TrainingSet2.mat');
 
 % import test set
-load('DATA\TestSet.mat');
+load('DATA\TestSet2.mat');
 %%
 clc;
 % Number of dimensions for 90% of variance:
@@ -67,11 +67,11 @@ x_train = x_train*v;
 x_test = x_test*v;
 
 % Save Training data
-% save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
-save('DATA\TrainingSetPCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N', 'N_')
+% save('DATA\TrainingSet1PCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
+save('DATA\TrainingSet2PCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N', 'N_')
 
 % Save Training data
-% save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
-save('DATA\TestSetPCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt', 'N_')
+% save('DATA\TestSet1PCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
+save('DATA\TestSet2PCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt', 'N_')
 
 toc
