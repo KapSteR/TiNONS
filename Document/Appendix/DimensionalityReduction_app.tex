@@ -34,11 +34,23 @@ The calculate the variance of the projected data is given by
 \end{equation}
 Where \textbf{S} is the covariance matrix. 
 Then maximize the projected variance $ \mathbf{u}_1^T \mathbf{S} \mathbf{u}_1 $ with respect to $ \mathbf{u}_1 $.
-
-
+Which show that the $ \mathbf{u}_1 $ is an eigenvector of \textbf{S}.
+\begin{equation}
+\mathbf{S}\mathbf{u}_1 = \lambda_1 \mathbf{u}_1
+\end{equation}
+Multiplying by $ \mathbf{u}_1 $ on the left.
+\begin{equation}
+\mathbf{u}_1^T \mathbf{S}\mathbf{u}_1 = \lambda_1
+\end{equation}
+The maximum of the variance is $ \mathbf{u}_1 $ is set equal to the eigenvector having the largest eigenvalue $ \lambda_1 $.
+This eigenvector is called the first principal component. 
+When $ M $ is set higher than 1, additional principal component can be defined by choosing each new direction that maximizes the projected variance.
+This can be used to remove the dimensions that have small eigenvalue and therefore little information.         
 
 
 \section{Method}
+The way DR was applied in this project was 
+\fxnote{Insert MATLAB method}
 
 \section{Results}
 
