@@ -1,6 +1,6 @@
 %% Arteficial Neural Networks
 clear all; clc;
-addpath('HMMall\netlab')
+addpath('HMMall\netlab3.3')
 %% Load data
 clear; clc;
 tic
@@ -54,11 +54,22 @@ options(14) = 1000;		% Number of training cycles.
 
 toc
 
-% Train using scaled conjugate gradients.
-disp('Train using scaled conjugate gradients');
-[net, options] = netopt(net, options, x_train, target, 'scg');
-toc
+nHidden = [ 1 2 5 10 20 50 100 200 500 ]
 
+
+
+
+
+for nHid = nHidden
+    
+    net = mlp(nin, nhidden, nout, outputfunc, alpha);
+    
+    % Train using scaled conjugate gradients.
+    disp('Train using scaled conjugate gradients');
+    [net, options] = netopt(net, options, x_train, target, 'scg');
+    toc
+    
+end
 
 % Error
 E = mlperr(net,x_test,test_target)
@@ -75,8 +86,22 @@ y_est = mlpfwd(net, x_test);
 
 %% Highest prob -> class
 disp('Classifiy')
-[max_val,max_id] = max(y_est'); % find max. values
+
+y_est_conv = zeros(size(y_est,2), size(y_est,1)+100)';
+
+for i = 1:3
+    
+  y_est_conv(i,:) = conv(y_est(:,i)',ones(1,100));  
+    
+end
+
+
+[max_val,max_id] = max(y_est_conv'); % find max. values
 t_est = max_id - 1 ; % id is 1,2,3.. in matlab - not 0,1,2..
+
+
+
+
 
 % subplot(2,1,1)
 % stem(test_target);
@@ -144,7 +169,7 @@ names
 % % Make image
 % this = pwd
 % cd(figurePath)
-% print -f2 -r600 -depsc ANN_1digit_8cent_3speak
+% print -f2 -r600 -depsc ANN_2digit_8cent_3speak
 % cd(this)
 % 
 % 
@@ -177,10 +202,10 @@ names
 % conMatLatex.tableBorders = 1; 
 % 
 % % LaTex table caption:
-% conMatLatex.tableCaption = 'Confusion matrix - 1 digit';
+% conMatLatex.tableCaption = 'Confusion matrix - 2 digit';
 % 
 % % LaTex table label:
-% conMatLatex.tableLabel = 'ANN_conf_1';
+% conMatLatex.tableLabel = 'ANN_conf_2';
 % 
 % % Switch to generate a complete LaTex document or just a table:
 % conMatLatex.makeCompleteLatexDocument = 0;

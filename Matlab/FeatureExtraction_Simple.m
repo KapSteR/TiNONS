@@ -12,7 +12,7 @@ frameLength = 256;
 frameInterval = 100;
 
 startDigits = 0;
-numDigits = 1;%HUSK AT GGENTAGE FOR TEST DATA ! ! !  
+numDigits = 2;%HUSK AT GGENTAGE FOR TEST DATA ! ! !  
 
 %% Concatenate samples for the same speakers
 for nameCount = 1:numSpeakers
@@ -108,7 +108,7 @@ load('DATA\TestData.mat');
 
 numSpeakers = numel(names);
 startDigits = 0;
-numDigits = 1; %HUSK AT GGENTAGE FOR TRAIN DATA ! ! !
+numDigits = 2; %HUSK AT GGENTAGE FOR TRAIN DATA ! ! !
 
 melCepOptions = 'M0dD'; %HUSK AT GGENTAGE FOR TRAIN DATA ! ! !
 frameLength = 256;

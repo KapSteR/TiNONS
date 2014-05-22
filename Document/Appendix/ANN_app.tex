@@ -10,11 +10,11 @@
 
 
 
-\subsection{One digits:}
+\subsection{Single digit:}
 \begin{figure}[H]
 \centering
 \includegraphics{ANN_1digit_8cent_3speak}
-\caption{Results of using ANN with 3 speakers, 8 centers per model and 1 digits spoken}
+\caption{Results of using ANN with 3 speakers, 8 centers per model and 1 digit spoken}
 \label{fig:ANN_fig_1}
 \end{figure}
 
@@ -36,3 +36,34 @@ Sensitivity [\%] & 93.6 & 76.3 & 84.6 & 84.8 \\
 \caption{Confusion matrix - 1 digit}                                
 \label{table:ANN_conf_1}                                            
 \end{table}  
+
+
+
+
+\subsection{Two digits:}
+\begin{figure}[H]
+\centering
+\includegraphics{ANN_2digit_8cent_3speak}
+\caption{Results of using ANN with 3 speakers, 8 centers per model and 2 digits spoken}
+\label{fig:ANN_fig_1}
+\end{figure}
+
+
+\begin{table}[H]                                                    
+\centering                                                          
+\begin{tabular}{|l|c|c|c|c|}                                        
+\hline                                                              
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\
+\hline                                                              
+Estimate Jacob & 5660.0 & 200.0 & 392.0 & 90.5 \\                   
+\hline                                                              
+Estimate Mose & 536.0 & 5400.0 & 996.0 & 77.9 \\                    
+\hline                                                              
+Estimate Simon & 714.0 & 1310.0 & 5522.0 & 73.2 \\                  
+\hline                                                              
+Sensitivity [\%] & 81.9 & 78.1 & 79.9 & 80.0 \\                     
+\hline                                                              
+\end{tabular}                                                       
+\caption{Confusion matrix - 2 digit}                                
+\label{table:ANN_conf_2}                                            
+\end{table}

@@ -19,7 +19,7 @@ names = cellstr(names);
 trainingSetStart = 11;
 trainingSetSize = 15;
 startDigits = 0;
-numDigits = 1;
+numDigits = 2;
 
 dataPath = 'DATA\DataFiles\';
 
