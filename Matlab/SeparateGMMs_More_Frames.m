@@ -112,29 +112,29 @@ ylabel('Class target')
 
 
 
-% %% Make LaTeX
-% set(gcf, 'PaperPositionMode', 'manual');
-% set(gcf, 'PaperUnits', 'centimeters');
-% set(gcf, 'PaperPosition', [2 1 18 10]);
-% 
-% 
-% figurePath = '..\Document\Appendix\Figures';
-% 
-% this = pwd
-% cd(figurePath)
-% print -f2 -r600 -depsc GMM_1digit_8cent_3speak
-% cd(this)
-% % Confusion matrix
-% clc
-% confMatrix = OurConfMat(classTarget,class);
-% 
-% confMatrix
-% 
-% disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
-% names
-% 
-% 
-% 
+%% Make LaTeX
+set(gcf, 'PaperPositionMode', 'manual');
+set(gcf, 'PaperUnits', 'centimeters');
+set(gcf, 'PaperPosition', [2 1 18 10]);
+
+
+figurePath = '..\Document\Appendix\Figures';
+
+this = pwd
+cd(figurePath)
+print -f2 -r600 -depsc GMM_1digit_8cent_3speak
+cd(this)
+% Confusion matrix
+clc
+confMatrix = OurConfMat(classTarget,class);
+
+confMatrix
+
+disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
+names
+
+
+
 % disp('')
 % conMatLatex.tableCloumnHeaders = {
 %     ['Speaker ', char(names(1))]
