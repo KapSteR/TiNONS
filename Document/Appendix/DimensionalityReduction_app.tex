@@ -25,6 +25,16 @@ In this project PCA is used to make the dimensional reduction focusing on the ma
 \subsection{Maximum Variance}
 Consider a dataset of observations $ \left\lbrace \mathbf{x}_n \right\rbrace $ with $ n = 1,...,N $, and the data vector is a Euclidean variable with dimension D. 
 The dataset can be projected to lower dimensional space with dimension $ M<D $ 	while maximizing the variance of the projected data. 
+The projected space of dimension $ M $ is based on the eigenvectors $ \mathbf{u}_1, ..., \mathbf{u}_M $.
+Consider a projection onto $ M=1 $ dimension, the projected space is spanned by the vector $ \mathbf{u}_1 $. 
+Then each data point $ \mathbf{x}_n $ is projected onto a scalar $ \mathbf{u}_1^T \mathbf{x}_n $. The mean of the sample set is given by $ \overline{\mathbf{x}} \dfrac{1}{N}\sum_{n=1}^{N} \mathbf{x}_n $.
+The calculate the variance of the projected data is given by
+\begin{equation}
+\dfrac{1}{N}\sum_{n=1}^{N}\left(\mathbf{u}_1^T \mathbf{x}_n-\mathbf{u}_1^T \overline{\mathbf{x}} \right)^2 = \mathbf{u}_1^T \mathbf{S} \mathbf{u}_1
+\end{equation}
+Where \textbf{S} is the covariance matrix. 
+Then maximize the projected variance $ \mathbf{u}_1^T \mathbf{S} \mathbf{u}_1 $ with respect to $ \mathbf{u}_1 $.
+
 
 
 
