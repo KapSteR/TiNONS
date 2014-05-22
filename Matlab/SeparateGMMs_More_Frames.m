@@ -118,12 +118,8 @@ set(gcf, 'PaperUnits', 'centimeters');
 set(gcf, 'PaperPosition', [2 1 18 10]);
 
 
-figurePath = '..\Document\Appendix\Figures';
 
-this = pwd
-cd(figurePath)
-print -f2 -r600 -depsc GMM_1digit_8cent_3speak
-cd(this)
+
 % Confusion matrix
 clc
 confMatrix = OurConfMat(classTarget,class);
@@ -133,8 +129,14 @@ confMatrix
 disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
 names
 
-
-
+% % Print Image
+% this = pwd
+% figurePath = '..\Document\Appendix\Figures';
+% cd(figurePath)
+% print -f2 -r600 -depsc GMM_1digit_8cent_3speak
+% cd(this)
+% 
+% 
 % disp('')
 % conMatLatex.tableCloumnHeaders = {
 %     ['Speaker ', char(names(1))]
@@ -174,5 +176,5 @@ names
 % % Now call the function to generate LaTex code:
 % latex = latexTable(conMatLatex);
 % 
-% 
-% toc
+
+toc

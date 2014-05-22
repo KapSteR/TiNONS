@@ -133,19 +133,21 @@ set(gcf, 'PaperPosition', [2 1 18 10]);
 
 figurePath = '..\Document\Appendix\Figures';
 
-this = pwd
-cd(figurePath)
-print -f2 -r600 -depsc GMM_1digit_8cent_3speak
-cd(this)
+
 % Confusion matrix
 confMatrix = OurConfMat(classTarget,class);
-
 confMatrix
 
 disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
 names
 
-
+% % Make image
+% this = pwd
+% cd(figurePath)
+% print -f2 -r600 -depsc ANN_1digit_8cent_3speak
+% cd(this)
+% 
+% 
 % 
 % disp('')
 % conMatLatex.tableCloumnHeaders = {
@@ -178,7 +180,7 @@ names
 % conMatLatex.tableCaption = 'Confusion matrix - 1 digit';
 % 
 % % LaTex table label:
-% conMatLatex.tableLabel = 'GMM_conf_1';
+% conMatLatex.tableLabel = 'ANN_conf_1';
 % 
 % % Switch to generate a complete LaTex document or just a table:
 % conMatLatex.makeCompleteLatexDocument = 0;
@@ -186,5 +188,5 @@ names
 % % Now call the function to generate LaTex code:
 % latex = latexTable(conMatLatex);
 % 
-% 
-% toc
+
+toc
