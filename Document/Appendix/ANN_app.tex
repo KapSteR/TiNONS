@@ -21,8 +21,14 @@ Which correspond to the output of the basis function in \ref{eq:basisF}, that in
 \begin{equation}
 a_k = \sum_{j=1}^{M} w_{kj}^{(2)}z_j+w_{k0}^{(2)}
 \end{equation}
-
-
+where $ k = 1,...,K $ and $ K $ is the total numbers of outputs. 
+This is the second transform and therefore corresponds to the second layer of the network.
+The output unit activations can be transformed using another activation function, resulting in a set of network outputs $ y_k $.
+The activation function is chosen depending on the data and distribution.
+In a multiple binary classification problem, each output unit activation is transformed using a logistic sigmoid function:
+\begin{equation}
+y_k = \sigma(a_k), \qquad \sigma(a) = \dfrac{1}{1+\mathtt{exp}(-a)}
+\end{equation}
    
 \begin{figure}[H]
 \centering
