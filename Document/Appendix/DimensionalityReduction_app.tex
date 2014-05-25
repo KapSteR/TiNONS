@@ -132,9 +132,15 @@ Sensitivity [\%] & 95.5 & 79.1 & 89.9 & 88.2 \\
 
 
 \section{Discussion}
+
+Figure \ref{fig:PCA_dist} shows cumulative distribution of variance in the separate dimensions of the feature space.
+In this it is apparent most of the variance is contained within the first 5-10 dimensions. 
+$ 94.9 \% $ at 5 dimensions and $ 99.4 \% $ at 10 dimensions.
+This does not necessarily imply that most of the information is contained within these, but is a good indicator of this.
+
 The data shown in Figure \ref{fig:PCA_lin_trunc} and Table \ref{table:Lin_conf_10_trunc} for linear classifiers and Figure \ref{fig:PCA_GMM_trunc} and \ref{table:GMM_conf_10_trunc} for GMM, should be compared with Figure \ref{fig:Lin_fig_10} Table \ref{table:Lin_conf_10}, Figure \ref{fig:GMM_fig_10} and Table \ref{table:GMM_conf_10} respectively.
 
 In this we see that truncating the feature space to one quarter of the dimensions (10) after PCA, has a very little effect on the overall accuracy of the classification.
 This is important, since it can allow the classification algorithms to run with a much lower computational load.
 
-\fxnote{Diskuter resultater og evt forbedringer}
+In this project, computational load has not been a major concern. For this reason and the reason above it we have chosen not to truncate our feature space.
