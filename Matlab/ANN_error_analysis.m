@@ -5,7 +5,7 @@ load('DATA\Full_ANN_run_data.mat');
 
 %%
 figure(1)
-surf(Nhidden, Malpha, E(:,:,1))
+surf(nHidVec, Malpha, E(:,:,1))
 
 %%
 y_est = mlpfwd(net, x_test);

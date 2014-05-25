@@ -81,10 +81,9 @@ The cost of dimensionality reduction is studied for linear classifiers and for G
 \label{fig:PCA_lin_trunc}
 \end{figure}
 
-
 \begin{table}[H]                                                           
 \centering                                                                 
-\begin{tabular}{|c|c|c|c|c|}                                               
+\begin{tabular}{|l|c|c|c|c|}                                               
 \hline                                                                     
   & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\       
 \hline                                                                     
@@ -97,10 +96,45 @@ Estimate Simon & 9411.0 & 11561.0 & 21087.0 & 50.1 \\
 Sensitivity [\%] & 46.3 & 44.5 & 61.0 & 50.6 \\                            
 \hline                                                                     
 \end{tabular}                                                              
-\caption{Confusion matrix - Linear classifier, truncated to 10 dimenstions}
+\caption{Confusion matrix - Linear classifier, truncated to 10 dimensions}
 \label{table:Lin_conf_10_trunc}                                            
 \end{table} 
+
+
+\subsubsection{Gaussian Mixture Models}
+
+\begin{figure}[H]
+\centering
+\includegraphics{GMM_10_PCA_trunc}
+\caption{Results of using GMM and ten digits spoken, with a truncated 10-dimensional feature space}
+\label{fig:PCA_GMM_trunc}
+\end{figure}
+
+\begin{table}[H]                                                    
+\centering                                                          
+\begin{tabular}{|l|c|c|c|c|}                                        
+\hline                                                              
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\
+\hline                                                              
+Estimate Jacob & 33000.0 & 1400.0 & 300.0 & 95.1 \\                 
+\hline                                                              
+Estimate Mose & 959.0 & 27341.0 & 3200.0 & 86.8 \\                  
+\hline                                                              
+Estimate Simon & 600.0 & 5818.0 & 31059.0 & 82.9 \\                 
+\hline                                                              
+Sensitivity [\%] & 95.5 & 79.1 & 89.9 & 88.2 \\                     
+\hline                                                              
+\end{tabular}                                                       
+\caption{Confusion matrix - GMM, truncated to 10 dimensions}        
+\label{table:GMM_conf_10_trunc}                                     
+\end{table} 
+
+
+
 \section{Discussion}
+The data shown in Figure \ref{fig:PCA_lin_trunc} and Table \ref{table:Lin_conf_10_trunc} for linear classifiers and Figure \ref{fig:PCA_GMM_trunc} and \ref{table:GMM_conf_10_trunc} for GMM, should be compared with Figure \ref{fig:Lin_fig_10} Table \ref{table:Lin_conf_10}, Figure \ref{fig:GMM_fig_10} and Table \ref{table:GMM_conf_10} respectively.
+
+In this we see that truncating the feature space to one quarter of the dimensions (10) after PCA, has a very little effect on the overall accuracy of the classification.
+This is important, since it can allow the classification algorithms to run with a much lower computational load.
 
 \fxnote{Diskuter resultater og evt forbedringer}
-\fxnote{Referer til almindelige resulater i relevente sectioner}

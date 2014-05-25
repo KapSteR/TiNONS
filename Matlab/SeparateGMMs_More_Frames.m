@@ -4,8 +4,9 @@
 clear; clc
 tic
 
-load('DATA\TrainingSetPCA.mat');
-x_train = x_train(:,1:end-1); % Remove bias column of 1's 
+load('DATA\TrainingSet10PCA.mat');
+% x_train = x_train(:,1:end-1); % Remove bias column of 1's 
+x_train = x_train(:,1:10); % Remove bias column of 1's 
 
 numSpeakers = numel(names);
 
@@ -54,8 +55,9 @@ toc
 %% Load test data and classify
 tic
 
-load('DATA\TestSetPCA.mat');
-x_test = x_test(:,1:end-1);
+load('DATA\TestSet10PCA.mat');
+% x_test = x_test(:,1:end-1);% Remove bias column of 1's 
+x_test = x_test(:,1:10);
 
 nTframes = size(x_test,1);
 frameStep = 100;
@@ -115,7 +117,7 @@ ylabel('Class target')
 %% Make LaTeX
 set(gcf, 'PaperPositionMode', 'manual');
 set(gcf, 'PaperUnits', 'centimeters');
-set(gcf, 'PaperPosition', [2 1 18 10]);
+set(gcf, 'PaperPosition', [2 1 18 7]);% 7 in stead of 10
 
 
 
@@ -129,52 +131,54 @@ confMatrix
 disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
 names
 
-% % Print Image
-% this = pwd
-% figurePath = '..\Document\Appendix\Figures';
-% cd(figurePath)
-% print -f2 -r600 -depsc GMM_1digit_8cent_3speak
-% cd(this)
-% 
-% 
-% disp('')
-% conMatLatex.tableCloumnHeaders = {
-%     ['Speaker ', char(names(1))]
-%     ['Speaker ', char(names(2))]
-%     ['Speaker ', char(names(3))]
-%     'Precision [\%]'
-%     };
-% 
-% conMatLatex.tableRowLabels = {
-%     ['Estimate ', char(names(1))]
-%     ['Estimate ', char(names(2))]
-%     ['Estimate ', char(names(3))]
-%     'Sensitivity [\%]'
-%     };
-% 
-% conMatLatex.tableData = confMatrix;
-% conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
-% conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
-% 
-% conMatLatex.tableDataRowFormat = {'%.1f'};
-% 
-% % Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
-% conMatLatex.tableColumnAlignment = 'c';
-% 
-% % Switch table borders on/off:
-% conMatLatex.tableBorders = 1; 
-% 
-% % LaTex table caption:
+% Print Image
+this = pwd
+figurePath = '..\Document\Appendix\Figures';
+cd(figurePath)
+print -f2 -r600 -depsc GMM_10_PCA_trunc
+cd(this)
+
+
+disp('')
+conMatLatex.tableCloumnHeaders = {
+    ['Speaker ', char(names(1))]
+    ['Speaker ', char(names(2))]
+    ['Speaker ', char(names(3))]
+    'Precision [\%]'
+    };
+
+conMatLatex.tableRowLabels = {
+    ['Estimate ', char(names(1))]
+    ['Estimate ', char(names(2))]
+    ['Estimate ', char(names(3))]
+    'Sensitivity [\%]'
+    };
+
+conMatLatex.tableData = confMatrix;
+conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
+conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
+
+conMatLatex.tableDataRowFormat = {'%.1f'};
+
+% Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
+conMatLatex.tableColumnAlignment = 'c';
+
+% Switch table borders on/off:
+conMatLatex.tableBorders = 1; 
+
+% LaTex table caption:
 % conMatLatex.tableCaption = 'Confusion matrix - 1 digit';
-% 
-% % LaTex table label:
+conMatLatex.tableCaption = 'Confusion matrix - GMM, truncated to 10 dimensions';
+
+% LaTex table label:
 % conMatLatex.tableLabel = 'GMM_conf_1';
-% 
-% % Switch to generate a complete LaTex document or just a table:
-% conMatLatex.makeCompleteLatexDocument = 0;
-% 
-% % Now call the function to generate LaTex code:
-% latex = latexTable(conMatLatex);
-% 
+conMatLatex.tableLabel = 'GMM_conf_10_trunc';
+
+% Switch to generate a complete LaTex document or just a table:
+conMatLatex.makeCompleteLatexDocument = 0;
+
+% Now call the function to generate LaTex code:
+latex = latexTable(conMatLatex);
+
 
 toc

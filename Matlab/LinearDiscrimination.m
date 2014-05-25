@@ -115,7 +115,7 @@ conMatLatex.tableBorders = 1;
 
 % LaTex table caption:
 % conMatLatex.tableCaption = 'Confusion matrix - 10 digits';
-conMatLatex.tableCaption = 'Confusion matrix - Linear classifier, truncated to 10 dimenstions';
+conMatLatex.tableCaption = 'Confusion matrix - Linear classifier, truncated to 10 dimensions';
 
 % LaTex table label:
 % conMatLatex.tableLabel = 'Lin_conf_10';
