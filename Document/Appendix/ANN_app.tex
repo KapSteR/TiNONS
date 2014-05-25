@@ -2,7 +2,27 @@
 
 \section{Theory}
 Artificial Neural Networks (ANN) also called multilayer perceptron, can be used as a model for pattern recognition. 
-In the linear models of classification is based on linear combinations  
+In the linear models of classification is based on linear combinations of fixed nonlinear basis function $ \phi_j(x)$ on the form
+\begin{equation}
+y(\mathbf{x},\mathbf{w}) = f\left( \sum_{j=1}^{M}w_j \phi_j(x) \right)
+\label{eq:basisF} 
+\end{equation}
+ANN can extend this model by allowing the basis function $ \phi_j(x)$ to depend on parameters and then to allow these parameters to be adjusted together with the coefficients $ \left\lbrace w_j \right\rbrace $, during the training phase.
+
+The basic neural network model, which is a series of functional transformations. 
+In the model the input variables is a $ M $ linear combination $ x_1,...,x_D $ on the form
+\begin{equation}
+a_j = \sum_{i=1}^{D} w_{ij}^{(1)}x_i+w_{j0}^{(1)}
+\end{equation}
+Where $ j=1,...,M $ and superscript (1) is corresponding to the parameters of the first layer of the network.
+The parameters $ w_{ij}^{(1)}$ and $w_{j0}^{(1)} $ is respectively the weights and the biases. 
+The quantities $ a_j $ are called activations, each of them is transformed by an activation function $ h(\cdotp) $, resulting in $ z_j = h(a_j) $.
+Which correspond to the output of the basis function in \ref{eq:basisF}, that in neural network is called hidden units. Using the method of equation \ref{eq:basisF}, these quantities gets linearly combined again to give output unit activations  
+\begin{equation}
+a_k = \sum_{j=1}^{M} w_{kj}^{(2)}z_j+w_{k0}^{(2)}
+\end{equation}
+
+
    
 \begin{figure}[H]
 \centering
