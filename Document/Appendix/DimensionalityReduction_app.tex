@@ -49,8 +49,14 @@ This can be used to remove the dimensions that have small eigenvalue and therefo
 
 
 \section{Method}
-The way DR was applied in this project was 
-\fxnote{Insert MATLAB method}
+In this project PCA has been applied, mainly in an effort to improve the quality of the data by de-correlating it.
+It has not been the focus to try and reduce the dimensionality of the data, as real-time processing cost has not been a deciding factor.
+Subsequently, all analysis of classification methods has been done on data that has been de-correlated using PCA, but not reducing in dimensionality.
+
+The effect og dimensionality reduction has though been studied, and is presented in this section
+
+In order to gauge the effect of dimensionality of our data, we first analyse how much of the variance is contained in how many dimensions, and then look at the cost in accuracy of truncating dimensions of the de-correlated dataset.
+
 
 \section{Results}
 

@@ -4,15 +4,15 @@ clear; clc; tic;
 
 
 % import training set
-load('DATA\TrainingSetPCA.mat');
+load('DATA\TrainingSet10PCA.mat');
 
 % import test set
-load('DATA\TestSetPCA.mat');
+load('DATA\TestSet10PCA.mat');
 
 %% Truncate feautures
 
 numFeatStart = 1;
-numFeat = 40;
+numFeat = 10;
 
 x_train = x_train(:,numFeatStart:numFeat);
 x_test = x_test(:,numFeatStart:numFeat);

@@ -76,10 +76,29 @@ Sensitivity [\%] & 93.9 & 93.8 & 91.5 & 93.1 \\
 
 
 
-%\subsection{Ten digits:}
-%\begin{figure}[H]
-%\centering
-%\includegraphics{ANN_10digit_8cent_3speak}
-%\caption{Results of using ANN with 3 speakers, 30 hidden variables and 10 digits spoken}
-%\label{fig:ANN_fig_10}
-%\end{figure}
+\subsection{Ten digits:}
+\begin{figure}[H]
+\centering
+\includegraphics{ANN_10digit_8cent_3speak}
+\caption{Results of using ANN with 3 speakers, 30 hidden variables and 10 digits spoken}
+\label{fig:ANN_fig_10}
+\end{figure}
+
+\begin{table}[H]                                                    
+\centering                                                          
+\begin{tabular}{|c|c|c|c|c|}                                        
+\hline                                                              
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\
+\hline                                                              
+Estimate Jacob & 32915.0 & 1186.0 & 528.0 & 95.1 \\                 
+\hline                                                              
+Estimate Mose & 1245.0 & 28807.0 & 3100.0 & 86.9 \\                 
+\hline                                                              
+Estimate Simon & 399.0 & 4566.0 & 30931.0 & 86.2 \\                 
+\hline                                                              
+Sensitivity [\%] & 95.2 & 83.4 & 89.5 & 89.4 \\                     
+\hline                                                              
+\end{tabular}                                                       
+\caption{Confusion matrix - 10 digits}                              
+\label{table:ANN_conf_10}                                           
+\end{table}

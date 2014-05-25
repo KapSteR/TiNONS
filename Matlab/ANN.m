@@ -6,10 +6,10 @@ clear; clc;
 tic
 disp('Input Data')
 
-load('DATA\TrainingSet2PCA.mat');
+load('DATA\TrainingSet10PCA.mat');
 x_train = x_train(:,1:end-1); % Remove bias column of 1'sing_target.mat')
 
-load('DATA\TestSet2PCA.mat');
+load('DATA\TestSet10PCA.mat');
 x_test = x_test(:,1:end-1);
 
 target = t;
@@ -49,7 +49,7 @@ alpha = 0.3;			% Coefficient of weight-decay prior.
 
 % Set up vector of options for the optimiser.
 options = zeros(1,18);
-options(1) = 0;			% This provides display of error values.
+options(1) = 1;			% This provides display of error values.
 options(14) = 1000;		% Number of training cycles.
 
 toc
@@ -166,7 +166,7 @@ names
 % Make image
 this = pwd
 cd(figurePath)
-print -f2 -r600 -depsc ANN_2digit_8cent_3speak
+print -f2 -r600 -depsc ANN_10digit_8cent_3speak
 cd(this)
 
 
@@ -199,10 +199,10 @@ conMatLatex.tableColumnAlignment = 'c';
 conMatLatex.tableBorders = 1; 
 
 % LaTex table caption:
-conMatLatex.tableCaption = 'Confusion matrix - 2 digits';
+conMatLatex.tableCaption = 'Confusion matrix - 10 digits';
 
 % LaTex table label:
-conMatLatex.tableLabel = 'ANN_conf_2';
+conMatLatex.tableLabel = 'ANN_conf_10';
 
 % Switch to generate a complete LaTex document or just a table:
 conMatLatex.makeCompleteLatexDocument = 0;
