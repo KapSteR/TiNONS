@@ -75,6 +75,8 @@ for nHid = 1:N
     end
 end
 
+save('DATA\Full_ANN_run_data');
+
 %%
 figure(1)
 surf(Nhidden, Malpha, E(:,:,1))
