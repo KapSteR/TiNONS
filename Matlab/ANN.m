@@ -153,7 +153,7 @@ set(gcf, 'PaperUnits', 'centimeters');
 set(gcf, 'PaperPosition', [2 1 18 10]);
 
 
-figurePath = '..\Document\Appendix\Figures';
+
 
 
 % Confusion matrix
@@ -164,6 +164,8 @@ disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
 names
 
 % % Make image
+% 
+% figurePath = '..\Document\Appendix\Figures';
 % this = pwd
 % cd(figurePath)
 % print -f2 -r600 -depsc ANN_10digit_8cent_3speak
