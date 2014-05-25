@@ -6,10 +6,10 @@ clear; clc;
 tic
 disp('Input Data')
 
-load('DATA\TrainingSetPCA.mat');
+load('DATA\TrainingSet2PCA.mat');
 x_train = x_train(:,1:end-1); % Remove bias column of 1'sing_target.mat')
 
-load('DATA\TestSetPCA.mat');
+load('DATA\TestSet2PCA.mat');
 x_test = x_test(:,1:end-1);
 
 target = t;
@@ -39,10 +39,10 @@ toc
 disp('Set up network parameters')
 % Set up network parameters.
 nin = size(x_train,2);                % Number of inputs.
-nhidden = 100;			% Number of hidden units.
+nhidden = 30;			% Number of hidden units.
 nout = 3;               % Number of outputs.
 outputfunc = 'softmax'; % output function
-alpha = 0.5;			% Coefficient of weight-decay prior.
+alpha = 0.3;			% Coefficient of weight-decay prior.
 
 % create network (object)
 % net = mlp(nin, nhidden, nout, outputfunc, alpha);
@@ -54,21 +54,15 @@ options(14) = 1000;		% Number of training cycles.
 
 toc
 
-nHidden = [ 1 2 5 10 20 50 100 200 500 ]
-
-
-
-
-
 % for nHid = nHidden
-    
-    net = mlp(nin, nhidden, nout, outputfunc, alpha);
-    
-    % Train using scaled conjugate gradients.
-    disp('Train using scaled conjugate gradients');
-    [net, options] = netopt(net, options, x_train, target, 'scg');
-    toc
-    
+
+net = mlp(nin, nhidden, nout, outputfunc, alpha);
+
+% Train using scaled conjugate gradients.
+disp('Train using scaled conjugate gradients');
+[net, options] = netopt(net, options, x_train, target, 'scg');
+toc
+
 % end
 
 % Error
@@ -87,16 +81,19 @@ y_est = mlpfwd(net, x_test);
 %% Highest prob -> class
 disp('Classifiy')
 
-y_est_conv = zeros(size(y_est,2), size(y_est,1)+100)';
+avg_len = 100;
+
+y_est_conv = zeros(size(y_est,2), size(y_est,1)+avg_len-1);
 
 for i = 1:3
     
-  y_est_conv(i,:) = conv(y_est(:,i)',ones(1,100));  
+  y_est_conv(i,:) = conv(y_est(:,i)',ones(1,avg_len));  
     
 end
 
+y_est_conv = y_est_conv(:,1:end-(avg_len-1));
 
-[max_val,max_id] = max(y_est_conv'); % find max. values
+[max_val,max_id] = max(y_est_conv); % find max. values
 t_est = max_id - 1 ; % id is 1,2,3.. in matlab - not 0,1,2..
 
 
@@ -166,52 +163,52 @@ confMatrix
 disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
 names
 
-% % Make image
-% this = pwd
-% cd(figurePath)
-% print -f2 -r600 -depsc ANN_2digit_8cent_3speak
-% cd(this)
-% 
-% 
-% 
-% disp('')
-% conMatLatex.tableCloumnHeaders = {
-%     ['Speaker ', char(names(1))]
-%     ['Speaker ', char(names(2))]
-%     ['Speaker ', char(names(3))]
-%     'Precision [\%]'
-%     };
-% 
-% conMatLatex.tableRowLabels = {
-%     ['Estimate ', char(names(1))]
-%     ['Estimate ', char(names(2))]
-%     ['Estimate ', char(names(3))]
-%     'Sensitivity [\%]'
-%     };
-% 
-% conMatLatex.tableData = confMatrix;
-% conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
-% conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
-% 
-% conMatLatex.tableDataRowFormat = {'%.1f'};
-% 
-% % Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
-% conMatLatex.tableColumnAlignment = 'c';
-% 
-% % Switch table borders on/off:
-% conMatLatex.tableBorders = 1; 
-% 
-% % LaTex table caption:
-% conMatLatex.tableCaption = 'Confusion matrix - 2 digit';
-% 
-% % LaTex table label:
-% conMatLatex.tableLabel = 'ANN_conf_2';
-% 
-% % Switch to generate a complete LaTex document or just a table:
-% conMatLatex.makeCompleteLatexDocument = 0;
-% 
-% % Now call the function to generate LaTex code:
-% latex = latexTable(conMatLatex);
-% 
+% Make image
+this = pwd
+cd(figurePath)
+print -f2 -r600 -depsc ANN_2digit_8cent_3speak
+cd(this)
+
+
+
+disp('')
+conMatLatex.tableCloumnHeaders = {
+    ['Speaker ', char(names(1))]
+    ['Speaker ', char(names(2))]
+    ['Speaker ', char(names(3))]
+    'Precision [\%]'
+    };
+
+conMatLatex.tableRowLabels = {
+    ['Estimate ', char(names(1))]
+    ['Estimate ', char(names(2))]
+    ['Estimate ', char(names(3))]
+    'Sensitivity [\%]'
+    };
+
+conMatLatex.tableData = confMatrix;
+conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
+conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
+
+conMatLatex.tableDataRowFormat = {'%.1f'};
+
+% Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
+conMatLatex.tableColumnAlignment = 'c';
+
+% Switch table borders on/off:
+conMatLatex.tableBorders = 1; 
+
+% LaTex table caption:
+conMatLatex.tableCaption = 'Confusion matrix - 2 digits';
+
+% LaTex table label:
+conMatLatex.tableLabel = 'ANN_conf_2';
+
+% Switch to generate a complete LaTex document or just a table:
+conMatLatex.makeCompleteLatexDocument = 0;
+
+% Now call the function to generate LaTex code:
+latex = latexTable(conMatLatex);
+
 
 toc
