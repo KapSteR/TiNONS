@@ -4,10 +4,10 @@ clear; clc; tic;
 
 
 % import training set
-load('DATA\TrainingSet2.mat');
+load('DATA\TrainingSet10.mat');
 
 % import test set
-load('DATA\TestSet2.mat');
+load('DATA\TestSet10.mat');
 %%
 clc;
 % Number of dimensions for 90% of variance:
@@ -23,10 +23,22 @@ d = diag(d);                       % Keep only non-zero entries.
 
 
 res = d/sum(d)   ;
-% plot(cumsum(res))
-% grid on;
-% xlabel('Number of features');
-% ylabel('Procentage information');
+h = figure(1);
+plot(cumsum(res))
+grid on;
+xlabel('Number of features');
+ylabel('Procentage information');
+set(gcf, 'PaperPositionMode', 'manual');
+set(gcf, 'PaperUnits', 'centimeters');
+set(gcf, 'PaperPosition', [2 1 18 7]);
+
+
+% Make image
+this = pwd
+figurePath = '..\Document\Appendix\Figures';
+cd(figurePath)
+print -f1 -r600 -depsc PCA_dist_var
+cd(this)
 
 v1= v(:, 1:3); % Using 3 features
 Z = x_train*v1; 
@@ -36,7 +48,7 @@ ploCol = {'r.','g.','b.','m.','k.','rx','gx','kx','mx','bx'};
 [value, index] = max(t');
 target_train = index;
 
-% %%
+%%
 % mu = mean(Z(:,1:3));
 % 
 % figure
@@ -66,12 +78,12 @@ target_train = index;
 x_train = x_train*v;
 x_test = x_test*v;
 
-% Save Training data
-% save('DATA\TrainingSet1PCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
-save('DATA\TrainingSet2PCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N', 'N_')
-
-% Save Training data
-% save('DATA\TestSet1PCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
-save('DATA\TestSet2PCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt', 'N_')
+% % Save Training data
+% % save('DATA\TrainingSet1PCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N4', 'N')
+% save('DATA\TrainingSet2PCA.mat', 'x_train', 't', 'names', 'N1', 'N2', 'N3', 'N', 'N_')
+% 
+% % Save Training data
+% % save('DATA\TestSet1PCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt4', 'Nt')
+% save('DATA\TestSet2PCA.mat', 'x_test', 't_test', 'Nt1', 'Nt2', 'Nt3', 'Nt', 'N_')
 
 toc

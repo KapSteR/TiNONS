@@ -60,12 +60,47 @@ In order to gauge the effect of dimensionality of our data, we first analyse how
 
 \section{Results}
 
-\subsection{Single digit:}
+\subsection{Distribution of variance:}
 
-\subsection{Two digits:}
+\begin{figure}[H]
+\centering
+\includegraphics{PCA_dist_var}
+\caption{Cumulative distribution of variance (information) in dimensions sorted by highest eigenvalue}
+\label{fig:PCA_dist}
+\end{figure}
 
-\subsection{Ten digits:}
+\subsection{Cost of dimensionality reduction:}
+The cost of dimensionality reduction is studied for linear classifiers and for Gaussian Mixture Models.
 
+\subsubsection{Linear classifiers}
+
+\begin{figure}[H]
+\centering
+\includegraphics{Linear_10_PCA_trunc}
+\caption{Results of using linear classifiers and ten digits spoken, with a truncated 10-dimensional feature space}
+\label{fig:PCA_lin_trunc}
+\end{figure}
+
+
+\begin{table}[H]                                                           
+\centering                                                                 
+\begin{tabular}{|c|c|c|c|c|}                                               
+\hline                                                                     
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\       
+\hline                                                                     
+Estimate Jacob & 16017.0 & 7631.0 & 6257.0 & 53.6 \\                       
+\hline                                                                     
+Estimate Mose & 9131.0 & 15367.0 & 7215.0 & 48.5 \\                        
+\hline                                                                     
+Estimate Simon & 9411.0 & 11561.0 & 21087.0 & 50.1 \\                      
+\hline                                                                     
+Sensitivity [\%] & 46.3 & 44.5 & 61.0 & 50.6 \\                            
+\hline                                                                     
+\end{tabular}                                                              
+\caption{Confusion matrix - Linear classifier, truncated to 10 dimenstions}
+\label{table:Lin_conf_10_trunc}                                            
+\end{table} 
 \section{Discussion}
 
 \fxnote{Diskuter resultater og evt forbedringer}
+\fxnote{Referer til almindelige resulater i relevente sectioner}
