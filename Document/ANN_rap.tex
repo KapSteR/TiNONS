@@ -1,0 +1,14 @@
+\subsection*{Artificial Neural Networks}
+
+The overall network function for a two layer neural network, takes the form
+\begin{equation}
+y_k(\mathbf{x},\mathbf{w}) = \sigma \left( \sum_{j=1}^{M} w_{kj}^{(2)} h\left( \sum_{i}^{D} w_{ji}^{(1)} x_i + w_{j0}^{(1)} \right) + w_{k0}^{(2)} \right) 
+\label{eq:ANN_overall_rap}
+\end{equation}
+
+\paragraph*{Training}
+In the training of the neural network for a multi-class classification problem the following error-function is minimized.
+\begin{equation}
+E(\mathbf{w}) = \dfrac{1}{2} \sum_{n=1}^{N}\| \mathbf{y}(\mathbf{x}_n,\mathbf{w})-\mathbf{t}_n \|^2+\lambda| \mathbf{w}^T \cdot \mathbf{w}|
+\label{eq:ANN_error_rap}
+\end{equation}

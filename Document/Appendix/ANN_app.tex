@@ -26,7 +26,7 @@ D is the number of inputs, M is the number of hidden units and K is the number o
 
 \section{Method}
 In both the training and test phases the Netlab Toolbox  was used in MATLAB.
-In the training of the neural network for a multi class classification problem the following error-function is minimized.
+In the training of the neural network for a multi-class classification problem the following error-function is minimized.
 \begin{equation}
 E(\mathbf{w}) = \dfrac{1}{2} \sum_{n=1}^{N}\| \mathbf{y}(\mathbf{x}_n,\mathbf{w})-\mathbf{t}_n \|^2+\lambda| \mathbf{w}^T \cdot \mathbf{w}|
 \label{eq:ANN_error}
@@ -34,8 +34,11 @@ E(\mathbf{w}) = \dfrac{1}{2} \sum_{n=1}^{N}\| \mathbf{y}(\mathbf{x}_n,\mathbf{w}
 Where $ \mathbf{y}(\mathbf{x}_n,\mathbf{w}) $ is the network function with the parameters and biases in $ \mathbf{w} $ and the target vector, $ \mathbf{t}_n $, is written as a one-of-K-coding.
 By minimizing the error-function the parameter that are best for classifying this type of data is fund. 
 The parameter include number hidden units and the $\alpha$, which is the inverse variance of the Gaussian noise.
-The dataset that was used to make the    
-The number numbers of hidden units found to be optimal is 30.
+The dataset that was used on the error-function, was the single digit data.
+The reason for this, is the vast time it takes to minimizing the error-function, therefore the smallest dataset is used.
+This can however make a small error in the number of hidden units optimal for the big dataset of ten digits. 
+The number numbers of hidden units found to be optimal is 30, this is used on all of the dataset.
+
 \section{Results}
 Using ANN has been tried with different data complexities.
 Most notably, with speakers uttering the same single digit ("\textit{ZERO}"), two different digits ("\textit{ZERO}" and "\textit{ONE}"), and ten different digits ("\textit{ZERO}", "\textit{ONE}" through "\textit{NINE}").
@@ -124,3 +127,16 @@ Sensitivity [\%] & 95.2 & 83.4 & 89.5 & 89.4 \\
 \caption{Confusion matrix - 10 digits}                              
 \label{table:ANN_conf_10}                                           
 \end{table}
+
+
+\section{Discussion}
+In this project there the three test dataset.
+The CM of one digit is displayed on table \ref{fig:ANN_conf_1}, The overall accuracy of the linear classification is  calculated to 95.3 \%.
+The CM of two digits is displayed on table \ref{fig:ANN_conf_2}, The overall accuracy of the linear classification is  calculated to 93.1 \%.
+The CM of ten digits is displayed on table \ref{fig:ANN_conf_10}, The overall accuracy of the linear classification is  calculated to 89.4 \%.
+The CM of the classification show that the model has decreasing accuracy for higher numbers of digits.
+This probably because of the number of hidden units is calculated for the dataset of one digit.
+The result could be optimized for larger number of digits, if the minimization of the  error-function was used on the other dataset.
+This was not done because the process is very time consuming. 
+The overall accuracy of the ANN model is very good, and the model can be used as an reliable speaker recognition classifier.    
+\fxnote{Diskuter resultater og evt forbedringer ANN}

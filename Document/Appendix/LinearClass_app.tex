@@ -33,10 +33,10 @@ The result of the linear classifier is evaluated by applying a confusion matrix 
 The linear classifier is applied to the training dataset, containing feature vectors $(\mathbf{x}_n)$ and the target vectors $(\mathbf{t}_n)$.
 The vectors are on the form:
 \begin{equation}
-\mathbf{\tilde{X}}=\left[ \begin{array}{c}\mathbf{x}_1^T 1\\
-\mathbf{x}_2^T 1\\
+\mathbf{\tilde{X}}=\left[ \begin{array}{c}\mathbf{x}_1^T \quad 1\\
+\mathbf{x}_2^T \quad 1\\
 ...\\ 
-\mathbf{x}_n^T 1 \end{array} \right],
+\mathbf{x}_n^T \quad 1 \end{array} \right],
 \;
 \mathbf{T}=\left[ \begin{array}{c}
 \mathbf{t}_1^T\\ 
@@ -183,5 +183,10 @@ Sensitivity [\%] & 47.3 & 44.7 & 60.0 & 50.6 \\
 \section{Discussion}
 In this project there are three test dataset, one for 1 digit and another for 2 and 10 digits.
 The target vector and the estimated target for the test of 1 digit is shown on figure \ref{fig:Lin_fig_1}.
-The confusion matrix (CM) is calculated using the MATLAB code show on figure ??. 
-The CM is displayed on table ??, The overall accuracy of the linear classification is  calculated to ?? \%
+The confusion matrix (CM) is calculated using the MATLAB code. 
+The CM of one digit is displayed on table \ref{fig:Lin_conf_1}, The overall accuracy of the linear classification is  calculated to 55.9 \%.
+The CM of two digits is displayed on table \ref{fig:Lin_conf_2}, The overall accuracy of the linear classification is  calculated to 51.2 \%.
+The CM of ten digits is displayed on table \ref{fig:Lin_conf_10}, The overall accuracy of the linear classification is  calculated to 50.6 \%.
+The CM of the classification show that the model has decreasing accuracy for higher numbers of digits.
+Generally the linear classifier is not optimal for speaker recognition, this also shows in the accuracy. 
+The model is still over the accuracy of 33 \%, which is a random classifier, but not as reliable as the other model, later in the rapport. 
