@@ -34,8 +34,11 @@ E(\mathbf{w}) = \dfrac{1}{2} \sum_{n=1}^{N}\| \mathbf{y}(\mathbf{x}_n,\mathbf{w}
 Where $ \mathbf{y}(\mathbf{x}_n,\mathbf{w}) $ is the network function with the parameters and biases in $ \mathbf{w} $ and the target vector, $ \mathbf{t}_n $, is written as a one-of-K-coding.
 By minimizing the error-function the parameter that are best for classifying this type of data is fund. 
 The parameter include number hidden units and the $\alpha$, which is the inverse variance of the Gaussian noise.
-The dataset that was used to make the    
-The number numbers of hidden units found to be optimal is 30.
+The dataset that was used on the error-function, was the single digit data.
+The reason for this, is the vast time it takes to minimizing the error-function, therefore the smallest dataset is used.
+This can however make a small error in the number of hidden units optimal for the big dataset of ten digits. 
+The number numbers of hidden units found to be optimal is 30, this is used on all of the dataset.
+
 \section{Results}
 Using ANN has been tried with different data complexities.
 Most notably, with speakers uttering the same single digit ("\textit{ZERO}"), two different digits ("\textit{ZERO}" and "\textit{ONE}"), and ten different digits ("\textit{ZERO}", "\textit{ONE}" through "\textit{NINE}").
@@ -124,3 +127,8 @@ Sensitivity [\%] & 95.2 & 83.4 & 89.5 & 89.4 \\
 \caption{Confusion matrix - 10 digits}                              
 \label{table:ANN_conf_10}                                           
 \end{table}
+
+
+\section{Discussion}
+
+\fxnote{Diskuter resultater og evt forbedringer ANN}
