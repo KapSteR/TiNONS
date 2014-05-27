@@ -7,6 +7,7 @@ disp('Input Data')
 
 load('DATA\TrainingSet1PCA.mat');
 x_train = x_train(:,1:end-1); % Remove bias column of 1's
+x_train = x_train(:,1:10);
 x_train = x_train(1:N1+N2,:);
 
 [value, t_train] = max(t,[],2);
@@ -14,6 +15,7 @@ t_train = t_train(1:N1+N2);
 
 load('DATA\TestSet1PCA.mat');
 x_test = x_test(:,1:end-1);% Remove bias column of 1's
+x_test = x_test(:,1:10);
 x_test = x_test(1:Nt1+Nt2,:);
 
 [value, t_test] = max(t,[],2);
