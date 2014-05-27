@@ -2,47 +2,43 @@
 
 \section{Theory}
 Artificial Neural Networks (ANN) also called multilayer perceptron, can be used as a model for pattern recognition. 
-In the linear models of classification is based on linear combinations of fixed nonlinear basis function $ \phi_j(x)$ on the form
-\begin{equation}
-y(\mathbf{x},\mathbf{w}) = f\left( \sum_{j=1}^{M}w_j \phi_j(x) \right)
-\label{eq:basisF} 
-\end{equation}
-ANN can extend this model by allowing the basis function $ \phi_j(x)$ to depend on parameters and then to allow these parameters to be adjusted together with the coefficients $ \left\lbrace w_j \right\rbrace $, during the training phase.
+The neural network model is a nonlinear function from a set of input variables $ \left\lbrace x_i \right\rbrace  $ transformed to a set of output variables $ \left\lbrace y_k \right\rbrace  $ controlled by the weight vector \textbf{w}, which is made of adjustable parameters.
+The number of hidden units between the input and the output can be adjusted to the dataset, the process is described in the method.
 
-The basic neural network model, which is a series of functional transformations. \fxnote{What?}
-In the model the input variables is a $ M $ linear combination $ x_1,...,x_D $ on the form
+The overall network function for a two layer neural network, takes the form
 \begin{equation}
-a_j = \sum_{i=1}^{D} w_{ij}^{(1)}x_i+w_{j0}^{(1)}
+y_k(\mathbf{x},\mathbf{w}) = \sigma \left( \sum_{j=1}^{M} w_{kj}^{(2)} h\left( \sum_{i}^{D} w_{ji}^{(1)} x_i + w_{j0}^{(1)} \right) + w_{k0}^{(2)} \right) 
+\label{eq:ANN_overall}
 \end{equation}
-Where $ j=1,...,M $ and superscript (1) is corresponding to the parameters of the first layer of the network.
-The parameters $ w_{ij}^{(1)}$ and $w_{j0}^{(1)} $ is respectively the weights and the biases. 
-The quantities $ a_j $ are called activations, each of them is transformed by an activation function $ h(\cdotp) $, resulting in $ z_j = h(a_j) $.
-Which correspond to the output of the basis function in \ref{eq:basisF}, that in neural network is called hidden units. Using the method of equation \ref{eq:basisF}, these quantities gets linearly combined again to give output unit activations  
-\begin{equation}
-a_k = \sum_{j=1}^{M} w_{kj}^{(2)}z_j+w_{k0}^{(2)}
-\end{equation}
-where $ k = 1,...,K $ and $ K $ is the total numbers of outputs. 
-This is the second transform and therefore corresponds to the second layer of the network.
-The output unit activations can be transformed using another activation function, resulting in a set of network outputs $ y_k $.
-The activation function is chosen depending on the data and distribution.
-In a multiple binary classification problem, each output unit activation is transformed using a logistic sigmoid function:
-\begin{equation}
-y_k = \sigma(a_k), \qquad \sigma(a) = \dfrac{1}{1+\mathtt{exp}(-a)}
-\end{equation}
-   
+The superscript (1) and (2) indicates which layer the parameter is in, also shown on the parameters in figure \ref{fig:ANN_fig_theory}. 
+Both $ \sigma(\cdot) $ and $ h(\cdot) $ are activation functions, which can be chosen to be either the logistic sigmoid or the tanh function.
+The part with $ h(...) $ is in the context of ANN called the hidden units. 
+D is the number of inputs, M is the number of hidden units and K is the number of outputs.
+
+
+  
 \begin{figure}[H]
 \centering
 \includegraphics{Figure5_1}
-\caption{Results of using ANN with 3 speakers, 30 hidden variables and 1 digit spoken} \fxnote{Figurtext?}
+\caption{Diagram of the two layer neural network. The nodes in the figure represents the input, hidden and output variable. The links between the nodes are the weight parameters. The figure is taken from \fxnote{ref til bishop}} 
 \label{fig:ANN_fig_theory}
 \end{figure}
 
 \section{Method}
-
-
-
+In both the training and test phases the Netlab Toolbox  was used in MATLAB.
+In the training of the neural network for a multi class classification problem the following error-function is minimized.
+\begin{equation}
+E(\mathbf{w}) = \dfrac{1}{2} \sum_{n=1}^{N}\| \mathbf{y}(\mathbf{x}_n,\mathbf{w})-\mathbf{t}_n \|^2+\lambda| \mathbf{w}^T \cdot \mathbf{w}|
+\label{eq:ANN_error}
+\end{equation}
+Where $ \mathbf{y}(\mathbf{x}_n,\mathbf{w}) $ is the network function with the parameters and biases in $ \mathbf{w} $ and the target vector, $ \mathbf{t}_n $, is written as a one-of-K-coding.
+By minimizing the error-function the parameter that are best for classifying this type of data is fund. 
+The parameter include number hidden units and the $\alpha$, which is the inverse variance of the Gaussian noise.
+The dataset that was used to make the    
+The number numbers of hidden units found to be optimal is 30.
 \section{Results}
-
+Using ANN has been tried with different data complexities.
+Most notably, with speakers uttering the same single digit ("\textit{ZERO}"), two different digits ("\textit{ZERO}" and "\textit{ONE}"), and ten different digits ("\textit{ZERO}", "\textit{ONE}" through "\textit{NINE}").
 
 \subsection{Single digit:}
 \begin{figure}[H]
