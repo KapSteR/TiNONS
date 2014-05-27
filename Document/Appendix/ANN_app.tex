@@ -130,10 +130,13 @@ Sensitivity [\%] & 95.2 & 83.4 & 89.5 & 89.4 \\
 
 
 \section{Discussion}
-In this project there are three test dataset, one for 1 digit and another for 2 and 10 digits.
-The confusion matrix (CM) is calculated using the MATLAB code. 
+In this project there the three test dataset.
 The CM of one digit is displayed on table \ref{fig:ANN_fig_1}, The overall accuracy of the linear classification is  calculated to 95.3 \%.
 The CM of two digits is displayed on table \ref{fig:ANN_fig_2}, The overall accuracy of the linear classification is  calculated to 93.1 \%.
 The CM of ten digits is displayed on table \ref{fig:ANN_fig_10}, The overall accuracy of the linear classification is  calculated to 89.4 \%.
 The CM of the classification show that the model has decreasing accuracy for higher numbers of digits.
+This probably because of the number of hidden units is calculated for the dataset of one digit.
+The result could be optimized for larger number of digits, if the minimization of the  error-function was used on the other dataset.
+This was not done because the process is very time consuming. 
+The overall accuracy of the ANN model is very good, and the model can be used as an reliable speaker recognition classifier.    
 \fxnote{Diskuter resultater og evt forbedringer ANN}
