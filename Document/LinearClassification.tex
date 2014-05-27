@@ -1,1 +1,32 @@
 \subsection*{Linear Classification}
+
+\begin{equation}
+y(\mathbf{x}) = \mathbf{w}^T \mathbf{x}+w_0
+\label{eq:lin_output}
+\end{equation}
+
+\paragraph*{Training}
+The linear classifier is applied to the training dataset, containing feature vectors $(\mathbf{x}_n)$ and the target vectors $(\mathbf{t}_n)$.
+The vectors are on the form:
+\begin{equation}
+\mathbf{\tilde{X}}=\left[ \begin{array}{c}\mathbf{x}_1^T \quad 1\\
+\mathbf{x}_2^T \quad 1\\
+...\\ 
+\mathbf{x}_n^T \quad 1 \end{array} \right],
+\;
+\mathbf{T}=\left[ \begin{array}{c}
+\mathbf{t}_1^T\\ 
+\mathbf{t}_2^T\\ 
+...\\
+\mathbf{t}_n^T
+\end{array} \right]
+\label{eq:linearVectors}  
+\end{equation} 
+
+This calculation are done to determine the $\tilde{\mathbf{W}}$:
+\begin{equation}
+\tilde{\mathbf{W}} = \tilde{\mathbf{X}}^\dagger \mathbf{T} \approx  (\tilde{\mathbf{X}}^T \tilde{\mathbf{X}}+\mathbf{I})^{-1} \tilde{\mathbf{X}}^T\mathbf{T}
+\label{eq:weightVector}  
+\end{equation}
+
+
