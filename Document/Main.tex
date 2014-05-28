@@ -1,0 +1,54 @@
+\input{preample}
+
+%FixMe pakken viser små kommentarer, hvor der skal rettes
+%--------------------------------------------------
+%Brug med følgende: \fxnote{det her skal uddybes!} 
+%Se liste over alle fixMe's: \listoffixmes
+%Erstat 'draft' med 'final' for at fjerne alle kommentarer
+%--------------------------------------------------
+\usepackage[footnote,draft,english,silent,nomargin]{fixme}
+
+
+\begin{document}
+\title{TINON Project: Speaker recognition}
+
+\author{Kasper Nielsen}%Forfatter 1
+\author{Alexander Rasborg Knudsen}%Forfatter 2
+\affiliation{Department of Engineering, Aarhus Universitet} 
+\date{\today} %Dato.
+
+\begin{abstract}
+\bigskip
+
+\end{abstract}
+
+\maketitle
+\noindent
+
+\input{Introduction}
+
+\input{DataCollection}
+
+\input{FeatureExtraction}
+
+\input{Classification}
+
+\input{LinearClassification}
+
+\input{DimensionalityReduction}
+
+\input{ANN_rap}
+
+\input{GaussianClassifier}
+
+\input{VM_rap}
+
+
+\bibliographystyle{ieeetr}
+\renewcommand{\bibname}{2 Reference Document}
+\addcontentsline{toc}{chapter}{2 Reference Document}
+\bibliography{10731@post.au.dk-RefList}
+
+
+
+\end{document}
