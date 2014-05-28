@@ -70,25 +70,7 @@ The result of this equation
 shows the most likely class for each of the given feature vectors. 
 The resulting vector is placed in a vector $\mathbf{t}_{est}$, which contains the classification and ranges over the three classes $\left\lbrace 1,2,3\right\rbrace $. 
 
-To evaluate the linear classifier, the confusion matrix is an ideal way of doing so.
-The confusion matrix can show the classifications sensitivity, precision and accuracy for each class. 
-The terms used to describe this is: false positive (FP), true positive (TP), false negative (FN) and true negative (TN).
-The true terms are classes that are correctly classified and false terms are incorrectly classified.
-The sensitivity is the probability of classifying the inputs as class $X$ for a input that are class $X$.
-\begin{equation}
-\mathtt{sensitivity}(X) = \dfrac{TP_X}{TP_X+\Sigma FN_X}
-\label{eq:sensitivity}
-\end{equation}
-The precision is the probability for the estimated of class $X$ is correct.
-\begin{equation}
-\mathtt{precision}(X) = \dfrac{TP_X}{TP_X+\Sigma FP_X}
-\label{eq:precision}
-\end{equation}
-The accuracy is the probability that the classification of any given class is correct, where N = total number of tests.
-\begin{equation}
-\mathtt{accuray}(X) = \dfrac{\Sigma TP_X}{\mathtt{N}}
-\label{eq:accuracy}
-\end{equation}
+
 
 
 
