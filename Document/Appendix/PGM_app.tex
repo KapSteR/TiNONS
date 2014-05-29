@@ -4,5 +4,17 @@ In this part of the appendix, describes the Probabilistic Generative models (PGM
 \section{Theory} 
 The model is a multivariate normal distribution, which means that each class corresponds to a unique distribution.
 \begin{equation}
-p(\mathbf{x}|C_k)=\mathcal{N}(\mathbf{x};\mathbf{\mu}_k, \; \Sigma_k)
+p(\mathbf{x}|C_k)=\mathcal{N}(\mathbf{x};\mathbf{\mu}_k, \; \Sigma_k) = \dfrac{1}{(2\pi)^{D/2}} \dfrac{1}{\left|\mathbf{\Sigma} \right|^{1/2}} \mathtt{exp} \left\lbrace -\dfrac{1}{2} (\mathbf{x}-\mathbf{\mu}_k)^T \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu}_k) \right\rbrace
+\label{eq:gauss_dist} 
 \end{equation}
+The probability distribution is used in addition to the prior probability of each class, This enables the possibility to calculate the posterior probability of a class given a feature vector from Bayes theorem.
+\begin{equation}
+p(C_k |\mathbf{x}) = \dfrac{p(\mathbf{x}|C_k) p(C_k)}{\sum_j p(\mathbf{x}|C_j) p(C_j)}
+\label{eq:posteriorP}
+\end{equation}
+The prior probabilities for each class are approximated to be equal, to indicate that class \textit{k} is as frequent as class \textit{j}, which leads to a simplification of Bayes theorem.
+\begin{equation}
+p(C_k) = p(C_j) = a \Longrightarrow p(C_k |\mathbf{x}) = \dfrac{a \cdot p(\mathbf{x}|C_k) }{a \cdot \sum_j p(\mathbf{x}|C_j) } = \dfrac{p(\mathbf{x}|C_k)}{\sum_j p(\mathbf{x}|C_j)}
+\label{eq:posteriorPsimple}
+\end{equation}
+
