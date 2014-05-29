@@ -5,34 +5,31 @@ binary classifier, problem with multi class.
 
 \section{Results}
 
-\subsection{Single digit:}
-
 \begin{figure}[H]
 \centering
-\includegraphics{SVM_1digit_PCA10}
+\includegraphics{SVM_3_1digit_PCA10}
 \caption{Results of using SVM classifiers and one digit spoken}
-\label{fig:Lin_fig_10}
+\label{fig:SVM3_1dig_PCA}
 \end{figure}
 
 \begin{table}[H]                                                    
 \centering                                                          
-\begin{tabular}{|l|c|c|c|}                                          
-\hline                                              
-  & Speaker Jacob & Speaker Mose & Precision [\%] \\
-\hline                                              
-Estimate Jacob & 3454.0 & 211.0 & 94.2 \\           
-\hline                                              
-Estimate Mose & 0.0 & 3243.0 & 100.0 \\             
-\hline                                              
-Sensitivity [\%] & 100.0 & 93.9 & 96.9 \\           
-\hline                                              
-\end{tabular}                                       
-\caption{Confusion matrix - 1 digit}                
-\label{table:SVM_conf_1}                            
+\begin{tabular}{|l|c|c|c|c|}                                        
+\hline                                                              
+  & Speaker Jacob & Speaker Mose & Speaker Simon & Precision [\%] \\
+\hline                                                              
+Estimate Jacob & 3454.0 & 1408.0 & 1002.0 & 58.9 \\                 
+\hline                                                              
+Estimate Mose & 0.0 & 1746.0 & 12.0 & 99.3 \\                       
+\hline                                                              
+Estimate Simon & 0.0 & 300.0 & 2440.0 & 89.1 \\                     
+\hline                                                              
+Sensitivity [\%] & 100.0 & 50.6 & 70.6 & 73.7 \\                    
+\hline                                                              
+\end{tabular}                                                       
+\caption{Confusion matrix - 1 digit}                                
+\label{table:SVM_3_conf_1}                                          
 \end{table} 
 
-\subsection{Two digits:}
-
-\subsection{Ten digits:}
 
 \section{Discussion}

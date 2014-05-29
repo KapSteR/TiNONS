@@ -32,13 +32,13 @@ classEst3 = zeros(size(classEst2));
 
 for i = 1:size(classEst1,1)
     if (class12(i) && class13(i))
-        classEst1(i) = 1-1;
+        classEst1(i) = 1;%-1;
         
     elseif (not(class12(i)) && class23(i))
-        classEst2(i) = 2-1;
+        classEst2(i) = 1;%-1;
         
     elseif (not(class13(i)) && not(class23(i)))
-        classEst3(i) = 3-1;
+        classEst3(i) = 1;%3-1;
     else
         classEst1(i) = NaN;
         classEst2(i) = NaN;
