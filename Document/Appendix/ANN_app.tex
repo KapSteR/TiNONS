@@ -37,7 +37,19 @@ The parameter include number hidden units and the $\alpha$, which is the inverse
 The dataset that was used on the error-function, was the single digit data.
 The reason for this, is the vast time it takes to minimizing the error-function, therefore the smallest dataset is used.
 This can however make a small error in the number of hidden units optimal for the big dataset of ten digits. 
-The number numbers of hidden units found to be optimal is 30, this is used on all of the dataset.
+
+The ANN was trained for the following number of hidden values: $ [10\ 20\ 50\ 100\ 200\ 300] $.
+For each number of hidden values the training was done for $ 8 $ different values of $ \alpha $, uniformly space between 0 and 1.
+for each value of alpha the training was tried 8 times and the mean and variance of the error was recorded. The results are visible below in Figure \ref{fig:ANN_error}.
+
+\begin{figure}[H]
+\centering
+\includegraphics{ANN_error}
+\caption{Results of parametric analysis. Mean error displayed.}
+\label{fig:ANN_error}
+\end{figure}
+
+The number of hidden units was found to be optimal at 30, with an $ \alpha $ of 0.30. This is used for all of the datasets.
 
 \section{Results}
 Using ANN has been tried with different data complexities.
