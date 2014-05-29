@@ -11,7 +11,9 @@ p(\mathbf{x}|C_k)=
 \end{equation}
 The probability distribution is used in addition to the prior probability of each class, This enables the possibility to calculate the posterior probability of a class given a feature vector from Bayes theorem.
 \begin{equation}
-p(C_k |\mathbf{x}) = \dfrac{p(\mathbf{x}|C_k) p(C_k)}{\sum_j p(\mathbf{x}|C_j) p(C_j)}
+p(C_k |\mathbf{x}) =
+\dfrac{p(\mathbf{x}|C_k) p(C_k)}
+{\sum_j p(\mathbf{x}|C_j) p(C_j)}
 \label{eq:posteriorP}
 \end{equation}
 The prior probabilities for each class are approximated to be equal, to indicate that class \textit{k} is as frequent as class \textit{j}, which leads to a simplification of Bayes theorem.
@@ -25,7 +27,16 @@ p(C_k) = p(C_j) = \alpha \Longrightarrow p(C_k |\mathbf{x}) =
 \label{eq:posteriorPsimple}
 \end{equation}
 
+
 \section{Method}
+To make the generative models the mean vector and covariance matrix for each class was calculated using all the training data for the respective classes.
+The class-conditional densities, for all samples and for all speaker models was then calculated using (\ref{eq:gauss_dist}).
+Then the posterior probability for all classes are calculated using Bayes' theorem (\ref{eq:posteriorP}) and assuming uniform class priors.
+Finally the samples were classified by comparing posterior probabilities for all classes and selecting the greatest.
+
+
+
+
 
 \section{Results}
 
