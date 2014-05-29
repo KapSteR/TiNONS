@@ -93,54 +93,54 @@ confMatrix
 disp(['Accuracy is: ', num2str(confMatrix(end)*100), '%'])
 names
 
-% Make image
-
-figurePath = '..\Document\Appendix\Figures';
-this = pwd
-cd(figurePath)
-print -f2 -r600 -depsc SVM_3_1digit_PCA10
-cd(this)
-
-
-
-disp('')
-conMatLatex.tableCloumnHeaders = {
-    ['Speaker ', char(names(1))]
-    ['Speaker ', char(names(2))]
-    ['Speaker ', char(names(3))]
-    'Precision [\%]'
-    };
-
-conMatLatex.tableRowLabels = {
-    ['Estimate ', char(names(1))]
-    ['Estimate ', char(names(2))]
-    ['Estimate ', char(names(3))]
-    'Sensitivity [\%]'
-    };
-
-conMatLatex.tableData = confMatrix;
-conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
-conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
-
-conMatLatex.tableDataRowFormat = {'%.1f'};
-
-% Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
-conMatLatex.tableColumnAlignment = 'c';
-
-% Switch table borders on/off:
-conMatLatex.tableBorders = 1; 
-
-% LaTex table caption:
-conMatLatex.tableCaption = 'Confusion matrix - 1 digit';
-
-% LaTex table label:
-conMatLatex.tableLabel = 'SVM_3_conf_1';
-
-% Switch to generate a complete LaTex document or just a table:
-conMatLatex.makeCompleteLatexDocument = 0;
-
-% Now call the function to generate LaTex code:
-latex = latexTable(conMatLatex);
+% % Make image
+% 
+% figurePath = '..\Document\Appendix\Figures';
+% this = pwd
+% cd(figurePath)
+% print -f2 -r600 -depsc SVM_3_1digit_PCA10
+% cd(this)
+% 
+% 
+% 
+% disp('')
+% conMatLatex.tableCloumnHeaders = {
+%     ['Speaker ', char(names(1))]
+%     ['Speaker ', char(names(2))]
+%     ['Speaker ', char(names(3))]
+%     'Precision [\%]'
+%     };
+% 
+% conMatLatex.tableRowLabels = {
+%     ['Estimate ', char(names(1))]
+%     ['Estimate ', char(names(2))]
+%     ['Estimate ', char(names(3))]
+%     'Sensitivity [\%]'
+%     };
+% 
+% conMatLatex.tableData = confMatrix;
+% conMatLatex.tableData(end,:) = conMatLatex.tableData(end,:)*100; 
+% conMatLatex.tableData(1:end-1,end) = conMatLatex.tableData(1:end-1,end)*100;
+% 
+% conMatLatex.tableDataRowFormat = {'%.1f'};
+% 
+% % Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
+% conMatLatex.tableColumnAlignment = 'c';
+% 
+% % Switch table borders on/off:
+% conMatLatex.tableBorders = 1; 
+% 
+% % LaTex table caption:
+% conMatLatex.tableCaption = 'Confusion matrix - 1 digit';
+% 
+% % LaTex table label:
+% conMatLatex.tableLabel = 'SVM_3_conf_1';
+% 
+% % Switch to generate a complete LaTex document or just a table:
+% conMatLatex.makeCompleteLatexDocument = 0;
+% 
+% % Now call the function to generate LaTex code:
+% latex = latexTable(conMatLatex);
 
 toc
 
