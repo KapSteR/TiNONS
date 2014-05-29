@@ -5,7 +5,7 @@ clear; clc;
 tic
 disp('Input Data')
 
-load('DATA\TrainingSet1PCA.mat');
+load('DATA\TrainingSet2PCA.mat');
 x_train = x_train(:,1:end-1); % Remove bias column of 1's
 % x_train = x_train(:,1:10);
 % x_train = x_train(1:N1+N2,:);
@@ -13,7 +13,7 @@ x_train = x_train(:,1:end-1); % Remove bias column of 1's
 [value, t_train] = max(t');
 % t_train = t_train(1:N1+N2)';
 
-load('DATA\TestSet1PCA.mat');
+load('DATA\TestSet2PCA.mat');
 x_test = x_test(:,1:end-1);% Remove bias column of 1's
 % x_test = x_test(:,1:10);
 % x_test = x_test(1:Nt1+Nt2,:);
@@ -116,7 +116,7 @@ names
 figurePath = '..\Document\Appendix\Figures';
 this = pwd
 cd(figurePath)
-print -f2 -r600 -depsc PGM_1digit
+print -f2 -r600 -depsc PGM_2digit
 cd(this)
 
 
@@ -149,10 +149,10 @@ conMatLatex.tableColumnAlignment = 'c';
 conMatLatex.tableBorders = 1;
 
 % LaTex table caption:
-conMatLatex.tableCaption = 'Confusion matrix - 1 digit';
+conMatLatex.tableCaption = 'Confusion matrix - 2 digits';
 
 % LaTex table label:
-conMatLatex.tableLabel = 'PGM_conf_1';
+conMatLatex.tableLabel = 'PGM_conf_2';
 
 % Switch to generate a complete LaTex document or just a table:
 conMatLatex.makeCompleteLatexDocument = 0;
