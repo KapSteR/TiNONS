@@ -20,7 +20,7 @@ D is the number of inputs, M is the number of hidden units and K is the number o
 \begin{figure}[H]
 \centering
 \includegraphics{Figure5_1}
-\caption{Diagram of the two layer neural network. The nodes in the figure represents the input, hidden and output variable. The links between the nodes are the weight parameters. The figure is taken from \fxnote{ref til bishop}} 
+\caption{Diagram of the two layer neural network. The nodes in the figure represents the input, hidden and output variable. The links between the nodes are the weight parameters. The figure is borrowed from \cite{bishop2007}} 
 \label{fig:ANN_fig_theory}
 \end{figure}
 
@@ -131,9 +131,9 @@ Sensitivity [\%] & 95.2 & 83.4 & 89.5 & 89.4 \\
 
 \section{Discussion}
 In this project there the three test dataset.
-The CM of one digit is displayed on table \ref{fig:ANN_conf_1}, The overall accuracy of the linear classification is  calculated to 95.3 \%.
-The CM of two digits is displayed on table \ref{fig:ANN_conf_2}, The overall accuracy of the linear classification is  calculated to 93.1 \%.
-The CM of ten digits is displayed on table \ref{fig:ANN_conf_10}, The overall accuracy of the linear classification is  calculated to 89.4 \%.
+The CM of one digit is displayed on table \ref{table:ANN_conf_1}, The overall accuracy of the linear classification is  calculated to 95.3 \%.
+The CM of two digits is displayed on table \ref{table:ANN_conf_2}, The overall accuracy of the linear classification is  calculated to 93.1 \%.
+The CM of ten digits is displayed on table \ref{table:ANN_conf_10}, The overall accuracy of the linear classification is  calculated to 89.4 \%.
 The CM of the classification show that the model has decreasing accuracy for higher numbers of digits.
 This probably because of the number of hidden units is calculated for the dataset of one digit.
 The result could be optimized for larger number of digits, if the minimization of the  error-function was used on the other dataset.
