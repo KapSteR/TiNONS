@@ -6,4 +6,33 @@ HMM is focused on speech recognition and not speaker recognition, which is this 
 \section{Theory}   
 The HMM is developed to process sequential information in the data, in other models the features have been treated as independent and identical distribution.
 When classifying speech from a sequence of data recorded over time, the features tend to be strongly associate with the previous features.
-The associated features can be exploited by the HMM to classify.          
+The associated features can be exploited by the Markov model to classify, the model uses join distributions to link the relationship between two or more successive data points $ \left\lbrace \mathbf{x}_1,...,\mathbf{x}_N \right\rbrace  $.
+\begin{equation}
+p(\mathbf{x}_1,...,\mathbf{x}_N) = 
+\prod_{n=2}^{N} 
+p(\mathbf{x}_n | \mathbf{x}_1,...,\mathbf{x}_{n-1})
+\label{eq:HMM_JD}
+\end{equation} 
+The right hand-side describes the probability of a transition from one data point to the next.
+
+If the data is noisy, an addition to Markov model can be used, which is called Hidden Markov model.
+The HMM uses discrete hidden states $ \left\lbrace \mathbf{z}_1,..., \mathbf{z}_N \right\rbrace  $.
+The jointed distributions in the HMM can be formulated so
+\begin{equation}
+p(\mathbf{X},\mathbf{Z}|\Theta) = 
+p(\mathbf{z}_1|\pi)
+\left(\prod_{n=2}^{N} p(\mathbf{z}_n|\mathbf{z}_{n-1},\mathbf{A}) \right)
+\prod_{m=1}^{N} p(\mathbf{x}_m|\mathbf{z}_m,\phi) 
+\label{eq:HMM}
+\end{equation}
+Where $ \mathbf{X} = \left\lbrace \mathbf{x}_1,...,\mathbf{x}_N \right\rbrace  $, $ \mathbf{Z} = \left\lbrace \mathbf{z}_1,...,\mathbf{z}_N \right\rbrace  $ and $ \Theta = \left\lbrace \pi, \mathbf{A}, \phi \right\rbrace  $ is the models parameters. The parameter $ \pi $, is the initial parameter and \textbf{A} is the transition parameter, which holds the probabilities for transition between each hidden state.
+The parameter $ \phi $, is the emission parameter. 
+
+Given a set of data points the goal is to determine the model parameters in the HMM. This can be done by applying an estimation maximization algorithm on the following equation
+\begin{equation}
+Q(\Theta,\Theta^{\mathtt{old}})=
+\sum_{\mathbf{z}}^{} p(\mathbf{X},\mathbf{Z}|\Theta^{\mathtt{old}})
+\ln p(\mathbf{X},\mathbf{Z}|\Theta)
+\end{equation}
+
+             
