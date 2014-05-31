@@ -1,20 +1,30 @@
 \chapter{K-means clustering}
 K-means clustering is an unsupervised machine learning algorithm for finding sub populations in unlabelled data.
-It basically works by iteratively estimating K cluster means and assigning responsibility according to euclidean distance.
+It has not been applied to this case, but is reviewed for sake of completeness and to help understanding of Gaussian Mixture Models (See chapter \ref{sec:GMM}) 
+\section{Theory} 
 
-\section{The K-means algorithm}
+K-means basically works by iteratively estimating K cluster means and assigning responsibility according to euclidean distance.
+
+\subsection{The K-means algorithm}
 \begin{enumerate}
 
 \item
 Choose the number, K, of clusters to fit.
 
 \item
-Pick K random guesses of mean values, or mean vector for multi dimensional data.
+Pick K random guesses of mean values or mean vector $ \bm{\mu}_k $ for multi dimensional data.
 
+\item \label{itm:Kmean_Est}
+Assign responsibility of all data point by smallest euclidean distance to cluster mean.
+
+\item \label{itm:Kmean_Max}
+Estimate new cluster means from cluster assignments
+
+\item
+Repeat from \ref{itm:Kmean_Est}. until stopping criteria is met e.g. no change in cluster assignments or change in cluster means below pre-set threshold. 
 
 \end{enumerate}
 
 
 In project like this K-means could used to make a sort of mixture model of each speaker, by fitting a number of clusters to the different unique sounds the individual speaker makes and then for a series of samples evaluating which speaker is most likely to have emitted the sounds.
-
-\section{Theory}   
+  
