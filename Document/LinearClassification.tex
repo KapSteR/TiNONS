@@ -1,5 +1,10 @@
 \subsection*{Linear Classification}
-
+In linear classification the decision surfaces are linear functions of the input vector $\mathbf{x}$.
+the target of the classification is labelled in the target variable $\mathbf{t}$, using the target values to represent class labels.
+In this project there are 3 different speakers, $K = 3$ then the target vector for class 3 be $\mathbf{t} = (0, 0, 1)^T$.
+The value of $t_k$ can be interpreted as the probability of the given class being class $C_k$.
+To assign each vector $\mathbf{x}$ with a specific class.
+The linear discriminant function in its simplest form
 \begin{equation}
 y(\mathbf{x}) = \mathbf{w}^T \mathbf{x}+w_0
 \label{eq:lin_output}
@@ -30,4 +35,4 @@ This calculation are done to determine the $\tilde{\mathbf{W}}$:
 \end{equation}
 
 \paragraph*{Result}
-The result of the ANN is the total accuracy of 55.9, 51.2 and 50.6 \% respectively for one, two and ten digits. 
+The result of the linear classifier is a total accuracy of 55.9, 51.2 and 50.6 \% respectively for one, two and ten digits. 
