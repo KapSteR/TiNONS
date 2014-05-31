@@ -6,6 +6,7 @@ It has not been applied to this case, but is reviewed for sake of completeness a
 K-means basically works by iteratively estimating K cluster means and assigning responsibility according to euclidean distance.
 
 \subsection{The K-means algorithm}
+
 \begin{enumerate}
 
 \item
@@ -41,7 +42,7 @@ Estimate new cluster means from cluster assignments
 Repeat from \ref{itm:Kmean_Est}. until stopping criteria is met e.g. no change in cluster assignments or change in cluster means below pre-set threshold. 
 
 \end{enumerate}
-\textbf{}
+
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[H]{0.3\linewidth}
@@ -95,5 +96,9 @@ Repeat from \ref{itm:Kmean_Est}. until stopping criteria is met e.g. no change i
 
 \end{figure}
 
-In project like this K-means could used to make a sort of mixture model of each speaker, by fitting a number of clusters to the different unique sounds the individual speaker makes and then for a series of samples evaluating which speaker is most likely to have emitted the sounds.
+\section{Discussion}
+
+In this project K-means could have been used to make a sort of mixture model of each speaker, by fitting a number of clusters to the different unique sounds the individual speaker makes and then for a series of samples evaluating which speaker is most likely to have emitted the sounds.
+
+It has been elected not to try to apply K-means to this project as it does not fit this application very well, as opposed like other more advanced methods like Artificial Neural Networks (Chapter \ref{sec:ANN}) or Gaussian Mixture Models (Chapter \ref{sec:GMM}).
   
