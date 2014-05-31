@@ -55,7 +55,10 @@ If the classifier says $ \mathbf{x}_{new} $ is in the $ i^{th} $ class this clas
 The class which has received the most votes is then the winning class.
  
 \section{Method}
-
+the implementation of the SVM classifier, the soft margin version was used.
+The kernel used in this project was the Gaussian kernel.  
+The three classes in this case is determined by the one-vs.-one setup. 
+250000 iterations took
 
 \section{Results}
 
@@ -87,3 +90,7 @@ Sensitivity [\%] & 100.0 & 50.6 & 70.6 & 73.7 \\
 
 
 \section{Discussion}
+The SVM was applied on the dataset containing tree speakers saying one digit.
+The model was not applied on the other dataset because the large number of iteration it took to get a result.
+The other reason is that the result of the smallest data isn't the best 
+The confusion matrix is shown on table \ref{table:SVM_3_conf_1} and having a overall accuracy of 73,3 \%.
