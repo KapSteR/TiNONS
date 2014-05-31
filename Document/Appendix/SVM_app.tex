@@ -1,5 +1,6 @@
 \chapter{Support Vector Machines}
 \section{Theory}
+
 In this section of the appendix the soft margin support vector machine (SVM) is described. The SVM is a binary classifier, which is a problem with multi class. 
 The solution for multiclass classification is using a one-vs.-one setup.
 With only three classes this is achieved with relative ease. 
@@ -10,8 +11,15 @@ The margin is the perpendicular distance from the decision boundary to the close
 The standard SVM have a linear decision boundary, which classifies by assigning the new data point to either class $ t=1 $ or $ t=-1 $. 
 The decision function for a standard SVM for a test point $ x_{new} $ given by
 \begin{equation}
-t_{new} = sign(\mathbf{w}^T \mathbf{x}_{new} +b)
+t_{new} = \mathtt{sign}(\mathbf{w}^T \mathbf{x}_{new} +b)
+\label{eq:SVM_lin}
 \end{equation}
+The parameter vector $ \mathbf{w} $ is found by maximizing the margin or minimizing the length of the parameter vector, because of the inverse relationship $ \gamma = \frac{1}{\|\mathbf{w}\|} $.
+Moving one single data point can have a huge influence on the position of the decision boundary, The reason is in the constrain
+\begin{equation}
+t_n(\mathbf{w}^T \mathbf{x}_n + b) \geq 1
+\end{equation}   
+
  
 \section{Method}
 Radial basis function (gauss med samme variance i alle retninger) 
