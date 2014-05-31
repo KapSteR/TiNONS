@@ -6,7 +6,8 @@ The model is a multivariate normal distribution, which means that each class cor
 \begin{equation}
 p(\mathbf{x}|C_k)=
 \mathcal{N}(\mathbf{x};\mathbf{\mu}_k, \; \Sigma_k) =
- \dfrac{1}{(2\pi)^{D/2}} \dfrac{1}{\left|\mathbf{\Sigma} \right|^{1/2}} \mathtt{exp} \left\lbrace -\dfrac{1}{2} (\mathbf{x}-\mathbf{\mu}_k)^T \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu}_k) \right\rbrace
+ \dfrac{1}{(2\pi)^{D/2}} \dfrac{1}{\left|\mathbf{\Sigma} \right|^{1/2}} 
+ \mathtt{exp} \left\lbrace -\dfrac{1}{2} (\mathbf{x}-\mathbf{\mu}_k)^T \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu}_k) \right\rbrace
 \label{eq:gauss_dist} 
 \end{equation}
 The probability distribution is used in addition to the prior probability of each class, This enables the possibility to calculate the posterior probability of a class given a feature vector from Bayes theorem.
@@ -26,6 +27,7 @@ p(C_k) = p(C_j) = \alpha \Longrightarrow p(C_k |\mathbf{x}) =
 {\sum_j p(\mathbf{x}|C_j)}
 \label{eq:posteriorPsimple}
 \end{equation}
+
 
 
 \section{Method}
@@ -128,3 +130,14 @@ Sensitivity [\%] & 53.9 & 60.1 & 57.6 & 57.2 \\
 \end{table}
 
 \section{Discussion}
+Overall the accuracy of PGM ranging from $ 62.7 \% $ for single digit 
+\footnote{(See table \ref{table:PGM_conf_1})} 
+to $ 57.2 \% $ for all ten digits
+\footnote{(See table \ref{table:PGM_conf_10})}, is significant relative to a random classification of $ 33 \% $.
+It is though not good enough for reliable classification. 
+
+This is to be expected, as modelling all the sounds in a word or digit, let alone 10 of them, precisely with a single multivariate Gaussian is feasible.
+
+ 
+
+
