@@ -1,8 +1,20 @@
-\chapter{K-means Clustering}
-In this project the Hidden Markov models (HMM) is not used on the data.
-The reason for this is that the HMM is optimized for recognizing the sequence of the sounds which combines to a word.
-HMM is focused on speech recognition and not speaker recognition, which is this project works with.
+\chapter{K-means clustering}
+K-means clustering is an unsupervised machine learning algorithm for finding sub populations in unlabelled data.
+It basically works by iteratively estimating K cluster means and assigning responsibility according to euclidean distance.
+
+\section{The K-means algorithm}
+\begin{enumerate}
+
+\item
+Choose the number, K, of clusters to fit.
+
+\item
+Pick K random guesses of mean values, or mean vector for multi dimensional data.
 
 
+\end{enumerate}
 
-\section{theory}   
+
+In project like this K-means could used to make a sort of mixture model of each speaker, by fitting a number of clusters to the different unique sounds the individual speaker makes and then for a series of samples evaluating which speaker is most likely to have emitted the sounds.
+
+\section{Theory}   
