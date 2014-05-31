@@ -19,7 +19,10 @@ Moving one single data point can have a huge influence on the position of the de
 \begin{equation}
 t_n(\mathbf{w}^T \mathbf{x}_n + b) \geq 1
 \end{equation}   
-
+This however means that all the training features have sit on the correct side of the decision boundary.
+This way of classifying is called hard margin SVM, which can't handle overlapping classes.
+Therefore a slack to the constrains is introduced $ \xi_n $
+ 
  
 \section{Method}
 Radial basis function (gauss med samme variance i alle retninger) 
