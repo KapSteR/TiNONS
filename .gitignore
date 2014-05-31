@@ -163,3 +163,5 @@ proguard/
 
 # Windows lort
 *.db
+
+*/home.tex
