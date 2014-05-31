@@ -47,15 +47,16 @@ Instead of using a linear decision boundary, different kernels can be used to ma
 There are a linear kernel $ \mathbf{x}^T_n \mathbf{x}_{new} $, polynomial kernel $ (\gamma \mathbf{x}^T_n \mathbf{x}_{new} )^d,\; \gamma > 0 $.
 The kernel used in this project is the radial basis function $ \mathtt{exp}(-\gamma \|\mathbf{x}^T_n - \mathbf{x}_{new} \|^2 ), \; \gamma > 0 $, also called the Gaussian kernel.
 
-To extend this binary classifier to being able to handle multiclass classification a one-vs.-one  (also called all-vs.-all) setup is used. 
-This means that each of the classes is trained against all of the other classes. This results in $ k(k-1)/2 $ classifiers. 
+To expand this binary classifier to being able to process multiclass classification a one-vs.-one setup is used. 
+This means that each of the classes is trained against all of the other classes, this results in $ k(k-1)/2 $ classifiers. 
 The class assignment is then based on a voting between the different classifiers. 
-This is done by evaluating the classifier between the ith and the jth class.
-If the classifier says $ \mathbf{x}_{new} $ is in the ith class this class is incremented with one, otherwise the other class is incremented with one.
+This is implemented by evaluating the classifier between the $ i^{th} $ and the $ j^{th} $ class.
+If the classifier says $ \mathbf{x}_{new} $ is in the $ i^{th} $ class this class is raised with one.
 The class which has received the most votes is then the winning class.
  
 \section{Method}
-Radial basis function (gauss med samme variance i alle retninger) 
+
+
 \section{Results}
 
 \begin{figure}[H]
