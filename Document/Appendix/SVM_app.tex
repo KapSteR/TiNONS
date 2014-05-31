@@ -1,8 +1,20 @@
 \chapter{Support Vector Machines}
 \section{Theory}
-binary classifier, problem with multi class. 
-\section{Method}
+In this section of the appendix the soft margin support vector machine (SVM) is described. The SVM is a binary classifier, which is a problem with multi class. 
+The solution for multiclass classification is using a one-vs.-one setup.
+With only three classes this is achieved with relative ease. 
+The integrated MATLAB statistic toolbox was used to process the data in the SVM case. 
 
+SVM classify by making a decision boundary that maximizes the margin $ \gamma $.
+The margin is the perpendicular distance from the decision boundary to the closest feature point.
+The standard SVM have a linear decision boundary, which classifies by assigning the new data point to either class $ t=1 $ or $ t=-1 $. 
+The decision function for a standard SVM for a test point $ x_{new} $ given by
+\begin{equation}
+t_{new} = sign(\mathbf{w}^T \mathbf{x}_{new} +b)
+\end{equation}
+ 
+\section{Method}
+Radial basis function (gauss med samme variance i alle retninger) 
 \section{Results}
 
 \begin{figure}[H]
