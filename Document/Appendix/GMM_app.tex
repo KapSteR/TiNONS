@@ -22,7 +22,6 @@ Multiple sub-populations could be grouped together, or likewise sub-populations 
 For this reason experimentation is necessary to establish the optimal number of distributions needed to model data.
 
 % Afsnit om EM-algoritmen til GMM
-\fxnote{Ref}
 \input{EM_alg_app}
 
 \section{Method}
@@ -34,7 +33,6 @@ Further, because classification is done using a set of sequential frames, a temp
 \subsection{Training}
 A GMM was trained for every speaker.
 The feature data (both training and test data) has been subjected to PCA, in order to project the data onto a basis that aligned the variance along the dimensions without removing any dimensions. 
-\fxnote{Prøv at fjerne et nogle dimensioner}
 Then, for each speaker, a GMM is fitted to the respective speakers' training data, using MATLAB's Statistics Toolbox and the following parameters:
 
 \begin{itemize}
@@ -52,10 +50,35 @@ Initialization: \textit{Random}
 
 \subsection{Classification}
 Classification is done on the test data is done on super frames of 100 sequential frames.
-The log-likelihood for each frame is summed over the entire super frame for each model.
-\fxnote{Math that proves me right}
-The model with the largest sum is chosen as winner.
+Each frame assumed to be independent. For this reason the probability of on super frame given a specific model equals the product of the probabilities for each frame.
+\begin{equation}
+p(\mathbf{x}_{n..n+100} | C_k) = 
+\prod_{i=n}^{n+100}
+p(\mathbf{x}_{i} | C_k) 
+\end{equation}
 
+Products of many likelihoods have a tendency to result in very low numbers. 
+Also multiplication is usually more computational intensive than addition.
+So in order to speed up calculations and alleviate numerical instability due to underflow the negative log-likelihoods are used.
+
+\begin{equation}
+p(\mathbf{x}_{n..n+100} | C_k) = 
+\sum_{i=n}^{n+100}
+	-\log(
+		p(\mathbf{x}_{i} | C_k)
+	) 
+\end{equation}
+
+The model with the largest sum is chosen as winner.
+\begin{equation}
+\text{class} = \argmax_j
+	\left\lbrace 
+		\sum_{i=n}^{n+100}
+		-\log(
+			p(\mathbf{x}_{i} | C_j)
+		) 
+	\right\rbrace  
+\end{equation}
 
 
 \section{Results}
@@ -157,8 +180,6 @@ The reason of this decreasing accuracy is the rising complexity of the dataset w
 The GMM model gives a very good result comparable with that of the ANN model. 
 concluding that the GMM model can be used as an reliable speaker recognition classifier.
 The GMM model could be optimized with better fits, if the calculations had more computer power.
-\fxnote{Diskuter resultater og evt forbedringer}
-
 
 
 
