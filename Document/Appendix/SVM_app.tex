@@ -46,6 +46,10 @@ t_{new} =
 Instead of using a linear decision boundary, different kernels can be used to make other decision boundary.
 There are a linear kernel $ \mathbf{x}^T_n \mathbf{x}_{new} $, polynomial kernel $ (\gamma \mathbf{x}^T_n \mathbf{x}_{new} )^d,\; \gamma > 0 $.
 The kernel used in this project is the radial basis function $ \mathtt{exp}(-\gamma \|\mathbf{x}^T_n - \mathbf{x}_{new} \|^2 ), \; \gamma > 0 $, also called the Gaussian kernel.
+\begin{equation}
+t_{new} = 
+\mathtt{sign}\left( \sum_{n=1}^{N} \alpha_n t_n k(\mathbf{x}_n,\mathbf{x}_{new}) +b  \right)
+\end{equation}
 
 To expand this binary classifier to being able to process multiclass classification a one-vs.-one setup is used. 
 This means that each of the classes is trained against all of the other classes, this results in $ k(k-1)/2 $ classifiers. 
