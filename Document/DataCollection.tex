@@ -2,8 +2,10 @@
 \subsection*{Data Collection}
 
 This projects dataset consist of 1.656 sound files. 
-Divided into a large training set and a smaller test set. 
-Each file is 2 seconds long and was recorded at 48 kHz.
-The data structure consist of 4 persons stating a number between 0 to 9. 
-The data is borrowed with permission from Christoffer Mose, Simon Madsen, Camilla Munk and Jacob Hansen.
-  
+Each file is 2 seconds long and was sampled in $16 \frac{bits}{sample} \ \text{at } 48 kHz $.
+The data structure consist of 4 persons stating a numbers between 0 to 9 a number of times. 
+One person was removed from the dataset becasue of lack of data and low \emph{SNR}.
+Of the remaining speakers 15 utterings were chosen at random from each and put into the training set.
+Another five from each was put into the test set.
+
+The data is borrowed with permission from \cite{DataSet}. 
