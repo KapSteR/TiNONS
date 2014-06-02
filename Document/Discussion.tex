@@ -8,17 +8,23 @@ Model 		   		   & One digit            & Two digits  & Ten digits   \\ \midrule
 ANN                    & 95.3 \%                & 93.1 \%   & 89.4 \% \\
 GMM                    & 94.6 \%                & 91.2 \%   & 89.1 \% \\
 SVM                    & 73.7 \%                & - 	    & -       \\ 
-Linear                 & 55.9 \% 				& 51.2 \%   & 50.6 \% \\
-PGM                    & 62.7 \% 				& 58.1 \%   & 57.2 \%
+PGM                    & 62.7 \% 				& 58.1 \%   & 57.2 \% \\
+Linear                 & 55.9 \% 				& 51.2 \%   & 50.6 \%
+
 \end{tabular}
-\caption{The table shows The overall accuracy of the model used in this project. }
+\caption{The table shows the overall accuracy of classification for the model used in this project. }
 \label{table:result}
 \end{table}
 
 In this project the speaker base only contain three people and are therefore fairly limited. 
 Some of the models that was used to classify the data may not work with different speakers or a large group of speakers.
 To make the models more robust are large base of speakers is needed.
-For some of the models three speakers base is already at the limited of the computer power and  available.
+For some of the models three speakers base is already at the limited of the computer power and  available.\\
 
+A way to make the models more robust is the usage of a universal background model.
+The UBM is described in \cite{Springer:36}.\\
 
+The lowest classification accuracy is found in the linear models, which was expected because of the simplicity of the model.
+The data set has a lot of dimensions and overlapping, and therefore too complex for a linear decision boundary.
+  
 
