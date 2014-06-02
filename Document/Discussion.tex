@@ -1,3 +1,4 @@
+%!TEX root = Main.tex
 \section*{Discussion}
 This section contains a brief discussion of the results of the five different classification methods which have been used throughout this project. The resulting accuracy is shown on table \ref{table:result}.
 
@@ -16,33 +17,34 @@ Linear                 & 55.9 \% 				& 51.2 \%   & 50.6 \%
 \label{table:result}
 \end{table}
 
-In this project the speaker base only contain three people and are therefore fairly limited. 
-Some of the models that was used to classify the data may not work with different speakers or a large group of speakers.
+In this project the speaker base only contained three people and is therefore fairly limited. 
+Some of the models that were used to classify the data may not work as well, or at all, with different speakers or a larger group of speakers.
 To make the models more robust are large base of speakers is needed.
-For some of the models three speakers base is already at the limited of the computer power and time available.\\
-
-A way to make the models more robust is the usage of a universal background model.
-The UBM is described in \cite{Springer:36}.\\
+For some of the models three speakers base is already at the limited of the computer power and time available, in the current implementation.\\
 
 The lowest classification accuracy is found in the linear models, which was expected because of the simplicity of the model.
-The dataset has a lot of dimensions and overlapping, and therefore too complex for a linear decision boundary.
+The dataset has a lot of dimensions and overlapping, and is therefore too complex for a linear decision boundary.
 The second lowest classification accuracy is found in the probabilistic generative model. 
-The PGM is also too simple a model to handle the dataset, but still more complex than the linear model, which is expressed in the accuracy.
-One of the problems with PGM is that numbers of independent variable that have to be determined for each class scale with the number of dimensions.\\
+This is to be expected, as modelling all the sounds in a word or digit precisely, let alone 10 of them, with a single multivariate Gaussian is not feasible.
+One of the problems with PGM, as with GMM, is that numbers of independent variables that have to be determined for each class scale with the number of dimensions.\\
 
 The middle accuracy model is the support vector machine.
 The training phase needs to be iterated a large number of times, and therefore takes a considerable time to do. 
-The result of the smallest dataset isn't that accurate so it was not worth applying the model on the other two datasets.\\
+The result of the smallest dataset is not very accurate compared to other methods, so it was not deemed worthwhile applying the model on the other two larger datasets.\\
 
 The model with the second highest classification accuracy is the Gaussian mixture model.
 The model have a overall accuracy close to ANN, and are working well as a classifier for speaker recognition. 
 The reason for the good result can be that the GMM have more than one Gaussian to describe each class.
-The training phase of GMM was computational load heavy, but the classification didn't demand so much.\\
+The training phase of GMM was computational load heavy, but the classification did not demand so much.\\
 
 The model that have the highest classification accuracy of speaker recognition is the artificial neural network.
 The model was found to be very demanding regarding the computational load during the training phase. 
-This is because the ANN doesn't have a single minimum, and therefore the training needs to be iterated a large number of times. 
+This is because the ANN doesn't have a single minimum, and therefore the training needs to be iterated a large number of times. \\
 
 
-
+A way to make the models more robust is the usage of a universal background model(UBM).
+With this we would havve a reference threshhold for classification.
+This way input from speakers outside the test ensemble or simple silence/background noise would not nescesarilly be forced into a classification, but could instead be put into a null classification.
+Likewise the use of a null class for silence could improve separation of speakers in the training set featurespace, leading to more refined models.
+The use of a UBM is described in further detail in \cite{Springer:36}.\\
 
