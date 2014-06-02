@@ -1,0 +1,23 @@
+\section*{Probabilistic Generative Models}
+This part of the article, describes the Probabilistic Generative models (PGM).
+The assumed probabilistic model for each class is a multivariate normal distribution. 
+\begin{equation}
+p(\mathbf{x}|C_k)=
+\mathcal{N}(\mathbf{x};\mathbf{\mu}_k, \; \Sigma_k) 
+\label{eq:gauss_dist} 
+\end{equation}
+
+
+The mean and covariance from the training is used to calculate the probability density for each class.
+\begin{equation}
+p(\mathbf{x}|C_k)=  
+\dfrac{1}{(2\pi)^{D/2}} \dfrac{1}{\left|\mathbf{\Sigma} \right|^{1/2}} 
+\mathtt{exp} \left\lbrace -\dfrac{1}{2} (\mathbf{x}-\mathbf{\mu}_k)^T \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu}_k) \right\rbrace
+\end{equation}
+
+The class prior is selected as an equal likelihood for each class. The probability of a given feature vector $ \mathbf{x} $ being part of a class $ C_k $ is given by.
+\begin{equation}
+p(C_k |\mathbf{x}) =
+\dfrac{p(\mathbf{x}|C_k) p(C_k)}
+{\sum_j p(\mathbf{x}|C_j) p(C_j)}
+\end{equation}
