@@ -19,13 +19,27 @@ Linear                 & 55.9 \% 				& 51.2 \%   & 50.6 \%
 In this project the speaker base only contain three people and are therefore fairly limited. 
 Some of the models that was used to classify the data may not work with different speakers or a large group of speakers.
 To make the models more robust are large base of speakers is needed.
-For some of the models three speakers base is already at the limited of the computer power and  available.\\
+For some of the models three speakers base is already at the limited of the computer power and time available.\\
 
 A way to make the models more robust is the usage of a universal background model.
 The UBM is described in \cite{Springer:36}.\\
 
 The lowest classification accuracy is found in the linear models, which was expected because of the simplicity of the model.
-The data set has a lot of dimensions and overlapping, and therefore too complex for a linear decision boundary.
+The dataset has a lot of dimensions and overlapping, and therefore too complex for a linear decision boundary.
+The second lowest classification accuracy is found in the probabilistic generative model. 
+The PGM is also too simple a model to handle the dataset, but still more complex than the linear model, which is expressed in the accuracy.
+One of the problems with PGM is that numbers of independent variable that have to be determined for each class scale with the number of dimensions.\\
 
-  
+SVM
+
+The model with the second highest classification accuracy is the Gaussian mixture model.
+The larger number of 
+The training phase of GMM was computational load heavy, but the classification didn't demand so much.\\
+
+The model that have the highest classification accuracy of speaker recognition is the artificial neural network.
+The model was found to be very demanding regarding the computational load during the training phase. 
+This is because the ANN doesn't have a single minimum, and therefore the training needs to be iterated a large number of times. 
+
+
+
 
