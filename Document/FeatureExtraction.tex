@@ -14,9 +14,9 @@ and a frame interval of
 t_{frame interval} = \dfrac{N_{interval}}{F_s} = \dfrac{100}{48\ kHz} = 2.08\ ms
 \end{equation}
 
-The features extracted for use in classification were $12^{th}$ order Mel-frequency Cepstral Coefficients (MFCC), as they hava proven effective in speaker regocnition applications and speech processing in general.
-Further, so-called delta and double-delta coeffcients, the temporal derivatives $ \frac{dC}{dt} $ and double-derivatives $\frac{d^2C}{dt}$ of the MFCCs respectively, are used as features.
-\footnote{For more on MFCC and feature extraction, see Appendix} \fxnote{fix footnotes}
+The features extracted for use in classification were $12^{th}$ order Mel-frequency Cepstral Coefficients (MFCC), as they hava proven effective in speaker recognition applications and speech processing in general.
+MFCCs describe the the Mel cepstrum, a spectrum-of-a-spectrum on the non-linear Mel-scale.
+The process for calculation MFCCs is described in figure \ref{fig:MFCC_Flowchart} below.
 
 \begin{figure}[H]
 \centering
@@ -24,3 +24,8 @@ Further, so-called delta and double-delta coeffcients, the temporal derivatives 
 \caption{Process for calculating MFCC}
 \label{fig:MFCC_Flowchart}
 \end{figure}
+
+Further, so-called delta and double-delta coefficients, the temporal derivatives $ \frac{dC}{dt} $ and double-derivatives $\frac{d^2C}{dt}$ of the MFCCs respectively, are used as features.
+In this project the calculation of MFCCs, delta and double-delta coefficients is done using the free Voicebox toolbox for MATLAB \cite{voicebox}
+
+For more on MFCC and feature extraction, see Appendix.

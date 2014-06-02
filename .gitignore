@@ -60,6 +60,7 @@
 *.orig
 *.txss
 *.tks
+*Notes.bib
 
 /Document/*.pdf
 /Document/**/*.pdf
