@@ -30,10 +30,13 @@ The second lowest classification accuracy is found in the probabilistic generati
 The PGM is also too simple a model to handle the dataset, but still more complex than the linear model, which is expressed in the accuracy.
 One of the problems with PGM is that numbers of independent variable that have to be determined for each class scale with the number of dimensions.\\
 
-SVM
+The middle accuracy model is the support vector machine.
+The training phase needs to be iterated a large number of times, and therefore takes a considerable time to do. 
+The result of the smallest dataset isn't that accurate so it was not worth applying the model on the other two datasets.\\
 
 The model with the second highest classification accuracy is the Gaussian mixture model.
-The larger number of 
+The model have a overall accuracy close to ANN, and are working well as a classifier for speaker recognition. 
+The reason for the good result can be that the GMM have more than one Gaussian to describe each class.
 The training phase of GMM was computational load heavy, but the classification didn't demand so much.\\
 
 The model that have the highest classification accuracy of speaker recognition is the artificial neural network.
