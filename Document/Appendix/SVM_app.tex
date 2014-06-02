@@ -15,7 +15,7 @@ t_{new} = \mathtt{sign}(\mathbf{w}^T \mathbf{x}_{new} +b)
 \label{eq:SVM_lin}
 \end{equation}
 The parameter vector $ \mathbf{w} $ is found by maximizing the margin or minimizing the length of the parameter vector, because of the inverse relationship $ \gamma = \frac{1}{\|\mathbf{w}\|} $.
-Moving one single data point can have a huge influence on the position of the decision boundary, The reason is in the constrain
+Moving one single data point can have a huge influence on the position of the decision boundary, The reason is in the constrain, taken from \cite{SVM:PDF}.
 \begin{equation}
 \qquad \mathbf{w}^* =
 \mathtt{argmin}_\mathbf{w} \frac{1}{2} \mathbf{w}^T \mathbf{w}, 
