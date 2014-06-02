@@ -22,7 +22,7 @@ After the training process, the classification can be done by using the followin
 t_{new} = 
 \mathtt{sign}\left( \sum_{n=1}^{N} \alpha_n t_n k(\mathbf{x}_n,\mathbf{x}_{new}) +b  \right)
 \end{equation}
-with $ k = \mathtt{exp}(-\gamma \|\mathbf{x}^T_n - \mathbf{x}_{new} \|^2 ) $, which is the Gaussian kernel.
+with $ k = \mathtt{exp}(-\gamma \|\mathbf{x}^T_n - \mathbf{x}_{new} \|^2 ) $, which is the Gaussian kernel, taken from \cite{SVM:PDF}.
 
 \subsection*{Results}
 The result was obtained by using a Gaussian kernel, and the classification accuracy was found to be 73.7 \% for the one digit dataset after training on the training set and afterwards classifying the test set.
