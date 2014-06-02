@@ -11,7 +11,7 @@ p(\mathbf{x}|C_k)=
 In the training process the mean vector and covariance matrix of each class is estimated.
 \begin{eqnarray}
 \bm{\mu}_i= \dfrac{1}{N} \sum_{j=1}^{N} \mathbf{x}_{kj} \\
-\bm{\Sigma}_k =\dfrac{1}{N} \sum_{j=1}^{N} (\mathbf{x}_{kj}-\bm{\mu}_k) \cdot (\mathbf{x}_{kj}--\bm{\mu}_k)
+\bm{\Sigma}_k =\dfrac{1}{N} \sum_{j=1}^{N} (\mathbf{x}_{kj}-\bm{\mu}_k) \cdot (\mathbf{x}_{kj}-\bm{\mu}_k)
 \end{eqnarray}
 The mean and covariance from the training is used to calculate the probability density for each class.
 \begin{equation}
