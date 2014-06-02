@@ -1,25 +1,22 @@
 %!TEX root = Main.tex
 \section*{Artificial Neural Networks}
 
+The neural network model is a nonlinear function from a set of input variables $ \left\lbrace x_i \right\rbrace  $ transformed to a set of output variables $ \left\lbrace y_k \right\rbrace  $ controlled by the weight vector \textbf{w}, which is made of adjustable parameters.
+The number of hidden units between the input and the output can be adjusted to the dataset.
+This process is described in the following section.
+
 The overall network function for a two layer neural network, takes the form
 \begin{equation}
 y_k(\mathbf{x},\mathbf{w}) = \sigma \left( \sum_{j=1}^{M} w_{kj}^{(2)} h\left( \sum_{i}^{D} w_{ji}^{(1)} x_i + w_{j0}^{(1)} \right) + w_{k0}^{(2)} \right) 
 \label{eq:ANN_overall_rap}
 \end{equation}
-
-
  
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.6\linewidth]{Figure5_1}
-
-\caption{Diagram of the two layer neural network. The nodes in the figure represents the input, hidden and output variable. The links between the nodes are the weight parameters. The figure is borrowed from \cite{bishop2007}} 
-\label{fig:ANN_fig_theory}
+	\centering
+	\includegraphics[width=0.75\linewidth]{Figure5_1}
+	\caption{Diagram of the two layer neural network. The nodes in the figure represents the input, hidden and output variable. The links between the nodes are the weight parameters. The figure is borrowed from \cite{bishop2007}} 
+	\label{fig:ANN_fig_theory}
 \end{figure}
-
-The neural network model is a nonlinear function from a set of input variables $ \left\lbrace x_i \right\rbrace  $ transformed to a set of output variables $ \left\lbrace y_k \right\rbrace  $ controlled by the weight vector \textbf{w}, which is made of adjustable parameters.
-The number of hidden units between the input and the output can be adjusted to the dataset.
-This process is described in the following section.
 
 \subsection*{Parametetric analysis}
 The ANN was trained for the following number of hidden values: $ [10\ 20\ 50\ 100\ 200\ 300] $.
@@ -35,8 +32,6 @@ for each value of alpha the training was tried 8 times and the mean and variance
 
 The number of hidden units was found to be optimal at 30, with an $ \alpha $ of 0.30. This is used for all of the datasets.
 
-
-
 \subsection*{Training}
 In the training of the neural network for a multi-class classification problem the following error-function is minimized.
 \begin{equation}
@@ -44,7 +39,7 @@ E(\mathbf{w}) = \dfrac{1}{2} \sum_{n=1}^{N}\| \mathbf{y}(\mathbf{x}_n,\mathbf{w}
 \label{eq:ANN_error_rap}
 \end{equation}
 
-
+To do the actual trianing and parameteric analysis of the neural networks the free Netlab toolbax for matlab was used \cite{Netlab}
 
 \subsection*{Results}
 The result of the ANN is a total accuracy of 95.3, 93.1 and 89.4 \% respectively for one, two and ten digits. 
