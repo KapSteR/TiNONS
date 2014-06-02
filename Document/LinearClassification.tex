@@ -35,6 +35,11 @@ This calculation are done to determine the $\tilde{\mathbf{W}}$:
 \label{eq:weightVector}  
 \end{equation}
 The resulting parameter matrix $ \tilde{\mathbf{W}} $ was tested using the test set.
+\begin{equation}
+\mathbf{y}(\mathbf{x})=\tilde{\mathbf{W}}^T \tilde{x}, \qquad \tilde{x}= \left[ 
+\mathbf{x} \quad 1 
+\right]
+\end{equation}
 The most likely class for each of the feature vectors is found as the index corresponding to the largest value in $ \mathbf{y} $.
 \paragraph*{Result}
 The result of the linear classifier is a total accuracy of 55.9, 51.2 and 50.6 \% respectively for one, two and ten digits. 
