@@ -86,10 +86,13 @@ Recalculate log likelihood using Equation \ref{eq:loglikeGMM}.
 If the log likelihood has not changed more than some predetermined threshold stop iteration.
 Otherwise continue from E-step.
 
-\paragraph*{Training}
-GMM is a tyoe of unsupervised machine learning, and is a first hand not usefull in our project, but by training a GMM for each speaker based on the pre-classfied trainging set, you end up with a very effective model.
+\subsection*{Training}
+GMM is a type of unsupervised machine learning, and is a first hand not usefull in our project, but by training a GMM for each speaker based on the pre-classfied trainging set, you end up with a very effective model.
+When applied in this way the components of the individuel speaker models can be thought of as a PGM for each characteristic sound a speaker makes.
+Combined into a mixture model, these components make up a accurate and narrow model of an individual speakers voice.
+This allows for speaker classification on the basis of highest overall likelihood.
 
+To further improve classification, overall likelihood is averaged, for each speaker model, over a superframe of 100 frames.
+This is done on the assumption that only one speaker is speaking at a time, so this speakers model is most likely to have the greatest overall likelihood for most frames out of the superframe.
 
-Then, for each speaker, a GMM is fitted to the respective speakers' training data, using MATLAB's Statistics Toolbox.
-
-\paragraph*{Result}
+\subsection*{Result}
