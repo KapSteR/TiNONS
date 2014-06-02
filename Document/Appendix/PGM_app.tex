@@ -32,10 +32,13 @@ p(C_k) = p(C_j) = \alpha \Longrightarrow p(C_k |\mathbf{x}) =
 
 \section{Method}
 To make the generative models the mean vector and covariance matrix for each class was calculated using all the training data for the respective classes.
+\begin{eqnarray}
+\bm{\mu}_i= \dfrac{1}{N} \sum_{j=1}^{N} \mathbf{x}_{kj} \\
+\bm{\Sigma}_k =\dfrac{1}{N} \sum_{j=1}^{N} (\mathbf{x}_{kj}-\bm{\mu}_k) \cdot (\mathbf{x}_{kj}--\bm{\mu}_k)
+\end{eqnarray}
 The class-conditional densities, for all samples and for all speaker models was then calculated using (\ref{eq:gauss_dist}).
 Then the posterior probability for all classes are calculated using Bayes' theorem (\ref{eq:posteriorP}) and assuming uniform class priors.
 Finally the samples were classified by comparing posterior probabilities for all classes and selecting the greatest.
-
 
 
 

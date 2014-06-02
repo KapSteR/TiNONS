@@ -7,6 +7,11 @@ p(\mathbf{x}|C_k)=
 \label{eq:gauss_dist} 
 \end{equation}
 
+\paragraph*{Training}
+In the training process the mean vector and covariance matrix of each class is estimated.
+\begin{align}
+
+\end{align}
 
 The mean and covariance from the training is used to calculate the probability density for each class.
 \begin{equation}
@@ -21,3 +26,6 @@ p(C_k |\mathbf{x}) =
 \dfrac{p(\mathbf{x}|C_k) p(C_k)}
 {\sum_j p(\mathbf{x}|C_j) p(C_j)}
 \end{equation}
+
+\paragraph*{Result}
+The result of the linear classifier is a total accuracy of 62.7, 58.1 and 57.2 \% respectively for one, two and ten digits. 
