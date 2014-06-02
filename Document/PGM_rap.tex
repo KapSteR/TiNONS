@@ -8,7 +8,7 @@ p(\mathbf{x}|C_k)=
 \label{eq:gauss_dist} 
 \end{equation}
 
-\paragraph*{Training}
+\subsection*{Training}
 In the training process the mean vector and covariance matrix of each class is estimated.
 
 \begin{equation}
@@ -27,7 +27,12 @@ The mean and covariance from the training is used to calculate the probability d
 \begin{equation}
 p(\mathbf{x}|C_k)=  
 \dfrac{1}{(2\pi)^{D/2}} \dfrac{1}{\left|\mathbf{\Sigma} \right|^{1/2}} 
-\mathtt{exp} \left\lbrace -\dfrac{1}{2} (\mathbf{x}-\bm{\mu}_k)^T \mathbf{\Sigma}^{-1} (\mathbf{x}-\bm{\mu}_k) \right\rbrace
+e^{
+	-\dfrac{1}{2} 
+	(\mathbf{x}-\bm{\mu}_k)^T 
+	\bm{\Sigma}^{-1}
+	(\mathbf{x}-\bm{\mu}_k) 
+}
 \end{equation}
 
 The class prior is selected as an equal likelihood for each class. The probability of a given feature vector $ \mathbf{x} $ being part of a class $ C_k $ is given by.
@@ -37,5 +42,5 @@ p(C_k |\mathbf{x}) =
 {\sum_j p(\mathbf{x}|C_j) p(C_j)}
 \end{equation}
 
-\paragraph*{Result}
+\subsection*{Result}
 The result of the probabilistic generative classifier is a total accuracy of 62.7, 58.1 and 57.2 \% respectively for one, two and ten digits. 

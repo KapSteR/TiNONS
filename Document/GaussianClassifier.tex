@@ -8,7 +8,7 @@ The individual data points are then arranged into clusters based on which model 
 The distributions of the mixture model are fitted to data by iteratively employing Expectation Maximization (EM).
 
 \subsection*{The EM Algotrithm}
-In EM a mixture model is iteratively updated by esitimating model parameters $\bm{\mu}_k $ (component means) and $ \bm{\Sigma}_k $ (component covariance matrix) based on current assignment of responability and then reassigning responability based on new model parameters, starting out with a random guess of $\bm{\mu}_k \text{ and } \bm{\Sigma}_k \text{ for } k=1..K$ 
+In EM a mixture model is iteratively updated by esitimating model parameters $\bm{\mu}_k $ \emph{component means} (\ref{eq:GMM_mu}) and $ \bm{\Sigma}_k $ \emph{component covariance matrix} (\ref{eq:GMM_Sigma}) based on current assignment of responability and then reassigning responability based on new model parameters (\ref{eq:GMM_gamma}), starting out with a random guess of $\bm{\mu}_k \text{ and } \bm{\Sigma}_k \text{ for } k=1..K$ 
 
 
 \subsubsection*{Initialization:}
@@ -47,6 +47,7 @@ Compute the initial log-likelihood og the model
 Calculate the probability of each point in each component in order to assing responsibility
 
 \begin{equation}
+\label{eq:GMM_gamma} 
 \gamma_{nk} = 
 \frac
 {\pi_{k}\mathcal{N}(\mathbf{x}_{n}|\mathbf{\mu}_{k},\mathbf{\Sigma}_{k})}
@@ -54,10 +55,11 @@ Calculate the probability of each point in each component in order to assing res
 \end{equation}
 
 \subsubsection*{M-step:}
-Estimate new guesses for $ \mathbf{\pi}_{k}, \mathbf{\mu}_{k}, \mathbf{\Sigma}_{k} $.
+Estimate new guesses for $ \mathbf{\pi}_{k}, \bm{\mu}_{k}, \bm{\Sigma}_{k} $.
 
 \begin{equation}
-\mathbf{\mu}_{k}^{new} = 
+\label{eq:GMM_mu} 
+\bm{\mu}_{k}^{new} = 
 \frac{1}{N_{k}}
 \sum_{n=1}^{N} 
 \gamma_{nk}
@@ -65,12 +67,13 @@ Estimate new guesses for $ \mathbf{\pi}_{k}, \mathbf{\mu}_{k}, \mathbf{\Sigma}_{
 \end{equation}
 
 \begin{equation}
-\mu_{k}^{new} = 
+\label{eq:GMM_Sigma} 
+\bm{\Sigma}_{k}^{new} = 
 \frac{1}{N_{k}}
 \sum_{n=1}^{N} 
 \gamma_{nk}
-(\mathbf{x}_{k} - \mathbf{\mu}_{k}^{new})
-(\mathbf{x}_{k} - \mathbf{\mu}_{k}^{new})^{T}
+(\mathbf{x}_{k} - \bm{\mu}_{k}^{new})
+(\mathbf{x}_{k} - \bm{\mu}_{k}^{new})^{T}
 \end{equation}
 
 \begin{equation}
@@ -82,7 +85,7 @@ Estimate new guesses for $ \mathbf{\pi}_{k}, \mathbf{\mu}_{k}, \mathbf{\Sigma}_{
 
 \subsubsection*{Convergence check:}
 
-Recalculate log likelihood using Equation \ref{eq:loglikeGMM}.
+Recalculate log likelihood using (\ref{eq:loglikeGMM}).
 If the log likelihood has not changed more than some predetermined threshold stop iteration.
 Otherwise continue from E-step.
 
@@ -95,4 +98,15 @@ This allows for speaker classification on the basis of highest overall likelihoo
 To further improve classification, overall likelihood is averaged, for each speaker model, over a superframe of 100 frames.
 This is done on the assumption that only one speaker is speaking at a time, so this speakers model is most likely to have the greatest overall likelihood for most frames out of the superframe.
 
-\subsection*{Result}
+\subsection*{Results}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{GMM_1digit_8cent_3speak}
+\caption{Results of using GMM with 3 speakers, 8 centers per model and 1 digit spoken}
+\label{fig:GMM_fig_1}
+\end{figure}
+
+Gaussian Mixture Models with a trained model for each speaker yielded a very high classification accuracy. $  94.6\ \%, 91.2\ \% \text{ and }  89.1\ \% $ for 1, 2 and 10 digits spoken, respectively.
+
+
+

@@ -11,7 +11,7 @@ y(\mathbf{x}) = \mathbf{w}^T \mathbf{x}+w_0
 \label{eq:lin_output}
 \end{equation}
 
-\paragraph*{Training}
+\subsection*{Training}
 The linear classifier is applied to the training dataset, containing feature vectors $(\mathbf{x}_n)$ and the target vectors $(\mathbf{t}_n)$.
 The vectors are on the form:
 \begin{equation}
@@ -41,5 +41,14 @@ The resulting parameter matrix $ \tilde{\mathbf{W}} $ was tested using the test 
 \right]
 \end{equation}
 The most likely class for each of the feature vectors is found as the index corresponding to the largest value in $ \mathbf{y} $.
-\paragraph*{Result}
+
+\subsection*{Results}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Linear_1digit_8cent_3speak}
+\caption{Results of using linear classifiers and single digit spoken}
+\label{fig:Lin_fig_1}
+\end{figure}
+
 The result of the linear classifier is a total accuracy of 55.9, 51.2 and 50.6 \% respectively for one, two and ten digits. 
