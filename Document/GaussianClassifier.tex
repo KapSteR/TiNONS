@@ -8,7 +8,7 @@ The individual data points are then arranged into clusters based on which model 
 The distributions of the mixture model are fitted to data by iteratively employing Expectation Maximization (EM).
 
 \subsection*{The EM Algotrithm}
-In EM a mixture model is iteratively updated by esitimating model parameters $\bm{\mu}_k $ \emph{component means} (\ref{eq:GMM_mu}) and $ \bm{\Sigma}_k $ \emph{component covariance matrix} (\ref{eq:GMM_Sigma}) based on current assignment of responability and then reassigning responability based on new model parameters (\ref{eq:GMM_gamma}), starting out with a random guess of $\bm{\mu}_k \text{ and } \bm{\Sigma}_k \text{ for } k=1..K$ 
+In EM a mixture model is iteratively updated by estimating model parameters $\bm{\mu}_k $ \emph{component means} (\ref{eq:GMM_mu}) and $ \bm{\Sigma}_k $ \emph{component covariance matrix} (\ref{eq:GMM_Sigma}) based on current assignment of responsibility and then reassigning responsibility based on new model parameters (\ref{eq:GMM_gamma}), starting out with a random guess of $\bm{\mu}_k \text{ and } \bm{\Sigma}_k \text{ for } k=1..K$ 
 
 
 \subsubsection*{Initialization:}
@@ -44,7 +44,7 @@ Compute the initial log-likelihood og the model
 \end{enumerate}
 
 \subsubsection*{E-step:}
-Calculate the probability of each point in each component in order to assing responsibility
+Calculate the probability of each point in each component in order to assign responsibility
 
 \begin{equation}
 \label{eq:GMM_gamma} 
@@ -90,8 +90,8 @@ If the log likelihood has not changed more than some predetermined threshold sto
 Otherwise continue from E-step.
 
 \subsection*{Training}
-GMM is a type of unsupervised machine learning, and is a first hand not usefull in our project, but by training a GMM for each speaker based on the pre-classfied trainging set, you end up with a very effective model.
-When applied in this way the components of the individuel speaker models can be thought of as a PGM for each characteristic sound a speaker makes.
+GMM is a type of unsupervised machine learning, and is a first hand not useful in our project, but by training a GMM for each speaker based on the pre-classified training set, you end up with a very effective model.
+When applied in this way the components of the individual speaker models can be thought of as a PGM for each characteristic sound a speaker makes.
 Combined into a mixture model, these components make up a accurate and narrow model of an individual speakers voice.
 This allows for speaker classification on the basis of highest overall likelihood.
 
